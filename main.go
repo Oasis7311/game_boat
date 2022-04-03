@@ -94,27 +94,27 @@ func register(r *gin.Engine) {
 	}
 
 	{ //数据写入相关接口
-		//{
-		//	rPost := r.Group("/post") //发布
-		//	rPost.Use(middle_ware.JWTAuth(services.AppGuardName))
-		//	rPost.POST("/comment") //评论
-		//	rPost.POST("/reply")   //回复
-		//	rPost.POST("/article") //文章
-		//}
-		//{
-		//	rDelete := r.Group("/delete") //删除
-		//	rDelete.Use(middle_ware.JWTAuth(services.AppGuardName))
-		//	rDelete.POST("/comment") //评论 or 回复
-		//	rDelete.POST("/article") //文章
-		//}
-		//{
-		//	rAction := r.Group("/action") //交互行为
-		//	rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
-		//	rAction.POST("/comment") //点赞、取消赞评论or回复
-		//	rAction.POST("/article") //点赞、取消赞文章
-		//	rAction.POST("/game")    //关注、取消关注游戏
-		//	rAction.POST("/user")    //关注、取消关注用户
-		//}
+		{
+			rPost := r.Group("/post") //发布
+			rPost.Use(middle_ware.JWTAuth(services.AppGuardName))
+			rPost.POST("/comment") //评论
+			rPost.POST("/reply")   //回复
+			rPost.POST("/article") //文章
+		}
+		{
+			rDelete := r.Group("/delete") //删除
+			rDelete.Use(middle_ware.JWTAuth(services.AppGuardName))
+			rDelete.POST("/comment") //评论 or 回复
+			rDelete.POST("/article") //文章
+		}
+		{
+			rAction := r.Group("/action") //交互行为
+			rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
+			rAction.POST("/comment") //点赞、取消赞评论or回复
+			rAction.POST("/article") //点赞、取消赞文章
+			rAction.POST("/game")    //关注、取消关注游戏
+			rAction.POST("/user")    //关注、取消关注用户
+		}
 		{
 			rUpdate := r.Group("/update") //更新
 			rUpdate.Use(middle_ware.JWTAuth(services.AppGuardName))

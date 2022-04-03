@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/pkg/errors"
 	"github.com/spf13/cast"
 
 	"github.com/oasis/game_boat/biz/dal/user_dal"
@@ -37,7 +36,7 @@ func UpdateUserInfo(ctx *gin.Context) {
 
 	userInfo, userLoginInfo, err := s.getUserInfo(req.UserId)
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v%v", method, err.Error()))
+		logs.Error(fmt.Sprintf("%v%+v", method, err.Error()))
 		response.BusinessFail(ctx, err.Error())
 		return
 	}
@@ -46,7 +45,7 @@ func UpdateUserInfo(ctx *gin.Context) {
 
 	err = s.updateInfo(userInfo, userLoginInfo)
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v%v", method, err))
+		logs.Error(fmt.Sprintf("%v%+v", method, err))
 	}
 
 	resp := new(handler_model.UpdateUserInfoResponse)
@@ -70,11 +69,11 @@ func (s UpdateUserInfoHandler) fillUpInfo(newInfo *handler_model.NewUserInfo, us
 func (s UpdateUserInfoHandler) getUserInfo(userId uint) (*user_model.UserInfo, *user_model.UserLoginInfo, error) {
 	userInfo, err := user_dal.GetUserInfo(userId)
 	if err != nil {
-		return nil, nil, errors.New("get user info fail, err = " + err.Error())
+		return nil, nil, err
 	}
 	userLoginInfo, err := user_dal.GetUserLoginInfoByLoginId(userInfo.LoginInfoId)
 	if err != nil {
-		return nil, nil, errors.New("get user login info fail, err = " + err.Error())
+		return nil, nil, err
 	}
 	return userInfo, userLoginInfo, nil
 }
@@ -83,12 +82,12 @@ func (s UpdateUserInfoHandler) getUserInfo(userId uint) (*user_model.UserInfo, *
 func (s UpdateUserInfoHandler) updateInfo(userInfo *user_model.UserInfo, userLoginInfo *user_model.UserLoginInfo) error {
 	err := user_dal.UpdateUserInfo(userInfo)
 	if err != nil {
-		return errors.New("update user info fail, err = " + err.Error())
+		return err
 	}
 
 	err = user_dal.UpdateUserLoginInfo(userLoginInfo)
 	if err != nil {
-		return errors.New("update user login info fail, err = " + err.Error())
+		return err
 	}
 
 	return nil

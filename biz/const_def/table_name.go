@@ -5,3 +5,7 @@ const UserInfoTableName = "user_info"
 const LoginInfoTableName = "login_info"
 
 const UserRelationTableName = "user_relation"
+
+const TagInfoTableName = "tag_info"
+
+const GameInfoTableName = "game_info"

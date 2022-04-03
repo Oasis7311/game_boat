@@ -38,7 +38,7 @@ func (s *RelationHandler) fillUp(aUserId, bUserId, lastUpdateTime, lastAUserId, 
 		s.limit = 10
 	}
 	if s.relation == 0 {
-		return errors.New("relation should not = 0")
+		return errors.Wrap(errors.New("relation = 0"), "relation should not = 0")
 	}
 	return nil
 }
@@ -60,21 +60,21 @@ func GetUserFollowerList(ctx *gin.Context) {
 
 	err = s.fillUp(0, req.Id, req.LastFollowTime, req.LastFollowerId, 0, const_def.RelationEnumFollow, req.PageSize)
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v %v", method, err))
+		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.ValidateFail(ctx, err.Error())
 		return
 	}
 
 	aUserIdList, lastFollowTime, err := s.getFollowerList()
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v %v", method, err))
+		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())
 		return
 	}
 
 	aUserInfoMap, err := user_dal.GetUserInfoMap(aUserIdList)
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v %v", method, err))
+		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())
 		return
 	}
@@ -91,7 +91,7 @@ func GetUserFollowerList(ctx *gin.Context) {
 func (s *RelationHandler) getFollowerList() ([]uint, uint, error) {
 	relationList, err := user_dal.GetBUserRelationList(s.bUserId, s.lastAUserId, s.lastUpdatedTime, s.relation, s.limit)
 	if err != nil {
-		return nil, 0, errors.New("getFollowerList fail, err = " + err.Error())
+		return nil, 0, err
 	}
 
 	res := make([]uint, 0)
@@ -122,21 +122,21 @@ func GetUserFollowList(ctx *gin.Context) {
 
 	err = s.fillUp(req.Id, 0, req.LastFollowTime, 0, req.LastFollowedUserId, const_def.RelationEnumFollow, req.PageSize)
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v %v", method, err))
+		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.ValidateFail(ctx, err.Error())
 		return
 	}
 
 	bUserIdList, lastFollowTime, err := s.getFollowList()
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v %v", method, err))
+		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())
 		return
 	}
 
 	bUserInfoMap, err := user_dal.GetUserInfoMap(bUserIdList)
 	if err != nil {
-		logs.Error(fmt.Sprintf("%v %v", method, err))
+		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())
 		return
 	}
@@ -153,7 +153,7 @@ func GetUserFollowList(ctx *gin.Context) {
 func (s *RelationHandler) getFollowList() ([]uint, uint, error) {
 	relationList, err := user_dal.GetAUserRelationList(s.aUserId, s.lastBUserId, s.lastUpdatedTime, s.relation, s.limit)
 	if err != nil {
-		return nil, 0, errors.New("getFollowList fail, err = " + err.Error())
+		return nil, 0, err
 	}
 
 	res := make([]uint, 0)

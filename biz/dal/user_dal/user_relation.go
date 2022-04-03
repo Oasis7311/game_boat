@@ -18,7 +18,7 @@ func GetAUserRelationList(aUserId uint, lastBUserId uint, lastUpdateTime uint, r
 		Where("a_user_id = ? and relation = ?", aUserId, relationEnum).
 		Where("updated_at > ? and b_user_id > ?", lastUpdateTime, lastBUserId).
 		Limit(limit).Find(&userRelationList)
-	return userRelationList, res.Error
+	return userRelationList, errors.Wrap(res.Error, "GetAUserRelationList fail")
 }
 
 // GetBUserRelationList B用户被发起的关系列表
@@ -29,7 +29,7 @@ func GetBUserRelationList(bUserId uint, lastAUserId uint, lastUpdateTime uint, r
 		Where("b_user_id = ? and relation = ?", bUserId, relationEnum).
 		Where("updated_at > ? and a_user_id > ?", lastUpdateTime, lastAUserId).
 		Limit(limit).Find(&userRelationList)
-	return userRelationList, res.Error
+	return userRelationList, errors.Wrap(res.Error, "GetBUserRelationList fail")
 }
 
 // GetAUserRelationCount 获取A用户relation数量

@@ -17,16 +17,17 @@ func CheckToken(ctx *gin.Context) {
 
 	logs := utils.NewLoggerWithXRId(ctx, global.App.Log)
 
+	logs.Info(fmt.Sprintf("[CheckToken] id = %v", id))
 	userInfo, err := user_dal.GetUserInfo(id)
 	if err != nil {
-		logs.Error(fmt.Sprintf("[CheckToken] get user info fail, err = %v", err))
-		response.BusinessFail(ctx, fmt.Sprintf("[CheckToken] get user info fail, err = %v", err))
+		logs.Error(fmt.Sprintf("[CheckToken] err = %+v", err))
+		response.BusinessFail(ctx, err.Error())
 		return
 	}
 	userLoginInfo, err := user_dal.GetUserLoginInfoByLoginId(userInfo.LoginInfoId)
 	if err != nil {
-		logs.Error(fmt.Sprintf("[CheckToken] get user login info fail, err = %v", err))
-		response.BusinessFail(ctx, fmt.Sprintf("[CheckToken] get user info fail, err = %v", err))
+		logs.Error(fmt.Sprintf("[CheckToken] err = %+v", err))
+		response.BusinessFail(ctx, err.Error())
 		return
 	}
 

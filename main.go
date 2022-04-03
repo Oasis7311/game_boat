@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/oasis/game_boat/biz/handlers"
+	handlerGetGame "github.com/oasis/game_boat/biz/handlers/get/game"
 	handlerGetUser "github.com/oasis/game_boat/biz/handlers/get/user"
 	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/update/user"
 	upUser "github.com/oasis/game_boat/biz/handlers/update/user"
@@ -77,12 +78,14 @@ func register(r *gin.Engine) {
 		//	reply.GET("/list")            //列表
 		//	reply.GET("/detail")          //单条详情
 		//}
-		//{
-		//	game := rGet.Group("/game") //游戏
-		//	game.GET("/info")           //信息
-		//	game.GET("/evaluation")     //评价
-		//	game.GET("/")
-		//}
+		{
+			game := rGet.Group("/game")                      //游戏
+			game.GET("/tag_list", handlerGetGame.GetTagList) //标签列表
+			game.GET("/in_tag", handlerGetGame.GetGameInTag) //标签下游戏列表
+			//game.GET("/info")                                //信息
+			//game.GET("/evaluation")                          //评价
+			//game.GET("/")
+		}
 		//{
 		//	article := rGet.Group("/article") //文章
 		//	article.GET("/detail")            //详情
@@ -94,27 +97,26 @@ func register(r *gin.Engine) {
 	}
 
 	{ //数据写入相关接口
-		{
-			rPost := r.Group("/post") //发布
-			rPost.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rPost.POST("/comment") //评论
-			rPost.POST("/reply")   //回复
-			rPost.POST("/article") //文章
-		}
-		{
-			rDelete := r.Group("/delete") //删除
-			rDelete.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rDelete.POST("/comment") //评论 or 回复
-			rDelete.POST("/article") //文章
-		}
-		{
-			rAction := r.Group("/action") //交互行为
-			rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rAction.POST("/comment") //点赞、取消赞评论or回复
-			rAction.POST("/article") //点赞、取消赞文章
-			rAction.POST("/game")    //关注、取消关注游戏
-			rAction.POST("/user")    //关注、取消关注用户
-		}
+		//{
+		//	rPost := r.Group("/post") //发布
+		//	rPost.Use(middle_ware.JWTAuth(services.AppGuardName))
+		//	rPost.POST("/comment") //评论
+		//	rPost.POST("/reply")   //回复
+		//	rPost.POST("/article") //文章
+		//}
+		//{
+		//	rDelete := r.Group("/delete") //删除
+		//	rDelete.Use(middle_ware.JWTAuth(services.AppGuardName))
+		//	rDelete.POST("/comment") //评论 or 回复
+		//	rDelete.POST("/article") //文章
+		//}
+		//{
+		//	rAction := r.Group("/action") //交互行为
+		//	rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
+		//	rAction.POST("/comment") //点赞、取消赞评论or回复
+		//	rAction.POST("/article") //点赞、取消赞文章
+		//	rAction.POST("/game")    //关注、取消关注游戏
+		//}
 		{
 			rUpdate := r.Group("/update") //更新
 			rUpdate.Use(middle_ware.JWTAuth(services.AppGuardName))

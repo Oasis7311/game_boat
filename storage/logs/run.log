@@ -1,0 +1,323 @@
+[2022-03-09 10:55:08.901]	local.info	graduation_design/main.go:20	log init success!
+[2022-03-09 10:55:09.224]	local.info	graduation_design/main.go:24	db init success!
+[2022-03-09 10:55:09.300]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 127.0.0.1:6379: connect: connection refused"}
+
+
+[31m2022/03/09 10:55:48 [Recovery] 2022/03/09 - 10:55:48 panic recovered:
+POST /register HTTP/1.1
+Host: :8080
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN
+Connection: keep-alive
+Content-Length: 51
+Content-Type: application/json
+Origin: NaN
+User-Agent: ApiPOST Runtime +https://www.apipost.cn
+X-Request-Id: c8k1ed4bcv47phqsiod0
+
+
+Undefined validation function 'optional' on field 'Name'
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:289 (0x132a564)
+	(*Validate).parseFieldTagsRecursive: panic(strings.TrimSpace(fmt.Sprintf(undefinedValidation, current.tag, fieldName)))
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:150 (0x1329278)
+	(*Validate).extractStructCache: ctag, _ = v.parseFieldTagsRecursive(tag, fld.Name, "", false)
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator.go:37 (0x132f9c4)
+	(*validate).validateStruct: cs = v.v.extractStructCache(current, typ.Name())
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:308 (0x13356a9)
+	(*Validate).StructCtx: vd.validateStruct(ctx, top, val, val.Type(), vd.ns[0:0], vd.actualNs[0:0], nil)
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:281 (0x1541108)
+	(*Validate).Struct: return v.StructCtx(context.Background(), s)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:68 (0x15410cb)
+	(*defaultValidator).validateStruct: return v.validate.Struct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:47 (0x1541004)
+	(*defaultValidator).ValidateStruct: return v.validateStruct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:45 (0x1540fa9)
+	(*defaultValidator).ValidateStruct: return v.ValidateStruct(value.Elem().Interface())
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/binding.go:117 (0x1545421)
+	validate: return Validator.ValidateStruct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:55 (0x15453f0)
+	decodeJSON: return validate(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:37 (0x1545228)
+	jsonBinding.Bind: return decodeJSON(req.Body, obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:706 (0x1718fa8)
+	(*Context).ShouldBindWith: return b.Bind(c.Request, obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:671 (0x1718f85)
+	(*Context).ShouldBindJSON: return c.ShouldBindWith(obj, binding.JSON)
+/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:57 (0x1718fa9)
+	(*registerHandler).getRequestBody: return c.ShouldBindJSON(r.req)
+/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:24 (0x1718a24)
+	Register: if err := handler.getRequestBody(ctx); err != nil {
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564033)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1563ff2)
+	LoggerWithConfig.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1559f0f)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x1559ef5)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x15599aa)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/go/src/net/http/server.go:2867 (0x12bbce2)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/go/src/net/http/server.go:1932 (0x12b710c)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
+	goexit: BYTE	$0x90	// NOP
+[0m
+
+
+[31m2022/03/09 10:57:44 [Recovery] 2022/03/09 - 10:57:44 panic recovered:
+POST /register HTTP/1.1
+Host: :8080
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN
+Connection: keep-alive
+Content-Length: 190
+Content-Type: application/json
+Origin: NaN
+User-Agent: ApiPOST Runtime +https://www.apipost.cn
+X-Request-Id: c8k1fa4bcv47phqsiodg
+
+
+Undefined validation function 'optional' on field 'Name'
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:289 (0x132a564)
+	(*Validate).parseFieldTagsRecursive: panic(strings.TrimSpace(fmt.Sprintf(undefinedValidation, current.tag, fieldName)))
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:150 (0x1329278)
+	(*Validate).extractStructCache: ctag, _ = v.parseFieldTagsRecursive(tag, fld.Name, "", false)
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator.go:37 (0x132f9c4)
+	(*validate).validateStruct: cs = v.v.extractStructCache(current, typ.Name())
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:308 (0x13356a9)
+	(*Validate).StructCtx: vd.validateStruct(ctx, top, val, val.Type(), vd.ns[0:0], vd.actualNs[0:0], nil)
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:281 (0x1541108)
+	(*Validate).Struct: return v.StructCtx(context.Background(), s)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:68 (0x15410cb)
+	(*defaultValidator).validateStruct: return v.validate.Struct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:47 (0x1541004)
+	(*defaultValidator).ValidateStruct: return v.validateStruct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:45 (0x1540fa9)
+	(*defaultValidator).ValidateStruct: return v.ValidateStruct(value.Elem().Interface())
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/binding.go:117 (0x1545421)
+	validate: return Validator.ValidateStruct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:55 (0x15453f0)
+	decodeJSON: return validate(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:37 (0x1545228)
+	jsonBinding.Bind: return decodeJSON(req.Body, obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:706 (0x1718fa8)
+	(*Context).ShouldBindWith: return b.Bind(c.Request, obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:671 (0x1718f85)
+	(*Context).ShouldBindJSON: return c.ShouldBindWith(obj, binding.JSON)
+/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:57 (0x1718fa9)
+	(*registerHandler).getRequestBody: return c.ShouldBindJSON(r.req)
+/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:24 (0x1718a24)
+	Register: if err := handler.getRequestBody(ctx); err != nil {
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564033)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1563ff2)
+	LoggerWithConfig.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1559f0f)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x1559ef5)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x15599aa)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/go/src/net/http/server.go:2867 (0x12bbce2)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/go/src/net/http/server.go:1932 (0x12b710c)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
+	goexit: BYTE	$0x90	// NOP
+[0m
+
+
+[31m2022/03/09 10:58:05 [Recovery] 2022/03/09 - 10:58:05 panic recovered:
+POST /register HTTP/1.1
+Host: localhost:8080
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN
+Connection: keep-alive
+Content-Length: 91
+Content-Type: application/json
+Origin: http://localhost:8080
+User-Agent: ApiPOST Runtime +https://www.apipost.cn
+X-Request-Id: c8k1ffcbcv47phqsioe0
+
+
+Undefined validation function 'optional' on field 'Name'
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:289 (0x132a564)
+	(*Validate).parseFieldTagsRecursive: panic(strings.TrimSpace(fmt.Sprintf(undefinedValidation, current.tag, fieldName)))
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:150 (0x1329278)
+	(*Validate).extractStructCache: ctag, _ = v.parseFieldTagsRecursive(tag, fld.Name, "", false)
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator.go:37 (0x132f9c4)
+	(*validate).validateStruct: cs = v.v.extractStructCache(current, typ.Name())
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:308 (0x13356a9)
+	(*Validate).StructCtx: vd.validateStruct(ctx, top, val, val.Type(), vd.ns[0:0], vd.actualNs[0:0], nil)
+/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:281 (0x1541108)
+	(*Validate).Struct: return v.StructCtx(context.Background(), s)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:68 (0x15410cb)
+	(*defaultValidator).validateStruct: return v.validate.Struct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:47 (0x1541004)
+	(*defaultValidator).ValidateStruct: return v.validateStruct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:45 (0x1540fa9)
+	(*defaultValidator).ValidateStruct: return v.ValidateStruct(value.Elem().Interface())
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/binding.go:117 (0x1545421)
+	validate: return Validator.ValidateStruct(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:55 (0x15453f0)
+	decodeJSON: return validate(obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:37 (0x1545228)
+	jsonBinding.Bind: return decodeJSON(req.Body, obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:706 (0x1718fa8)
+	(*Context).ShouldBindWith: return b.Bind(c.Request, obj)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:671 (0x1718f85)
+	(*Context).ShouldBindJSON: return c.ShouldBindWith(obj, binding.JSON)
+/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:57 (0x1718fa9)
+	(*registerHandler).getRequestBody: return c.ShouldBindJSON(r.req)
+/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:24 (0x1718a24)
+	Register: if err := handler.getRequestBody(ctx); err != nil {
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564033)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1563ff2)
+	LoggerWithConfig.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1559f0f)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x1559ef5)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x15599aa)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/go/src/net/http/server.go:2867 (0x12bbce2)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/go/src/net/http/server.go:1932 (0x12b710c)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
+	goexit: BYTE	$0x90	// NOP
+[0m
+[2022-03-09 10:59:35.613]	local.info	graduation_design/main.go:20	log init success!
+[2022-03-09 10:59:35.918]	local.info	graduation_design/main.go:24	db init success!
+[2022-03-09 10:59:35.992]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 127.0.0.1:6379: connect: connection refused"}
+[2022-03-09 10:59:53.066]	local.info	handlers/register_handler.go:30	[Register] ReqBody = {"name":"jiejie","email":"hahahahaaaha@qq.com","password":"giegie"}	{"X-Request-Id": "c8k1gacbcv48abvn808g"}
+[2022-03-09 10:59:53.556]	local.info	handlers/register_handler.go:46	[Register] userInfo = {"id":9,"name":"jiejie","login_info_id":9,"created_at":"2022-03-09T10:59:53.42+08:00","updated_at":"2022-03-09T10:59:53.42+08:00","deleted_at":null}	{"X-Request-Id": "c8k1gacbcv48abvn808g"}
+[2022-03-09 11:01:43.444]	local.info	graduation_design/main.go:20	log init success!
+[2022-03-09 11:01:43.734]	local.info	graduation_design/main.go:24	db init success!
+[2022-03-09 11:01:43.807]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 127.0.0.1:6379: connect: connection refused"}
+[2022-03-09 11:01:59.847]	local.info	handlers/register_handler.go:30	[Register] ReqBody = {"email":"hahahahaaaha@aqq.com","password":"giegie"}	{"X-Request-Id": "c8k1h9sbcv48ijrb2o3g"}
+[2022-03-09 11:02:00.340]	local.info	handlers/register_handler.go:53	[Register] userInfo = {"id":10,"name":"polis-01FXPA0KX7B2AP9462T669Z29E","avatar_url":"https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg","login_info_id":10,"created_at":"2022-03-09T11:02:00.197+08:00","updated_at":"2022-03-09T11:02:00.197+08:00","deleted_at":null}	{"X-Request-Id": "c8k1h9sbcv48ijrb2o3g"}
+[2022-03-10 11:01:36.866]	local.info	graduation_design/main.go:21	log init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:01:37.189]	local.info	graduation_design/main.go:25	db init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:01:57.266]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+oasis/graduation_design/initializer.InitializeRedis
+	/Users/bytedance/go/src/oasis/graduation_design/initializer/redis.go:21
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:01:57.266]	local.info	graduation_design/main.go:36	redis init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:36
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:28:57.319]	local.info	graduation_design/main.go:21	log init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:28:57.608]	local.info	graduation_design/main.go:25	db init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:29:17.693]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+oasis/graduation_design/initializer.InitializeRedis
+	/Users/bytedance/go/src/oasis/graduation_design/initializer/redis.go:21
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 11:29:17.693]	local.info	graduation_design/main.go:36	redis init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:36
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 15:40:50.492]	[34mINFO[0m	graduation_design/main.go:21	log init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 15:40:50.784]	[34mINFO[0m	graduation_design/main.go:25	db init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 15:41:10.870]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+oasis/graduation_design/initializer.InitializeRedis
+	/Users/bytedance/go/src/oasis/graduation_design/initializer/redis.go:21
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-03-10 15:41:10.870]	[34mINFO[0m	graduation_design/main.go:36	redis init success!
+main.main
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:36
+runtime.main
+	/usr/local/go/src/runtime/proc.go:225
+[2022-04-03 16:48:27.298]	[34mINFO[0m	graduation_design/main.go:21	log init success!
+main.init.0
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-03 16:48:30.367]	[34mINFO[0m	graduation_design/main.go:25	db init success!
+main.init.0
+	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-03 22:49:44.287]	[34mINFO[0m	game_boat/main.go:22	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:22
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-03 22:49:47.959]	[34mINFO[0m	game_boat/main.go:26	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:26
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208

@@ -1,0 +1,18 @@
+
+2022/03/09 10:59:53 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:13 record not found
+[94.000ms] [rows:0] SELECT `id` FROM `login_info` WHERE email = 'hahahahaaaha@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/03/09 10:59:53 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:21 SLOW SQL >= 200ms
+[207.646ms] [rows:1] INSERT INTO `login_info` (`email`,`password`,`created_at`,`updated_at`,`deleted_at`) VALUES ('hahahahaaaha@qq.com','$2a$04$HQWn7YqVDGIR8QOBWUbWquJJ.rftM8wx4U3HmVxhUEuKnP8SUhqyu','2022-03-09 10:59:53.207','2022-03-09 10:59:53.207',NULL)
+
+2022/03/09 10:59:53 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:28
+[186.075ms] [rows:1] INSERT INTO `user_info` (`name`,`avatar_url`,`login_info_id`,`created_at`,`updated_at`,`deleted_at`) VALUES ('jiejie','',9,'2022-03-09 10:59:53.42','2022-03-09 10:59:53.42',NULL)
+
+2022/03/09 11:01:59 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:13 record not found
+[95.348ms] [rows:0] SELECT `id` FROM `login_info` WHERE email = 'hahahahaaaha@aqq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/03/09 11:02:00 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:21 SLOW SQL >= 200ms
+[203.979ms] [rows:1] INSERT INTO `login_info` (`email`,`password`,`created_at`,`updated_at`,`deleted_at`) VALUES ('hahahahaaaha@aqq.com','$2a$04$CIPZX56PwgfC5ut6wxzOIuQAoxM/aK5nQlsSCV5q37n5mNPl6El2.','2022-03-09 11:01:59.996','2022-03-09 11:01:59.996',NULL)
+
+2022/03/09 11:02:00 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:28
+[187.116ms] [rows:1] INSERT INTO `user_info` (`name`,`avatar_url`,`login_info_id`,`created_at`,`updated_at`,`deleted_at`) VALUES ('polis-01FXPA0KX7B2AP9462T669Z29E','https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg',10,'2022-03-09 11:02:00.197','2022-03-09 11:02:00.197',NULL)

@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 
-	"github.com/oasis/game_boat/biz/dal/game_dal"
-	"github.com/oasis/game_boat/biz/dal/user_dal"
+	game_dal2 "github.com/oasis/game_boat/biz/dal/mysql/game_dal"
+	user_dal2 "github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/handler_model"
 	"github.com/oasis/game_boat/global"
 	utils2 "github.com/oasis/game_boat/utils"
@@ -23,13 +23,13 @@ func GetUserGame(ctx *gin.Context) {
 
 	logs.Info(fmt.Sprintf("%v", commonLog))
 
-	collectionGameList, err := user_dal.GetUserCollectedGameList(userId)
+	collectionGameList, err := user_dal2.GetUserCollectedGameList(userId)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", commonLog, err))
 		response.BusinessFail(ctx, err.Error())
 		return
 	}
-	reservedGameList, err := user_dal.GetUserReservedGameList(userId)
+	reservedGameList, err := user_dal2.GetUserReservedGameList(userId)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", commonLog, err))
 		response.BusinessFail(ctx, err.Error())
@@ -44,7 +44,7 @@ func GetUserGame(ctx *gin.Context) {
 		gameIds = append(gameIds, relation.GameId)
 	}
 
-	gameDetail, err := game_dal.GetGamesDetail(gameIds)
+	gameDetail, err := game_dal2.GetGamesDetail(gameIds)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", commonLog, err))
 		response.BusinessFail(ctx, err.Error())
@@ -84,7 +84,7 @@ func GetUserGameCount(ctx *gin.Context) {
 
 	resp := new(handler_model.GetUserGameCountResponse)
 	var err error
-	resp.CollectedCount, resp.ReservedCount, err = user_dal.GetUserRelatedGameCount(userId)
+	resp.CollectedCount, resp.ReservedCount, err = user_dal2.GetUserRelatedGameCount(userId)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", commonLog, err))
 		response.BusinessFail(ctx, err.Error())

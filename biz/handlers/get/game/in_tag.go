@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 
-	"github.com/oasis/game_boat/biz/dal/game_dal"
-	"github.com/oasis/game_boat/biz/dal/user_dal"
+	game_dal2 "github.com/oasis/game_boat/biz/dal/mysql/game_dal"
+	user_dal2 "github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/handler_model"
 	"github.com/oasis/game_boat/global"
 	utils2 "github.com/oasis/game_boat/utils"
@@ -29,7 +29,7 @@ func GetGameInTag(ctx *gin.Context) {
 	}
 	logs.Info(fmt.Sprintf("%v req = %v", method, utils2.JsonStrFormatIgnoreErr(req)))
 
-	GameList, err := game_dal.GetGameListWithTag(req.TagId, req.Page, req.PageSize)
+	GameList, err := game_dal2.GetGameListWithTag(req.TagId, req.Page, req.PageSize)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.ValidateFail(ctx, err.Error())
@@ -45,12 +45,12 @@ func GetGameInTag(ctx *gin.Context) {
 	resp.UserReserveGameMap = make(map[uint]bool)
 
 	if userId != 0 {
-		collectedGameList, _ := user_dal.GetUserCollectedGameList(userId)
+		collectedGameList, _ := user_dal2.GetUserCollectedGameList(userId)
 		for _, relation := range collectedGameList {
 			resp.UserCollectGameMap[relation.GameId] = true
 		}
 
-		reservedGameList, _ := user_dal.GetUserReservedGameList(userId)
+		reservedGameList, _ := user_dal2.GetUserReservedGameList(userId)
 		for _, relation := range reservedGameList {
 			resp.UserReserveGameMap[relation.GameId] = true
 		}

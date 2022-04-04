@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cast"
 
 	"github.com/oasis/game_boat/biz/const_def"
-	"github.com/oasis/game_boat/biz/dal/user_dal"
+	user_dal2 "github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/handler_model"
 	"github.com/oasis/game_boat/global"
 	utils2 "github.com/oasis/game_boat/utils"
@@ -40,7 +40,7 @@ func GameAction(ctx *gin.Context) {
 		key, timeKey = "is_reserved", "reserved_time"
 	}
 
-	err = user_dal.UpdateUserGameRelation(userId, req.GameId, key, timeKey, value, timeValue)
+	err = user_dal2.UpdateUserGameRelation(userId, req.GameId, key, timeKey, value, timeValue)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())

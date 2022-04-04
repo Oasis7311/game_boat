@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 
-	"github.com/oasis/game_boat/biz/dal/user_dal"
+	user_dal2 "github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/handler_model"
 	"github.com/oasis/game_boat/biz/model/user_model"
 	"github.com/oasis/game_boat/global"
@@ -67,11 +67,11 @@ func (s UpdateUserInfoHandler) fillUpInfo(newInfo *handler_model.NewUserInfo, us
 
 //获取用户旧信息
 func (s UpdateUserInfoHandler) getUserInfo(userId uint) (*user_model.UserInfo, *user_model.UserLoginInfo, error) {
-	userInfo, err := user_dal.GetUserInfo(userId)
+	userInfo, err := user_dal2.GetUserInfo(userId)
 	if err != nil {
 		return nil, nil, err
 	}
-	userLoginInfo, err := user_dal.GetUserLoginInfoByLoginId(userInfo.LoginInfoId)
+	userLoginInfo, err := user_dal2.GetUserLoginInfoByLoginId(userInfo.LoginInfoId)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -80,12 +80,12 @@ func (s UpdateUserInfoHandler) getUserInfo(userId uint) (*user_model.UserInfo, *
 
 //更新用户信息
 func (s UpdateUserInfoHandler) updateInfo(userInfo *user_model.UserInfo, userLoginInfo *user_model.UserLoginInfo) error {
-	err := user_dal.UpdateUserInfo(userInfo)
+	err := user_dal2.UpdateUserInfo(userInfo)
 	if err != nil {
 		return err
 	}
 
-	err = user_dal.UpdateUserLoginInfo(userLoginInfo)
+	err = user_dal2.UpdateUserLoginInfo(userLoginInfo)
 	if err != nil {
 		return err
 	}

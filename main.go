@@ -85,6 +85,7 @@ func register(r *gin.Engine) {
 			game := rGet.Group("/game")                       //游戏
 			game.GET("/tag_list", handlerGetGame.GetTagList)  //标签列表
 			game.POST("/in_tag", handlerGetGame.GetGameInTag) //标签下游戏列表
+			game.GET("/three_list", handlerGetGame.)
 			//game.GET("/info")                                //信息
 			//game.GET("/evaluation")                          //评价
 			//game.GET("/")

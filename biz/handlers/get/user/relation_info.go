@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cast"
 
 	"github.com/oasis/game_boat/biz/const_def"
-	"github.com/oasis/game_boat/biz/dal/user_dal"
+	user_dal2 "github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/handler_model"
 	"github.com/oasis/game_boat/biz/model/user_model"
 	"github.com/oasis/game_boat/global"
@@ -72,7 +72,7 @@ func GetUserFollowerList(ctx *gin.Context) {
 		return
 	}
 
-	aUserInfoMap, err := user_dal.GetUserInfoMap(aUserIdList)
+	aUserInfoMap, err := user_dal2.GetUserInfoMap(aUserIdList)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())
@@ -92,7 +92,7 @@ func GetUserFollowerList(ctx *gin.Context) {
 }
 
 func (s *RelationHandler) getFollowerList() ([]uint, uint, error) {
-	relationList, err := user_dal.GetBUserRelationList(s.bUserId, s.lastAUserId, s.lastUpdatedTime, s.relation, s.limit)
+	relationList, err := user_dal2.GetBUserRelationList(s.bUserId, s.lastAUserId, s.lastUpdatedTime, s.relation, s.limit)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -137,7 +137,7 @@ func GetUserFollowList(ctx *gin.Context) {
 		return
 	}
 
-	bUserInfoMap, err := user_dal.GetUserInfoMap(bUserIdList)
+	bUserInfoMap, err := user_dal2.GetUserInfoMap(bUserIdList)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())
@@ -160,7 +160,7 @@ func GetUserFollowList(ctx *gin.Context) {
 }
 
 func (s *RelationHandler) getFollowList() ([]uint, uint, error) {
-	relationList, err := user_dal.GetAUserRelationList(s.aUserId, s.lastBUserId, s.lastUpdatedTime, s.relation, s.limit)
+	relationList, err := user_dal2.GetAUserRelationList(s.aUserId, s.lastBUserId, s.lastUpdatedTime, s.relation, s.limit)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -210,11 +210,11 @@ func GetRelationCount(ctx *gin.Context) {
 
 func (s *RelationHandler) getRelationCount() ([]uint, error) { //返回顺序：关注数、粉丝数
 	res := make([]uint, 0)
-	followCount, err := user_dal.GetAUserRelationCount(s.aUserId, const_def.RelationEnumFollow)
+	followCount, err := user_dal2.GetAUserRelationCount(s.aUserId, const_def.RelationEnumFollow)
 	if err != nil {
 		return nil, err
 	}
-	followerCount, err := user_dal.GetBUserRelationCount(s.bUserId, const_def.RelationEnumFollow)
+	followerCount, err := user_dal2.GetBUserRelationCount(s.bUserId, const_def.RelationEnumFollow)
 	if err != nil {
 		return nil, err
 	}

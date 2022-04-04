@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/oasis/game_boat/biz/dal/game_dal"
+	game_dal2 "github.com/oasis/game_boat/biz/dal/mysql/game_dal"
 	"github.com/oasis/game_boat/biz/model/handler_model"
 	"github.com/oasis/game_boat/global"
 	utils2 "github.com/oasis/game_boat/utils"
@@ -20,7 +20,7 @@ func GetTagList(ctx *gin.Context) {
 
 	logs.Info(fmt.Sprintf("%v req = \"\"", method))
 
-	tagList, err := game_dal.GetTagList()
+	tagList, err := game_dal2.GetTagList()
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))
 		response.BusinessFail(ctx, err.Error())

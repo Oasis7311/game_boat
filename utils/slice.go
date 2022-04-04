@@ -10,30 +10,36 @@ import (
 // FakeShuffleNumSlice 伪随机洗牌
 func FakeShuffleNumSlice(oldSlice []interface{}, seed int64) (newSlice []interface{}) {
 	rand.Seed(seed)
-
 	randBase := make([]interface{}, 0)
-	count := 500
+	count := 600
 	for count > 0 {
-		randBase = append(randBase, rand.Uint64())
+		randBase = append(randBase, rand.Int())
 		count--
 	}
 
 	randBase = UniqueSlice(randBase)
-	initRandBase := randBase
 
-	randBaseMap := map[uint64]int{}
+	initRandBase := make([]interface{}, len(randBase))
+	copy(initRandBase, randBase)
+
+	randBaseMap := map[int]int{}
 	newSlice = make([]interface{}, len(oldSlice))
 
 	sort.Slice(randBase, func(i, j int) bool {
-		return cast.ToUint64(randBase[i]) < cast.ToUint64(randBase[j])
+		return cast.ToInt(randBase[i]) < cast.ToInt(randBase[j])
 	})
 
 	for i, num := range randBase {
-		randBaseMap[cast.ToUint64(num)] = i
+		randBaseMap[cast.ToInt(num)] = i
 	}
 
-	for i, num := range oldSlice {
-		newSlice[randBaseMap[cast.ToUint64(initRandBase[i])]] = num
+	j := 0
+	for _, num := range oldSlice {
+		for j < len(initRandBase) && randBaseMap[cast.ToInt(initRandBase[j])] >= len(newSlice) {
+			j++
+		}
+		newSlice[randBaseMap[cast.ToInt(initRandBase[j])]] = num
+		j++
 	}
 
 	return newSlice

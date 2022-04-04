@@ -13,6 +13,7 @@ import (
 	"github.com/oasis/game_boat/initializer"
 	"github.com/oasis/game_boat/middle_ware"
 	"github.com/oasis/game_boat/services"
+	"github.com/oasis/game_boat/storage"
 )
 
 func init() {
@@ -30,6 +31,9 @@ func init() {
 	// 初始化redis
 	global.App.Redis = initializer.InitializeRedis()
 	global.App.Log.Info("redis init success!")
+
+	//初始化三个列表
+	storage.InitStorage()
 }
 
 func main() {
@@ -85,7 +89,7 @@ func register(r *gin.Engine) {
 			game := rGet.Group("/game")                       //游戏
 			game.GET("/tag_list", handlerGetGame.GetTagList)  //标签列表
 			game.POST("/in_tag", handlerGetGame.GetGameInTag) //标签下游戏列表
-			game.GET("/three_list", handlerGetGame.)
+			game.GET("/three_list", handlerGetGame.GetGameThreeList)
 			//game.GET("/info")                                //信息
 			//game.GET("/evaluation")                          //评价
 			//game.GET("/")

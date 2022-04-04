@@ -17,5 +17,5 @@ type GetGameInTagRequest struct {
 type GetGameInTagResponse struct {
 	GameList           []*game_model.GameInfo `json:"game_list"`
 	UserCollectGameMap map[uint]bool          `json:"user_collect_game_map"`
-	UserReserveGameMap map[uint]bool `json:"user_reserve_game_map"`
+	UserReserveGameMap map[uint]bool          `json:"user_reserve_game_map"`
 }

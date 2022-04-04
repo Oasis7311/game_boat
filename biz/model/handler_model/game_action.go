@@ -10,5 +10,4 @@ type GameActionRequest struct {
 }
 
 type GameActionResponse struct {
-	
 }

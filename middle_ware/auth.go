@@ -85,8 +85,8 @@ func JWTAuth(GuardName string) gin.HandlerFunc {
 func UserIdAuth() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		logs := utils.NewLoggerWithXRId(ctx, global.App.Log)
-		if cast.ToUint(ctx.Query("id")) == cast.ToUint(ctx.Value("id")) {
-			logs.Error("[UserIdAuth] id not match")
+		if cast.ToUint(ctx.Query("id")) != cast.ToUint(ctx.Value("id")) {
+			logs.Error(fmt.Sprintf("[UserIdAuth] id not match, queryId = %v, ctxId = %v", ctx.Query("id"), ctx.Value("id")))
 			response.ValidateFail(ctx, "id not match")
 			ctx.Abort()
 			return

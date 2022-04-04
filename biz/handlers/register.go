@@ -37,6 +37,7 @@ func Register(ctx *gin.Context) {
 		Name:         "polis-" + utils.GenXid(),
 		AvatarUrl:    "https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg",
 		WallImageUrl: "https://assets.tapimg.com/web-app/static/img/default_bg.05387bbb.png",
+		Email:        userLoginInfo.Email,
 	}
 
 	err, userInfo := user.UserService.Register(userLoginInfo, userBaseInfo)

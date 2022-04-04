@@ -3,7 +3,9 @@ package handlers
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/spf13/cast"
 
+	"github.com/oasis/game_boat/biz/dal/user_dal"
 	"github.com/oasis/game_boat/services"
 	"github.com/oasis/game_boat/utils/response"
 )
@@ -15,7 +17,11 @@ func Logout(c *gin.Context) {
 		return
 	}
 
+	id := cast.ToUint(c.Query("id"))
+	userInfo, err := user_dal.GetUserInfo(id)
+
 	response.Success(c, gin.H{
-		"message": "登出成功",
+		"message":   "登出成功",
+		"user_info": userInfo,
 	})
 }

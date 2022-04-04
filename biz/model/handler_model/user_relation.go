@@ -7,9 +7,9 @@ import (
 
 type GetUserFollowerListRequest struct {
 	Id             uint `json:"id"`
-	PageSize       int  `json:"page_size,omitempty"`
-	LastFollowerId uint `json:"last_follower_id,omitempty"`
-	LastFollowTime uint `json:"last_follow_time,omitempty"`
+	PageSize       int  `json:"page_size"`
+	LastFollowerId uint `json:"last_follower_id"`
+	LastFollowTime uint `json:"last_follow_time"`
 }
 
 type GetUserFollowerListResponse struct {
@@ -19,9 +19,9 @@ type GetUserFollowerListResponse struct {
 
 type GetUserFollowListRequest struct {
 	Id                 uint `json:"id"`
-	PageSize           int  `json:"page_size,omitempty"`
-	LastFollowedUserId uint `json:"last_followed_user_id,omitempty"`
-	LastFollowTime     uint `json:"last_follow_time,omitempty"`
+	PageSize           int  `json:"page_size"`
+	LastFollowedUserId uint `json:"last_followed_user_id"`
+	LastFollowTime     uint `json:"last_follow_time"`
 }
 
 type GetUserFollowListResponse struct {
@@ -43,6 +43,6 @@ type GetRelationCountRequest struct {
 }
 
 type GetRelationCountResponse struct {
-	FollowCount   uint `json:"follow_count,omitempty"`
-	FollowerCount uint `json:"follower_count,omitempty"`
+	FollowCount   uint `json:"follow_count"`
+	FollowerCount uint `json:"follower_count"`
 }

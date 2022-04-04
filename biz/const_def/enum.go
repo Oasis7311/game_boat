@@ -19,3 +19,14 @@ var (
 		RelationEnumFollow: "follow",
 	}
 )
+
+type ActionEnum int32
+
+const (
+	ActionEnumCollectGame       ActionEnum = 1
+	ActionEnumReserveGame       ActionEnum = 2
+	ActionEnumCanCelCollectGame ActionEnum = -1
+	ActionEnumCancelReserveGame ActionEnum = -2
+)
+
+var ()

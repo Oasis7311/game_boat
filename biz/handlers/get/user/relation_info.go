@@ -85,6 +85,9 @@ func GetUserFollowerList(ctx *gin.Context) {
 	for _, id := range aUserIdList {
 		resp.Followers = append(resp.Followers, aUserInfoMap[id])
 	}
+
+	logs.Info(fmt.Sprintf("%v resp = %v", method, utils2.JsonStrFormatIgnoreErr(resp)))
+
 	response.Success(ctx, resp)
 }
 
@@ -141,12 +144,18 @@ func GetUserFollowList(ctx *gin.Context) {
 		return
 	}
 
+	//logs.Info(fmt.Sprintf("%v bUserIdList = %v, bUserInfoMap = %v", method, bUserIdList, bUserInfoMap))
+
 	resp := new(handler_model.GetUserFollowListResponse)
 	resp.LastFollowTime = lastFollowTime
 	resp.FollowPeople = make([]*user_model.UserInfo, 0)
+
 	for _, id := range bUserIdList {
 		resp.FollowPeople = append(resp.FollowPeople, bUserInfoMap[id])
 	}
+
+	logs.Info(fmt.Sprintf("%v resp = %v", method, utils2.JsonStrFormatIgnoreErr(resp)))
+
 	response.Success(ctx, resp)
 }
 
@@ -194,16 +203,18 @@ func GetRelationCount(ctx *gin.Context) {
 	resp := new(handler_model.GetRelationCountResponse)
 	resp.FollowCount = count[0]
 	resp.FollowerCount = count[1]
+
+	logs.Info(fmt.Sprintf("%v resp = %v", method, utils2.JsonStrFormatIgnoreErr(resp)))
 	response.Success(ctx, resp)
 }
 
 func (s *RelationHandler) getRelationCount() ([]uint, error) { //返回顺序：关注数、粉丝数
 	res := make([]uint, 0)
-	followCount, err := user_dal.GetAUserRelationCount(s.aUserId, cast.ToInt(const_def.RelationEnumFollow))
+	followCount, err := user_dal.GetAUserRelationCount(s.aUserId, const_def.RelationEnumFollow)
 	if err != nil {
 		return nil, err
 	}
-	followerCount, err := user_dal.GetBUserRelationCount(s.bUserId, cast.ToInt(const_def.RelationEnumFollow))
+	followerCount, err := user_dal.GetBUserRelationCount(s.bUserId, const_def.RelationEnumFollow)
 	if err != nil {
 		return nil, err
 	}

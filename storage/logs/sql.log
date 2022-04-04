@@ -17,92 +17,2045 @@
 2022/03/09 11:02:00 /Users/bytedance/go/src/oasis/graduation_design/biz/dal/user_dal/user_info.go:28
 [187.116ms] [rows:1] INSERT INTO `user_info` (`name`,`avatar_url`,`login_info_id`,`created_at`,`updated_at`,`deleted_at`) VALUES ('polis-01FXPA0KX7B2AP9462T669Z29E','https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg',10,'2022-03-09 11:02:00.197','2022-03-09 11:02:00.197',NULL)
 
-2022/04/03 23:53:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[1.050ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:49:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.989ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:53:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.691ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 14:49:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.533ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:53:56 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
-[0.480ms] [rows:1] SELECT * FROM `login_info` WHERE email = '123@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 14:52:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[1.480ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:53:56 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.306ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:52:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.651ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:54:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
-[0.496ms] [rows:1] SELECT * FROM `login_info` WHERE email = '123@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 14:52:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.453ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:54:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.315ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:52:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.289ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:54:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.411ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:52:59 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51 record not found
+[0.338ms] [rows:0] SELECT * FROM `user_info` WHERE id = 0 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:54:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.294ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 14:53:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
+[0.481ms] [rows:1] SELECT * FROM `login_info` WHERE email = '123@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:54:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.448ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:53:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.319ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:54:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.279ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 14:53:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.442ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:54:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:75
-[3.683ms] [rows:1] UPDATE `user_info` SET `name`='attackonryan',`avatar_url`='http://101.43.252.159/images/rt5PHQ.jpeg',`wall_image_url`='http://101.43.252.159/images/BdrTPj.jpeg',`login_info_id`=16,`created_at`='2022-03-10 11:14:40',`updated_at`='2022-04-03 23:54:38.383' WHERE id = 16 AND `user_info`.`deleted_at` IS NULL AND `id` = 16
+2022/04/04 14:53:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.269ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:54:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:81
-[3.347ms] [rows:1] UPDATE `login_info` SET `email`='123@qq.com',`password`='$2a$04$m6MKs8ChblU5vwnZp3dysOfO0pTVj5LVRuxDlDzmAdXUXXi5SpxWi',`created_at`='2022-03-10 11:14:40',`updated_at`='2022-04-03 23:54:38.387' WHERE id = 16 AND `login_info`.`deleted_at` IS NULL AND `id` = 16
+2022/04/04 14:54:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.489ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:54:47 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.424ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:54:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.272ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:54:47 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.265ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 14:54:57 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51 record not found
+[0.381ms] [rows:0] SELECT * FROM `user_info` WHERE id = 0 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:57:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.431ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 14:55:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
+[0.484ms] [rows:1] SELECT * FROM `login_info` WHERE email = '123@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:57:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+2022/04/04 14:55:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.329ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 14:56:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[1.026ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 14:56:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.521ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 15:13:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.830ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:13:37 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.619ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:15:16 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.641ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:15:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.620ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:15:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.603ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:15:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.612ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:16:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.494ms] [rows:3] SELECT * FROM `game_info` WHERE tag_id = 106 LIMIT 10
+
+2022/04/04 15:17:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.656ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 102 LIMIT 10
+
+2022/04/04 15:17:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.632ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:17:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.647ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:18:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.606ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:20:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.645ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:20:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.604ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:20:51 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.596ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:21:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.618ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:22:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.690ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:22:13 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.579ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:22:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.587ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:22:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.602ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:23:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[1.644ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:23:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.536ms] [rows:3] SELECT * FROM `game_info` WHERE tag_id = 106 LIMIT 10
+
+2022/04/04 15:23:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.586ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 100 LIMIT 10
+
+2022/04/04 15:23:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.605ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:24:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.586ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:24:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.634ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:24:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.630ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:25:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.627ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:26:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.630ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 201 LIMIT 10
+
+2022/04/04 15:26:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.647ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:26:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.622ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:26:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.571ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:26:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.590ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:27:13 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.610ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:27:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[1.615ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 201 LIMIT 10
+
+2022/04/04 15:29:02 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.651ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:29:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.597ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:29:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[1.566ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:31:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.443ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 15:31:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.516ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 15:31:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.441ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 15:31:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.442ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 15:32:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.538ms] [rows:4] SELECT * FROM `game_info` WHERE tag_id = 203 LIMIT 10
+
+2022/04/04 15:32:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.572ms] [rows:1] SELECT * FROM `game_info` WHERE tag_id = 204 LIMIT 10
+
+2022/04/04 15:32:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.614ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 205 LIMIT 10
+
+2022/04/04 15:32:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.578ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:32:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.591ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 102 LIMIT 10
+
+2022/04/04 15:34:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.608ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:34:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.595ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 201 LIMIT 10
+
+2022/04/04 15:35:13 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.638ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 15:35:47 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[1.059ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 101 LIMIT 10
+
+2022/04/04 15:35:51 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.665ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 205 LIMIT 10
+
+2022/04/04 15:36:47 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.613ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 15:37:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.472ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 15:37:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
 [0.271ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:57:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.446ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 15:41:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.479ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:57:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.264ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 15:41:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.290ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:57:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:75
-[4.310ms] [rows:1] UPDATE `user_info` SET `name`='attackonryanee',`avatar_url`='http://101.43.252.159/images/rt5PHQ.jpeg',`wall_image_url`='http://101.43.252.159/images/BdrTPj.jpeg',`login_info_id`=16,`created_at`='2022-03-10 11:14:40',`updated_at`='2022-04-03 23:57:25.61' WHERE id = 16 AND `user_info`.`deleted_at` IS NULL AND `id` = 16
+2022/04/04 15:54:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[1.013ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
 
-2022/04/03 23:57:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:81
-[3.721ms] [rows:1] UPDATE `login_info` SET `email`='123@qq.com',`password`='$2a$04$m6MKs8ChblU5vwnZp3dysOfO0pTVj5LVRuxDlDzmAdXUXXi5SpxWi',`created_at`='2022-03-10 11:14:40',`updated_at`='2022-04-03 23:57:25.614' WHERE id = 16 AND `login_info`.`deleted_at` IS NULL AND `id` = 16
+2022/04/04 15:54:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.550ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
 
-2022/04/03 23:58:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.445ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 15:54:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.584ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:58:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.291ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 15:54:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.707ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:58:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+2022/04/04 15:54:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.510ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 15:54:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.270ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 15:58:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.513ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 15:58:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.305ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:01:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.539ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:01:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.272ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:04:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.470ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:04:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.270ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:07:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.961ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:07:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.536ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:07:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.764ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:07:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.262ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:08:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.431ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:08:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.272ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:08:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.438ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:08:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.254ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:16:24 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:14 record not found
+[0.509ms] [rows:0] SELECT `id` FROM `login_info` WHERE email = 'hahahaaaahaaha@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:16:24 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:22
+[5.333ms] [rows:1] INSERT INTO `login_info` (`email`,`password`,`created_at`,`updated_at`,`deleted_at`) VALUES ('hahahaaaahaaha@qq.com','$2a$04$q62nSlf25yH/XTRqIUPbj.kyInqz/60X4zqB2YTIgzaOh6R0AsXI2','2022-04-04 16:16:24.09','2022-04-04 16:16:24.09',NULL)
+
+2022/04/04 16:16:24 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:29
+[3.656ms] [rows:1] INSERT INTO `user_info` (`name`,`avatar_url`,`wall_image_url`,`like_count`,`login_info_id`,`created_at`,`updated_at`,`deleted_at`) VALUES ('polis-c95aim6robb8f1u6bp4g','https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg','https://assets.tapimg.com/web-app/static/img/default_bg.05387bbb.png',0,19,'2022-04-04 16:16:24.096','2022-04-04 16:16:24.096',NULL)
+
+2022/04/04 16:17:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:14 record not found
+[0.390ms] [rows:0] SELECT `id` FROM `login_info` WHERE email = 'hahahaaaahsaaha@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:17:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:22
+[9.211ms] [rows:1] INSERT INTO `login_info` (`email`,`password`,`created_at`,`updated_at`,`deleted_at`) VALUES ('hahahaaaahsaaha@qq.com','$2a$04$5cJWmW3ZQtybC6rE0z1fjOuQNEY274k4hZ/yV4QKP9zXS/CkxD.Hu','2022-04-04 16:17:00.094','2022-04-04 16:17:00.094',NULL)
+
+2022/04/04 16:17:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:29
+[7.098ms] [rows:1] INSERT INTO `user_info` (`name`,`avatar_url`,`wall_image_url`,`like_count`,`login_info_id`,`created_at`,`updated_at`,`deleted_at`) VALUES ('polis-c95aiv6robb8f1u6bp5g','https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg','https://assets.tapimg.com/web-app/static/img/default_bg.05387bbb.png',0,20,'2022-04-04 16:17:00.103','2022-04-04 16:17:00.103',NULL)
+
+2022/04/04 16:21:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
 [0.460ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/03 23:58:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+2022/04/04 16:21:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.263ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:21:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.444ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:21:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.266ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:22:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.966ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:22:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.613ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:22:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.680ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:22:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.294ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:22:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.503ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:22:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.253ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:36:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.514ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:36:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.283ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:36:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.454ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:36:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.293ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:36:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:54
+[13.087ms] [rows:1] INSERT INTO `user_relation` (`a_user_id`,`b_user_id`,`relation`,`created_at`,`updated_at`,`deleted_at`) VALUES (16,16,'1','2022-04-04 16:36:38.187','2022-04-04 16:36:38.187',NULL)
+
+2022/04/04 16:37:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.433ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:37:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.275ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:37:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.461ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:37:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.263ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:38:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.519ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:38:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.302ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:38:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.427ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:38:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.293ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:38:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.450ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:38:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.292ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:38:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.420ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:38:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.267ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:38:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.541ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:38:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.306ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:48:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[1.072ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:48:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.735ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:49:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[1.048ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:49:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.672ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:49:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.521ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:49:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.318ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:53:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[1.033ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:53:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.654ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:53:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.483ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:53:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.557ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:53:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.442ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:53:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.278ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:54:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.529ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:54:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.321ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:55:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.449ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:55:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.291ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:55:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.484ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:55:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.271ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:58:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.485ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:58:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.304ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:58:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.454ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:58:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.262ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:58:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.440ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 16:58:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.281ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 16:58:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.420ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:58:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.288ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:58:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.512ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:58:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.295ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:58:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:61
+[0.597ms] [rows:0] UPDATE `user_relation` SET `deleted_at`='2022-04-04 16:58:41.318' WHERE (a_user_id = 16 and b_user_id = 16 and relation = '-1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 16:58:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.505ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 16:58:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.303ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 16:58:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:61
+[0.559ms] [rows:0] UPDATE `user_relation` SET `deleted_at`='2022-04-04 16:58:55.265' WHERE (a_user_id = 16 and b_user_id = 16 and relation = '-1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:01:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[1.076ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:01:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.638ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:01:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:61
+[4.469ms] [rows:1] UPDATE `user_relation` SET `deleted_at`='2022-04-04 17:01:20.259' WHERE (a_user_id = 16 and b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:01:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.451ms] [rows:0] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:01:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.291ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:02:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:54
+[5.501ms] [rows:1] INSERT INTO `user_relation` (`a_user_id`,`b_user_id`,`relation`,`created_at`,`updated_at`,`deleted_at`) VALUES (16,15,'1','2022-04-04 17:02:08.709','2022-04-04 17:02:08.709',NULL)
+
+2022/04/04 17:02:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.540ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:02:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.296ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:03:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.535ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:03:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.581ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:03:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.430ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:03:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.297ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:03:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.539ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:03:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.311ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:04:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.478ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:04:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.283ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:05:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.487ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:05:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.287ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:05:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.448ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:05:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.275ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:06:02 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:54
+[9.092ms] [rows:1] INSERT INTO `user_relation` (`a_user_id`,`b_user_id`,`relation`,`created_at`,`updated_at`,`deleted_at`) VALUES (16,15,'1','2022-04-04 17:06:02.857','2022-04-04 17:06:02.857',NULL)
+
+2022/04/04 17:06:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.432ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:06:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.287ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:06:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.431ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:06:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.266ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:06:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.523ms] [rows:2] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:06:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.353ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15,15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:06:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:61 Error 1062: Duplicate entry '16-15-1-2022-04-04 17:06:28' for key 'user_relation_a_user_id_b_user_id_relation_deleted_at_uindex'
+[20.556ms] [rows:0] UPDATE `user_relation` SET `deleted_at`='2022-04-04 17:06:27.956' WHERE (a_user_id = 16 and b_user_id = 15 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:09:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.448ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:09:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.240ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:09:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.445ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:09:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.262ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:09:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.496ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:09:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.252ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:09:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.493ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:09:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.271ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:10:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.439ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:10:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.290ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:10:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.441ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:10:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.277ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:10:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.482ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:10:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.259ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:10:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.465ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:10:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.264ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:10:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.421ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:10:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.283ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:10:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.527ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:10:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.270ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:11:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.485ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:11:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.276ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:11:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.407ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:11:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.274ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:11:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.496ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:11:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.247ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:18:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.442ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:18:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.258ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:18:16 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.657ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:18:16 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.305ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:18:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.467ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:18:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.375ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:18:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.437ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:18:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.284ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:18:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.456ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:18:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.281ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:18:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.448ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:18:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.275ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:24:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.475ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:24:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.280ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:24:51 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.456ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:24:51 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.271ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:24:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.441ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:24:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.267ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:24:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.456ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:24:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.286ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:25:02 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.477ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:25:02 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.253ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:25:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:30
+[0.467ms] [rows:0] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:25:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.252ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:25:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.499ms] [rows:2] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:25:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.322ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15,15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:27:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.476ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:27:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.272ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:27:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.454ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:27:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.268ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:27:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:19
+[0.513ms] [rows:2] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:27:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.373ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15,15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:31:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.464ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:31:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.279ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:31:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.417ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:31:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.270ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:32:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.438ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:32:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.253ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:32:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.408ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:32:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.277ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:32:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.482ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:32:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.355ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:32:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.445ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:32:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.268ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:32:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.445ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:32:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.282ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:32:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:37
+[0.440ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:32:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:43
+[0.258ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:36:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.992ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:36:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.587ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:36:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:77
+[4.682ms] [rows:1] UPDATE `user_relation` SET `deleted_at`='2022-04-04 17:36:58.16' WHERE (a_user_id = 16 and b_user_id = 15 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:36:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.432ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:36:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.297ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:37:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.488ms] [rows:0] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:37:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.280ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:37:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:51 Error 1054: Unknown column '_relation' in 'where clause'
+[4.380ms] [rows:0] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and b_user_id = 15 and _relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:38:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.423ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:38:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.557ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:38:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.434ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:38:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.282ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:41:56 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[1.040ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:41:56 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.561ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:41:56 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.768ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:41:56 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.295ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:41:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:51
+[0.447ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and b_user_id = 15 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:41:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:70
+[7.604ms] [rows:1] INSERT INTO `user_relation` (`a_user_id`,`b_user_id`,`relation`,`created_at`,`updated_at`,`deleted_at`) VALUES (16,15,'1','2022-04-04 17:41:58.578','2022-04-04 17:41:58.578',NULL)
+
+2022/04/04 17:41:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.419ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:41:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.277ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:42:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.572ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:42:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.280ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:42:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:77
+[3.612ms] [rows:1] UPDATE `user_relation` SET `deleted_at`='2022-04-04 17:42:08.256' WHERE (a_user_id = 16 and b_user_id = 15 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:42:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.417ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:42:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.281ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:42:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:51
+[0.448ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and b_user_id = 15 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:42:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:70
+[6.832ms] [rows:1] INSERT INTO `user_relation` (`a_user_id`,`b_user_id`,`relation`,`created_at`,`updated_at`,`deleted_at`) VALUES (16,15,'1','2022-04-04 17:42:10.293','2022-04-04 17:42:10.293',NULL)
+
+2022/04/04 17:42:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.533ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:42:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.209ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:43:02 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.517ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:43:02 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.332ms] [rows:1] SELECT * FROM `user_info` WHERE id in (15) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:43:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.439ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:43:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.283ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:43:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.421ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:43:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.256ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = 0) AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:49:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.965ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:49:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.531ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:49:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.766ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:49:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.276ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:50:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51 record not found
+[0.396ms] [rows:0] SELECT * FROM `user_info` WHERE id = 0 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:50:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
+[0.455ms] [rows:1] SELECT * FROM `login_info` WHERE email = 'dsadsa@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:51:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:14 record not found
+[0.428ms] [rows:0] SELECT `id` FROM `login_info` WHERE email = 'test1@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:51:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:22
+[9.086ms] [rows:1] INSERT INTO `login_info` (`email`,`password`,`created_at`,`updated_at`,`deleted_at`) VALUES ('test1@qq.com','$2a$04$AzLuaOL9NtVtKd5Rrx8BkuM.JTe2zu3Z/T1f24aU.NuQziFnhp9JK','2022-04-04 17:51:48.18','2022-04-04 17:51:48.18',NULL)
+
+2022/04/04 17:51:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:29
+[15.798ms] [rows:1] INSERT INTO `user_info` (`name`,`avatar_url`,`wall_image_url`,`like_count`,`email`,`login_info_id`,`created_at`,`updated_at`,`deleted_at`) VALUES ('polis-c95bvd6robbd5m34pp50','https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg','https://assets.tapimg.com/web-app/static/img/default_bg.05387bbb.png',0,'test1@qq.com',22,'2022-04-04 17:51:48.189','2022-04-04 17:51:48.189',NULL)
+
+2022/04/04 17:53:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.458ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:53:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.271ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:53:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.563ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:53:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.400ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:54:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
+[0.484ms] [rows:1] SELECT * FROM `login_info` WHERE email = 'test1@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:54:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.309ms] [rows:1] SELECT * FROM `user_info` WHERE id = 22 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:54:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.442ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 22 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:54:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.275ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 22 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:54:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:51
+[0.458ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 22 and b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:54:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:70
+[9.943ms] [rows:1] INSERT INTO `user_relation` (`a_user_id`,`b_user_id`,`relation`,`created_at`,`updated_at`,`deleted_at`) VALUES (22,16,'1','2022-04-04 17:54:20.645','2022-04-04 17:54:20.645',NULL)
+
+2022/04/04 17:54:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.426ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 22 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:54:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.283ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 22 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:54:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.503ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 22 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:54:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.292ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:54:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.557ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 22 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:54:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.351ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:57:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.486ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:57:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.292ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:57:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.543ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:57:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.380ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:57:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.549ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:57:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.310ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:57:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.440ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:57:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.281ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:59:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.470ms] [rows:1] SELECT * FROM `user_info` WHERE id = 22 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:59:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.297ms] [rows:1] SELECT * FROM `login_info` WHERE id = 22 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:59:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.496ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 22 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:59:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.299ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 22 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:59:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:21
+[0.553ms] [rows:1] SELECT * FROM `user_relation` WHERE (a_user_id = 22 and relation = '1') AND (updated_at > 0 and b_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:59:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.292ms] [rows:1] SELECT * FROM `user_info` WHERE id in (16) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 17:59:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51 record not found
+[0.397ms] [rows:0] SELECT * FROM `user_info` WHERE id = 0 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:59:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:37
+[0.445ms] [rows:1] SELECT * FROM `login_info` WHERE email = '123@qq.com' AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 17:59:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.334ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 17:59:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.456ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:59:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.329ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 17:59:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:32
+[0.506ms] [rows:1] SELECT * FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND (updated_at > 0 and a_user_id > 0) AND `user_relation`.`deleted_at` IS NULL LIMIT 10
+
+2022/04/04 17:59:38 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:58
+[0.323ms] [rows:1] SELECT * FROM `user_info` WHERE id in (22) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/04 18:01:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:20
+[0.683ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:01:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:13
+[0.233ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:01:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.335ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:02:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.603ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 18:05:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:20
+[0.450ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:05:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:13
+[0.254ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:05:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.228ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:12:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.483ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:12:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
 [0.284ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/03 23:58:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:75
-[3.467ms] [rows:1] UPDATE `user_info` SET `name`='attackonryan',`avatar_url`='http://101.43.252.159/images/rt5PHQ.jpeg',`wall_image_url`='http://101.43.252.159/images/BdrTPj.jpeg',`login_info_id`=16,`created_at`='2022-03-10 11:14:40',`updated_at`='2022-04-03 23:58:17.114' WHERE id = 16 AND `user_info`.`deleted_at` IS NULL AND `id` = 16
+2022/04/04 18:12:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.465ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
 
-2022/04/03 23:58:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:81
-[4.657ms] [rows:1] UPDATE `login_info` SET `email`='123@qq.com',`password`='$2a$04$m6MKs8ChblU5vwnZp3dysOfO0pTVj5LVRuxDlDzmAdXUXXi5SpxWi',`created_at`='2022-03-10 11:14:40',`updated_at`='2022-04-03 23:58:17.118' WHERE id = 16 AND `login_info`.`deleted_at` IS NULL AND `id` = 16
+2022/04/04 18:12:09 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.299ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
 
-2022/04/03 23:58:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.411ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 18:12:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.595ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
 
-2022/04/03 23:58:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.295ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 18:12:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[1.038ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
 
-2022/04/04 00:07:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
-[0.994ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+2022/04/04 18:12:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.563ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
 
-2022/04/04 00:07:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
-[0.520ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+2022/04/04 18:12:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.774ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:12:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.268ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:12:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.828ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 18:12:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.426ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:12:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.275ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:12:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.434ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:12:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.281ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.609ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:13:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.435ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:13:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.269ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:13:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.444ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.292ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.438ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:13:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.263ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:13:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.447ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.287ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:16 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.660ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:13:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.434ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:13:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.294ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:13:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.514ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.289ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:13:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.613ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:14:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[1.008ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:16:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.901ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:16:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.521ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:16:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.739ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:16:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.274ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:16:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.428ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:16:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.274ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:16:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.436ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:16:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.268ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:16:24 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.592ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 18:22:47 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:28
+[0.993ms] [rows:0] UPDATE `user_game_relation` SET `collected_time`='2022-04-04 18:22:47.913',`is_collected`=true,`updated_at`='2022-04-04 18:22:47.914' WHERE user_id = 16 and game_id = 9
+
+2022/04/04 18:23:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.938ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:23:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.541ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:23:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.723ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:23:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.276ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:23:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.834ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:23:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:28
+[0.542ms] [rows:0] UPDATE `user_game_relation` SET `collected_time`='2022-04-04 18:23:23.155',`is_collected`=true,`updated_at`='2022-04-04 18:23:23.156' WHERE user_id = 16 and game_id = 3
+
+2022/04/04 18:29:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[1.027ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:29:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.525ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:29:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.734ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:29:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.272ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:29:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.479ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:29:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.267ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:29:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.425ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:29:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.310ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:29:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.885ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:29:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:28
+[0.849ms] [rows:0] UPDATE `user_game_relation` SET `collected_time`='2022-04-04 18:29:14.608',`is_collected`=true,`updated_at`='2022-04-04 18:29:14.609' WHERE user_id = 16 and game_id = 3
+
+2022/04/04 18:29:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.421ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:29:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.289ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:30:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.525ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:30:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.297ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:30:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.461ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:30:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.278ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:32:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.482ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:32:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.274ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:32:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.489ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:32:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.287ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:33:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.453ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:33:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.243ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:33:48 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.209ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:33:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.527ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:33:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.316ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:33:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.463ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:33:53 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.288ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:33:59 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.416ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:33:59 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.266ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:33:59 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.232ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:34:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.457ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:34:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.274ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:34:51 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.464ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:34:51 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.278ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:34:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.435ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:34:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.277ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:34:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.427ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:34:52 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.327ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:35:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.422ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:35:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.283ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:35:23 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.206ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:36:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.420ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:36:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.289ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:36:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.449ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:36:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.283ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:36:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.402ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:36:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.264ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:36:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.216ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:36:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.442ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:36:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.256ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:36:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.470ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:36:40 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.290ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:36:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.395ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:36:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.315ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:36:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.476ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:36:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.278ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:36:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.331ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:36:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.205ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:36:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.178ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:37:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.588ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 200 LIMIT 10
+
+2022/04/04 18:37:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:28
+[0.599ms] [rows:0] UPDATE `user_game_relation` SET `collected_time`='2022-04-04 18:37:25.126',`is_collected`=true,`updated_at`='2022-04-04 18:37:25.127' WHERE user_id = 16 and game_id = 4
+
+2022/04/04 18:37:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.445ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:37:25 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.289ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:37:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.400ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1
+
+2022/04/04 18:37:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.316ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1
+
+2022/04/04 18:37:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.214ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:40:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.623ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 103 LIMIT 10
+
+2022/04/04 18:40:37 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.597ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 102 LIMIT 10
+
+2022/04/04 18:42:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.544ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:42:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.270ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:42:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.477ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:42:45 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.288ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:44:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:29
+[0.974ms] [rows:0] UPDATE `user_game_relation` SET `collected_time`='2022-04-04 18:44:00.708',`is_collected`=true,`updated_at`='2022-04-04 18:44:00.709' WHERE user_id = 16 and game_id = 36
+
+2022/04/04 18:48:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:29
+[0.971ms] [rows:0] UPDATE `user_game_relation` SET `collected_time`='2022-04-04 18:48:00.84',`is_collected`=true,`updated_at`='2022-04-04 18:48:00.841' WHERE user_id = 16 and game_id = 14
+
+2022/04/04 18:48:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:35
+[4.962ms] [rows:1] INSERT INTO `user_game_relation` (`collected_time`,`game_id`,`is_collected`,`user_id`) VALUES ('2022-04-04 18:48:00.84',14,true,16)
+
+2022/04/04 18:48:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.769ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:48:00 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.333ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:48:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.441ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:48:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.313ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 0 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:48:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.457ms] [rows:0] SELECT * FROM `game_info` WHERE id in (NULL) 
+
+2022/04/04 18:50:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.955ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:50:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.327ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:50:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.490ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:52:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.923ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:52:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.301ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:52:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.454ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:52:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.796ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:52:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.505ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:52:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.754ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:52:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.287ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:52:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.507ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:52:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.280ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:52:50 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.280ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:54:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.478ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:54:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.271ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:54:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.441ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:54:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.298ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:54:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.462ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:54:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.282ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:54:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.463ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:54:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.270ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:54:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.429ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 18:54:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.274ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 18:54:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.445ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:54:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.278ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 18:54:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.492ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:54:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.297ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:54:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.260ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:55:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.498ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.295ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.290ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:55:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.548ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.279ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.262ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:55:46 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.492ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:46 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.352ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:46 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.285ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:55:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.477ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.288ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 18:55:49 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.255ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 18:55:54 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.566ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 18:56:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.602ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 102 LIMIT 10
+
+2022/04/04 19:01:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[1.016ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 102 LIMIT 10
+
+2022/04/04 19:04:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.889ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:04:10 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.490ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:04:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.796ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.275ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.497ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:04:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.278ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:04:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.476ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.312ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.459ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:04:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.308ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:04:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.434ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.269ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.442ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:04:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.276ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:04:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.423ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:04:22 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.293ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.468ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:07:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.274ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:07:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.472ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:04 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.284ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.465ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:07:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.282ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:07:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.434ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.270ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.485ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:07:26 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.274ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:07:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.437ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:27 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.306ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.456ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:07:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.278ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:07:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.438ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.259ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:07:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.600ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 19:07:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.638ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:07:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.285ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:12:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.471ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 19:12:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:22
+[0.406ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:12:32 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:15
+[0.286ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:17:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.464ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:17:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.283ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:17:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.468ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:17:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.401ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:30:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.766ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 19:30:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.659ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:30:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.279ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:30:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.422ms] [rows:0] SELECT * FROM `game_info` WHERE tag_id = 0 LIMIT 10
+
+2022/04/04 19:30:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.374ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:30:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.272ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:33:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.656ms] [rows:10] SELECT * FROM `game_info` WHERE tag_id = 201 LIMIT 10
+
+2022/04/04 19:33:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.384ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:33:55 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.280ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:36:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.878ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:36:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.525ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:36:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.729ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:36:14 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.283ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:37:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.483ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:37:05 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.284ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:37:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.448ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:37:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.294ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:37:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.440ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:37:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.280ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:37:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.443ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:37:07 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.278ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:37:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.504ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:37:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.349ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:37:12 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.296ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:38:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.464ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:38:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.301ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:38:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.438ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:38:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.283ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:38:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.463ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:38:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.290ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:38:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.469ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:38:43 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.309ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:38:46 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.572ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:38:46 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.346ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:38:46 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.285ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:40:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[1.040ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:40:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.565ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:40:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.695ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:40:01 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.284ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:40:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.516ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:40:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.323ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:40:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.468ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:40:03 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.298ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:40:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.759ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:40:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.294ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:40:11 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.412ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:41:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.455ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:41:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.283ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:41:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.463ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:41:36 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.269ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:42:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.433ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:42:19 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.255ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:42:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.457ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:42:20 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.284ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:42:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.440ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:42:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.305ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:42:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.450ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:42:21 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.279ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:43:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.441ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:43:15 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.263ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:43:16 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.454ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:43:16 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.319ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:43:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.496ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:43:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.300ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:43:18 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.272ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:43:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.505ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:43:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.275ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:43:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.439ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:43:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.277ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:43:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.465ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:43:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.334ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:43:34 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.261ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:45:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.467ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:45:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.294ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:45:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.455ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:45:06 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.296ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:45:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.493ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:45:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.297ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:45:08 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.268ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:46:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/tag.go:22
+[0.580ms] [rows:9] SELECT * FROM `game_info` WHERE tag_id = 107 LIMIT 10
+
+2022/04/04 19:46:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.387ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:17 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.278ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.476ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.302ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:28 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.278ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:46:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.444ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:46:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.284ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:46:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.433ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:46:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.305ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:46:37 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.521ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:37 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.270ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:37 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.295ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:46:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.496ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.309ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:41 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.284ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:46:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.464ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.315ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:42 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.253ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:46:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.494ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.297ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:46:44 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.280ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:47:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.470ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:47:29 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.282ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:47:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.436ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:47:30 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.280ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:47:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.437ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:47:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.273ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:47:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.448ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:47:31 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.295ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:47:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.490ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:47:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.294ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:47:33 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.288ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:47:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:23
+[0.479ms] [rows:1] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_collected = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:47:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_game_relation.go:16
+[0.313ms] [rows:0] SELECT * FROM `user_game_relation` WHERE user_id = 16 and is_reserved = 1 ORDER BY updated_at DESC 
+
+2022/04/04 19:47:35 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/game_dal/game.go:14
+[0.266ms] [rows:1] SELECT * FROM `game_info` WHERE id in (14) 
+
+2022/04/04 19:50:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:51
+[0.439ms] [rows:1] SELECT * FROM `user_info` WHERE id = 16 AND `user_info`.`deleted_at` IS NULL ORDER BY `user_info`.`id` LIMIT 1
+
+2022/04/04 19:50:58 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_info.go:44
+[0.293ms] [rows:1] SELECT * FROM `login_info` WHERE id = 16 AND `login_info`.`deleted_at` IS NULL ORDER BY `login_info`.`id` LIMIT 1
+
+2022/04/04 19:50:59 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:39
+[0.447ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (a_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL
+
+2022/04/04 19:50:59 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/user_dal/user_relation.go:45
+[0.288ms] [rows:1] SELECT count(*) FROM `user_relation` WHERE (b_user_id = 16 and relation = '1') AND `user_relation`.`deleted_at` IS NULL

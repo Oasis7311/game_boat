@@ -62,7 +62,7 @@ func GetUserInfoMap(id []uint) (map[uint]*user_model.UserInfo, error) {
 
 	res := make(map[uint]*user_model.UserInfo)
 	for _, info := range userList {
-		res[cast.ToUint(info.ID)] = &user_model.UserInfo{
+		res[cast.ToUint(info.ID.ID)] = &user_model.UserInfo{
 			ID:           info.ID,
 			UserBaseInfo: info.UserBaseInfo,
 		}

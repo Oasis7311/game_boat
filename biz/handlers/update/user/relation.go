@@ -32,7 +32,7 @@ func PeopleRelate(ctx *gin.Context) {
 	if req.Relation > 0 {
 		err = user_dal.CreateAUserRelation(req.UserId, req.BUserId, req.Relation)
 	} else {
-		err = user_dal.DeleteAUserRelation(req.UserId, req.BUserId, req.Relation)
+		err = user_dal.DeleteAUserRelation(req.UserId, req.BUserId, req.Relation*-1)
 	}
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))

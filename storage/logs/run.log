@@ -7,7 +7,7 @@ config = {
 		"app_url": "http://localhost"
 	},
 	"log": {
-		"level": "debug",
+		"level": "info",
 		"root_dir": "./storage/logs",
 		"filename": "run.log",
 		"format": "console",
@@ -51,13 +51,14 @@ config = {
  - using code:	gin.SetMode(gin.ReleaseMode)
 
 [GIN-debug] GET    /ping                     --> github.com/oasis/game_boat/biz/handlers.Ping (6 handlers)
-[GIN-debug] GET    /get/user/followers       --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowerList (6 handlers)
-[GIN-debug] GET    /get/user/follows         --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowList (6 handlers)
-[GIN-debug] GET    /get/user/relation_count  --> github.com/oasis/game_boat/biz/handlers/get/user.GetRelationCount (6 handlers)
+[GIN-debug] POST   /get/user/followers       --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowerList (6 handlers)
+[GIN-debug] POST   /get/user/follows         --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowList (6 handlers)
+[GIN-debug] POST   /get/user/relation_count  --> github.com/oasis/game_boat/biz/handlers/get/user.GetRelationCount (6 handlers)
+[GIN-debug] GET    /get/user/game            --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserGame (6 handlers)
+[GIN-debug] GET    /get/user/game_count      --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserGameCount (6 handlers)
 [GIN-debug] GET    /get/game/tag_list        --> github.com/oasis/game_boat/biz/handlers/get/game.GetTagList (6 handlers)
-[GIN-debug] GET    /get/game/info            --> github.com/oasis/game_boat/middle_ware.CheckRequestId.func1 (5 handlers)
-[GIN-debug] GET    /get/game/evaluation      --> github.com/oasis/game_boat/middle_ware.CheckRequestId.func1 (5 handlers)
-[GIN-debug] GET    /get/game/                --> github.com/oasis/game_boat/middle_ware.CheckRequestId.func1 (5 handlers)
+[GIN-debug] POST   /get/game/in_tag          --> github.com/oasis/game_boat/biz/handlers/get/game.GetGameInTag (6 handlers)
+[GIN-debug] POST   /action/game              --> github.com/oasis/game_boat/biz/handlers/action.GameAction (7 handlers)
 [GIN-debug] POST   /update/user/relation     --> github.com/oasis/game_boat/biz/handlers/update/user.PeopleRelate (7 handlers)
 [GIN-debug] POST   /update/user/info         --> github.com/oasis/game_boat/biz/handlers/update/user.UpdateUserInfo (7 handlers)
 [GIN-debug] POST   /register                 --> github.com/oasis/game_boat/biz/handlers.Register (6 handlers)
@@ -67,57 +68,520 @@ config = {
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2022/04/04 - 00:07:55 | 200 |    2.446165ms |   101.224.215.5 | GET      "/token_check"
-[GIN] 2022/04/04 - 00:21:41 | 404 |       5.541µs | 141.101.196.233 | CONNECT  ""
-[GIN] 2022/04/04 - 00:21:52 | 404 |       5.111µs | 141.101.196.233 | GET      "/rb/getip.php?Z75351837961Q1"
-[GIN] 2022/04/04 - 00:56:13 | 404 |       5.918µs |   167.94.145.59 | GET      "/"
-[GIN] 2022/04/04 - 00:56:13 | 404 |       6.236µs |   167.94.145.59 | GET      "/"
-[GIN] 2022/04/04 - 00:56:15 | 404 |       7.099µs |   167.94.145.59 | PRI      "*"
-[GIN] 2022/04/04 - 01:06:17 | 404 |       5.444µs |   186.192.212.1 | GET      "/"
-[GIN] 2022/04/04 - 01:22:36 | 404 |       5.948µs |     83.97.20.34 | GET      "/"
-o/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2868
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1933
-[2022-04-04 00:07:55.101]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c94scmurobbaoeaf95ig"}
-github.com/oasis/game_boat/biz/handlers.CheckToken
-	/root/xiaqihong/go/src/github.com/oasis/game_boat/biz/handlers/token_check.go:20
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/oasis/game_boat/middle_ware.JWTAuth.func1
-	/root/xiaqihong/go/src/github.com/oasis/game_boat/middle_ware/auth.go:81
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/root/xiaqihong/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2868
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1933
+[GIN] 2022/04/04 - 19:40:01 | 200 |    2.405091ms |   101.224.215.5 | GET      "/token_check?id=16"
+[GIN] 2022/04/04 - 19:40:01 | 200 |    1.419644ms |   101.224.215.5 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/04 - 19:40:03 | 204 |      53.691µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:40:03 | 200 |    1.359371ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:40:03 | 204 |       8.739µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:40:03 | 200 |    1.028391ms |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:40:11 | 204 |       9.756µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:40:11 | 200 |    2.005899ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:41:36 | 200 |     1.20819ms |   101.224.215.5 | GET      "/token_check?id=16"
+[GIN] 2022/04/04 - 19:41:36 | 200 |    1.006797ms |   101.224.215.5 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/04 - 19:42:19 | 200 |    1.182584ms |   101.224.215.5 | GET      "/token_check?id=16"
+[GIN] 2022/04/04 - 19:42:20 | 200 |     990.141µs |   101.224.215.5 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/04 - 19:42:21 | 204 |       9.936µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:42:21 | 200 |    1.194187ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:42:21 | 204 |       9.278µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:42:21 | 200 |     985.542µs |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:42:56 | 404 |       5.626µs | 141.101.196.233 | CONNECT  ""
+[GIN] 2022/04/04 - 19:43:06 | 404 |       5.644µs | 141.101.196.233 | GET      "/ip.php?Z75351837961Q1"
+[GIN] 2022/04/04 - 19:43:15 | 204 |       8.575µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:43:15 | 200 |    1.134782ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:43:16 | 204 |      16.298µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:43:16 | 200 |    1.052597ms |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:43:18 | 204 |       8.647µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:43:18 | 200 |    1.464806ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:43:28 | 204 |      10.079µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:43:28 | 200 |    1.236706ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:43:28 | 204 |       8.597µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:43:28 | 200 |     1.00372ms |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:43:34 | 204 |       9.164µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:43:34 | 200 |     1.47638ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:45:06 | 204 |      10.369µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:45:06 | 200 |     1.22242ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:45:06 | 204 |       8.471µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:45:06 | 200 |    1.032855ms |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:45:08 | 204 |       9.495µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:45:08 | 200 |    1.445018ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:17 | 204 |       9.107µs |   101.224.215.5 | OPTIONS  "/get/game/in_tag?id=16"
+[GIN] 2022/04/04 - 19:46:17 | 200 |    2.325674ms |   101.224.215.5 | POST     "/get/game/in_tag?id=16"
+[GIN] 2022/04/04 - 19:46:28 | 204 |       8.836µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:28 | 200 |    1.450206ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:33 | 204 |       8.484µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:46:33 | 200 |    1.162959ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:46:33 | 204 |       8.613µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:46:33 | 200 |     994.583µs |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:46:37 | 204 |      10.101µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:37 | 200 |    1.484537ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:40 | 204 |       8.816µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:41 | 200 |    1.522973ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:42 | 204 |       9.527µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:42 | 200 |    1.374804ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:44 | 204 |       8.247µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:46:44 | 200 |    1.445356ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:47:29 | 200 |    1.222503ms |   101.224.215.5 | GET      "/token_check?id=16"
+[GIN] 2022/04/04 - 19:47:30 | 200 |     976.515µs |   101.224.215.5 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/04 - 19:47:31 | 204 |       9.778µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:47:31 | 200 |    1.183654ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:47:31 | 204 |      14.026µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:47:31 | 200 |    1.032353ms |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:47:33 | 204 |       8.611µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:47:33 | 200 |    1.448803ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:47:35 | 204 |        8.15µs |   101.224.215.5 | OPTIONS  "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:47:35 | 200 |    1.448926ms |   101.224.215.5 | GET      "/get/user/game?id=16"
+[GIN] 2022/04/04 - 19:50:58 | 204 |       8.945µs |   101.224.215.5 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/04 - 19:50:58 | 200 |    1.188728ms |   101.224.215.5 | GET      "/token_check?id=0"
+[GIN] 2022/04/04 - 19:50:59 | 204 |       8.703µs |   101.224.215.5 | OPTIONS  "/get/user/relation_count?id=0"
+[GIN] 2022/04/04 - 19:50:59 | 200 |     993.588µs |   101.224.215.5 | POST     "/get/user/relation_count?id=0"
+XBwIiwibmJmIjoxNjQ5MDY1Mzc1fQ.8tj2WA6EMHlSMyjUchRy1D9BwlV6qMlnIViDHPz0x8s	{"x-request-id": "c95djkurobbaba7k42gg"}
+[2022-04-04 19:43:15.893]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95djkurobbaba7k42gg"}
+[2022-04-04 19:43:16.144]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95djl6robbaba7k42h0"}
+[2022-04-04 19:43:16.145]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95djl6robbaba7k42h0"}
+[2022-04-04 19:43:18.508]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95djlmrobbaba7k42hg"}
+[2022-04-04 19:43:18.509]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95djlmrobbaba7k42hg"}
+[2022-04-04 19:43:28.583]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDkzMjU1NzUsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5MDY1Mzc1fQ.8tj2WA6EMHlSMyjUchRy1D9BwlV6qMlnIViDHPz0x8s	{"x-request-id": "c95djo6robbaba7k42i0"}
+[2022-04-04 19:43:28.583]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95djo6robbaba7k42i0"}
+[2022-04-04 19:43:28.965]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95djo6robbaba7k42ig"}
+[2022-04-04 19:43:28.966]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95djo6robbaba7k42ig"}
+[2022-04-04 19:43:34.052]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95djpmrobbaba7k42j0"}
+[2022-04-04 19:43:34.053]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95djpmrobbaba7k42j0"}
+[2022-04-04 19:45:06.565]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDkzMjU1NzUsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5MDY1Mzc1fQ.8tj2WA6EMHlSMyjUchRy1D9BwlV6qMlnIViDHPz0x8s	{"x-request-id": "c95dkgmrobbaba7k42jg"}
+[2022-04-04 19:45:06.565]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95dkgmrobbaba7k42jg"}
+[2022-04-04 19:45:06.885]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95dkgmrobbaba7k42k0"}
+[2022-04-04 19:45:06.886]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95dkgmrobbaba7k42k0"}
+[2022-04-04 19:45:08.986]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dkh6robbaba7k42kg"}
+[2022-04-04 19:45:08.987]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dkh6robbaba7k42kg"}
+[2022-04-04 19:46:17.623]	[34mINFO[0m	game/in_tag.go:30	[GetGameInTag] req = {
+	"tag_id": 107,
+	"page_size": 10
+}	{"x-request-id": "c95dl2erobbaba7k42l0"}
+[2022-04-04 19:46:17.623]	[34mINFO[0m	game/in_tag.go:40	[GetGameInTag] get game list success, userId = 16	{"x-request-id": "c95dl2erobbaba7k42l0"}
+[2022-04-04 19:46:17.625]	[34mINFO[0m	game/in_tag.go:59	[GetGameInTag] resp = {
+	"game_list": [
+		{
+			"id": 9,
+			"name": "末日来袭",
+			"tag_id": 107,
+			"introduction": "追溯末日真相，探寻危机世界生存法则",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f0c68ae2b1264cff8b4458f60273f306~tplv-oqhgwus6yr-image.png",
+			"image": "[{\"rotation\":1,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/0f69b566545741efbc4460c37aede533~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":1,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f9830630cb4940de92ef436b0a133285~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":1,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/9c3966b4377f4c24b698c9bd3c30aba2~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":1,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/1499786f69df48ce9828c3f4725de1b2~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":1,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/76a8bc1fcae74c18b583cc7e78ad365e~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+			"developer": "里游互娱",
+			"lang": "[\"中文\"]",
+			"age_limit": 3,
+			"score": 7.7,
+			"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/5761107126974480b939524f3c035303~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+			"media_score_url": "https://www.3839.com/a/98208.htm",
+			"game_description": "随着一阵报警声突如其来的响起，伴随着人潮的喧闹与感染者的嘶吼，痛苦的尖叫声如同丧钟被敲响，宣告着末日的降临。有些人来不及逃跑，顷刻间被洪水般来袭的尸潮吞没。有些人登上了出城的末班车，向着未知的方向渐行渐远。很不幸你没能驾车远行，但万幸的是赶在整座城市被淹没之前，你成功逃离出来。危机并没有就此结束，迎接你的不只有随时可能出现在身后的感染者，还有数不尽的人性考验。资源、权利、地盘、仇恨……幸存者们即使在灭亡前夕，也依然在进行着纷争。你又会如何选择呢？是打开地图踏遍每个角落，拿着残羹苟延残喘；或是召集其他幸存者一起，抄起武器，在绝境里寻找生机；还是追寻线索的痕迹，寻找传说中的避难所，发现文明最后的防线……这场末日旅途，才刚刚开始……【独特美漫新画风，末日中绝境求生】身临美漫现场，演绎末日生存之旅。你是会引领小队突出重围，还是宁当独狼面对？灾难降临之时，绝境仍要求生！【丰富玩法任你选，绝境探秘秀操作】搜寻物资保卫家园，探索绝境巧破机关。地图上的每一个角落，都有全新游戏规则等待着你，无论是“肝帝”还是“佛系”，都能找到属于你的乐趣！【沉浸式剧情体验，存亡只在一念间】求生之路的危机四伏，你的抉择能否抓住最后的希望？揭开神秘档案，发现埋藏在深处的专属剧情，擦亮双眼，看清事件真相！【无损换卡巧搭配，策略布阵智通关】末世之中，每个人都能成为故事的主角。资源百分百返还，免除换卡担忧，蓝色守护者同样站C位！百种策略巧妙布局，弱小亦能反败为胜！强力输出不要慌，反捉丧尸来搬砖从天而降，遁地突袭，敌人将从你意想不到的地方出现，阵容中任何弱点都可能为失败埋下伏笔。努力击败并捕获它们，想活下去或许也需要它们的力量……"
+		},
+		{
+			"id": 83,
+			"name": "活着",
+			"tag_id": 107,
+			"introduction": "银弹工作室",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/e8db5fa2e47c4f8ea3cd5412526644cc~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/ce2062440105486d88614c6141ab9792~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/685770d7049e486eb23669b0cc589cdb~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/75cad6c2a6204186b2b8861aecf00600~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/70cd2a4c47f341eaaa252956c4a67696~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4}]",
+			"developer": "无",
+			"lang": "[\"中文\"]",
+			"score": 7.2,
+			"top_media": "{\"poster_url\":\"\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":0}",
+			"media_score_url": "https://www.3839.com/a/92792.htm",
+			"game_description": "出门一把刀一条狗！在末日奔溃的环境与其他生存者共同抢夺资源互相厮杀。这是一款俯视角的生存游戏！故事模式下与爱狗将会经历一场生死之旅！自由模式下玩家将在开放的世界下生存！喜欢的小伙伴赶紧预约游戏吧！"
+		},
+		{
+			"id": 169,
+			"name": "零启战纪",
+			"tag_id": 107,
+			"introduction": "和大家从零开始研发的零启战纪",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/d687315389884ecf91c1edf98490dae5~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2689b17de3b54e5ba7ade1f96ed6109d~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f0937d94f0414dc29322058913a5f600~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6767874c96db44d09542140f986c17b2~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/3783f165141349b3b70d7a54dabebb9f~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/31a3e3bf50d44834a1665b2bbe3781f2~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+			"developer": "沛骑游戏开发",
+			"lang": "[\"中文\"]",
+			"score": 9.9,
+			"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4da50c8aa6ae473ab32e740909d9e1ad~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+			"media_score_url": "https://www.3839.com/a/135425.htm",
+			"game_description": "目前游戏模式主要有一：3V3公平竞技模式（金矿占点+公款机制）。二：剧情副本模式（深海屠龙，大闹阎王殿等，可个人与组队形式参与）。游戏有不少开发者或者粉丝玩家的原创英雄和彩蛋英雄，后续还会继续增添。彩蛋英雄因为受一定因素限制目前仅作为供大家视频观看形式出现，至于以后彩蛋英雄是如何上线用什么样的形式上线暂时未定，会尽量通过合理的形式最大化还原彩蛋英雄本身让大家能体验到。原创英雄或者游戏其他征稿活动会不定期举行，有相应活动会正式发布消息告诉大家如何参与和投票。目前的开发重点主要集中在游戏的各种模式基础机制的完善与优化，美术模型动作特效画质这块会暂时会比较欠缺，后面会针对性的统一迭代更新优化，望大家对这块内容先抱着一颗包容的心态看待。谢谢！"
+		},
+		{
+			"id": 171,
+			"name": "策略英魂",
+			"tag_id": 107,
+			"introduction": "Joycombo",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/e7b209a36f0e4145b0a4afe2f44e258d~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/63ddd9d004834de9b7f976deb28c0474~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/3e7bf94b64c648f0b602af13f817b000~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/5b9c9bcadace4528b1526e96b6d1e800~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/67265db90eb1410dbd387631da66f49d~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4}]",
+			"developer": "无",
+			"lang": "[\"中文\"]",
+			"score": 6.7,
+			"top_media": "{\"poster_url\":\"\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":0}",
+			"media_score_url": "https://www.3839.com/a/102185.htm",
+			"game_description": "《策略英魂》是一款策略类游戏。独创策略moba，全新的战斗玩法，每位玩家操纵多名英雄厮杀战场，减轻繁琐的细节操作，强化全局战略部署，独特的科技玩法，运筹帷幄掌控全局，开创只属于你的电子竞技时代！"
+		},
+		{
+			"id": 173,
+			"name": "炼金与魔法",
+			"tag_id": 107,
+			"introduction": "充满魔法的异世界，自由创造、开启冒险！",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4a91d067ef644d279fb8ab6270256cac~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/358ad822bef94f659c8182214a2aabcb~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/54977cd7c2644f7c89fe30e075c62a28~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/e2ce67071e184883929ec023bbe45e24~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/02e0058dc3f54e0cb6f323c72e35a848~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/afef440d16d04cf191d87d40645d0f30~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+			"developer": "无",
+			"lang": "[\"中文\"]",
+			"score": 8.7,
+			"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4a45ce25d2a5432b90632e5703f791da~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+			"media_score_url": "https://www.3839.com/a/90432.htm",
+			"game_description": "《炼金与魔法》是一款2D沙盒动作冒险游戏，游戏中玩家需要扮演一位魔法师在异世界中开展神奇的冒险。你将进入一个拥有魔法力量的原始世界，你可以用魔法随心所欲的修改这个世界的构造，也需要用魔法保护自己免受怪物伤害。通过不断的探索，你会获得更多稀有的材料、高级魔法卷轴，也会遇到更为危险的对手，制作高级装备、炼制魔药、准备魔法来进行一次精彩的冒险吧。"
+		},
+		{
+			"id": 272,
+			"name": "The Machines",
+			"tag_id": 107,
+			"introduction": "Directive Games Limited工作室",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/22fd3db82f8642ffa995ef9b9787ab65~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7d099385a228459b83a3d2720627d500~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4dc3d2cf406047269d1f7666910ca9db~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/a63b96e6ea784747803b34a88271f69e~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/03e85bde40984fccbd402779841af7b4~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":4}]",
+			"developer": "无",
+			"lang": "[\"中文\"]",
+			"top_media": "{\"poster_url\":\"\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":0}",
+			"media_score_url": "https://www.3839.com/a/103706.htm",
+			"game_description": "在The Machines 中， 同你的好友在增強現實的世界中一決高低，體驗3D音效，視覺效果給你帶來的前所未有的遊戲體驗。使用強大的技能加以對空間方位的利用，給你帶來千變萬化的戰術策略。成為世界排行榜上的冠軍。勝敗取決於遊戲的技巧，周密的部署和詳盡的戰術考量，不光是要調兵譴將，更是自身也要圍著戰場運動起來才能找到最刁鉆的戰術角度。"
+		},
+		{
+			"id": 414,
+			"name": "英雄荣耀",
+			"tag_id": 107,
+			"introduction": "各种特色英雄，汇聚各种玩法",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7860cb7aa3604ab393e7d126a357dd9a~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/ffbedcdb80c24b41945bfcf40e1ee8c9~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eaf3b8c1986e44f9bba20572256f0a20~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4f1d85a0fa9c4153be9000632a0f3444~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/1a61fbb9a26140a796bc8b7d1d9de46d~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+			"developer": "无",
+			"lang": "[\"中文\"]",
+			"score": 2.3,
+			"top_media": "{\"poster_url\":\"\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":0}",
+			"media_score_url": "https://www.3839.com/a/110587.htm",
+			"game_description": "《英雄荣耀》是一款次世代MOBA游戏。 每位英雄都拥有独特的技能组合和玩法风格。你需要通过局部操作，摧毁/占领目标物，团队合作，以及视野控制来达到战略目标。这里不仅有为战斗而生的英雄，还有独特的肾上腺素系统，让能精准走砍的您可以获得额外攻速。您可以通过不同的出装和选择让不同的技能升至满级，让每位英雄拥有多种玩法。"
+		},
+		{
+			"id": 422,
+			"name": "合金突围",
+			"tag_id": 107,
+			"introduction": "深圳市海富荣网络科技有限公司",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/068feeb2c0604dfebab0f190f03d5554~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4f006cff68c84051a889406192f1267b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":3},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/e3368d40311441a0adbde7318d2d6b31~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":3},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7adca94a0c17419bb495d4195a38921a~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":3},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/4c65932b3f0144c3bea5c0233350a516~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":3},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/46382faa517d4e72a2b0615a0a3a337e~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":3}]",
+			"developer": "无",
+			"lang": "[\"中文\"]",
+			"top_media": "{\"poster_url\":\"\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":0}",
+			"media_score_url": "https://www.3839.com/a/100788.htm",
+			"game_description": "《合金突围》是一款含有射击元素的策略手游，在游戏内可以训练你的军队、提升自己的军事基地、研发属于自己的科技，游戏核心就是跟在线的玩家进行各种战役，是一款全球同服的实时对战手游。玩家可以培养部队和军事基地，打造自己的军事帝国，再微小的细节都是成败的关键。"
+		},
+		{
+			"id": 440,
+			"name": "命运因子(CITY)",
+			"tag_id": 107,
+			"introduction": "在废土都市，合作探索生存的无尽可能！",
+			"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/9df82b2d934c4ef8abd9745f7cafcb67~tplv-oqhgwus6yr-image.image",
+			"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/3c04a5658f974bd9935d289d6670b9fe~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/04e3864aa94d4a0fad7d3f499685581a~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/ac56add129d24303ad9a8bfada0b345e~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/fb9e53481dd04c099b486a82a56170ff~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/9ffacf3578064257a54636578fefb317~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+			"developer": "网易游戏",
+			"lang": "[\"中文\"]",
+			"score": 8,
+			"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/dfac1e8a57fd44f4a9bdd92c810a9460~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+			"media_score_url": "https://www.3839.com/a/123788.htm",
+			"game_description": "《命运因子》是一款废土都市题材的开放世界合作生存手游，是一款关于合作与希望的游戏，支持2-4人联机。故事发生在名为“未都”的架空都市中，毁灭性灾难爆发，人类在异种的威胁下艰难求生。你可以自由探索开放而庞大的城市废墟，搜集物资、制作武器、解决谜题，和其他幸存者一起，与强大的异种战斗。还可以自由建造地下藏身所，抵御异种入侵。商场、地铁、公园...低语着昔日文明的盛况；字条、影像、磁带...记录着人类求生的日常；危险、混乱、意外...充斥着都市的每个角落；栩栩如生却又危机四伏，未都静待你的到来！"
+		}
+	],
+	"user_collect_game_map": {
+		"14": true
+	},
+	"user_reserve_game_map": {}
+}	{"x-request-id": "c95dl2erobbaba7k42l0"}
+[2022-04-04 19:46:28.682]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dl56robbaba7k42lg"}
+[2022-04-04 19:46:28.684]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dl56robbaba7k42lg"}
+[2022-04-04 19:46:33.575]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDkzMjU1NzUsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5MDY1Mzc1fQ.8tj2WA6EMHlSMyjUchRy1D9BwlV6qMlnIViDHPz0x8s	{"x-request-id": "c95dl6erobbaba7k42m0"}
+[2022-04-04 19:46:33.575]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95dl6erobbaba7k42m0"}
+[2022-04-04 19:46:33.962]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95dl6erobbaba7k42mg"}
+[2022-04-04 19:46:33.963]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95dl6erobbaba7k42mg"}
+[2022-04-04 19:46:37.051]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dl7erobbaba7k42n0"}
+[2022-04-04 19:46:37.052]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dl7erobbaba7k42n0"}
+[2022-04-04 19:46:41.051]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dl8erobbaba7k42ng"}
+[2022-04-04 19:46:41.052]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dl8erobbaba7k42ng"}
+[2022-04-04 19:46:42.881]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dl8mrobbaba7k42o0"}
+[2022-04-04 19:46:42.883]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dl8mrobbaba7k42o0"}
+[2022-04-04 19:46:44.688]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dl96robbaba7k42og"}
+[2022-04-04 19:46:44.689]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dl96robbaba7k42og"}
+[2022-04-04 19:47:29.502]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDkyNDc3MDcsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ4OTg3NTA3fQ.sW_ha1d9V_BPTU8fm9Xhath1yfqSyxmkJqRvHyD7B9s	{"x-request-id": "c95dlkerobbaba7k42p0"}
+[2022-04-04 19:47:29.502]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95dlkerobbaba7k42p0"}
+[2022-04-04 19:47:30.064]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95dlkmrobbaba7k42pg"}
+[2022-04-04 19:47:30.065]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95dlkmrobbaba7k42pg"}
+[2022-04-04 19:47:31.055]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDkzMjU1NzUsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5MDY1Mzc1fQ.8tj2WA6EMHlSMyjUchRy1D9BwlV6qMlnIViDHPz0x8s	{"x-request-id": "c95dlkurobbaba7k42q0"}
+[2022-04-04 19:47:31.055]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95dlkurobbaba7k42q0"}
+[2022-04-04 19:47:31.451]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95dlkurobbaba7k42qg"}
+[2022-04-04 19:47:31.451]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95dlkurobbaba7k42qg"}
+[2022-04-04 19:47:33.525]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dllerobbaba7k42r0"}
+[2022-04-04 19:47:33.526]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dllerobbaba7k42r0"}
+[2022-04-04 19:47:35.579]	[34mINFO[0m	user/game.go:24	[GetUserGame] userId = 16	{"x-request-id": "c95dllurobbaba7k42rg"}
+[2022-04-04 19:47:35.581]	[34mINFO[0m	user/game.go:73	[GetUserGame] userId = 16 resp = {
+	"user_collected_game": [
+		{
+			"game_info": {
+				"id": 14,
+				"name": "森罗不语",
+				"tag_id": 102,
+				"introduction": "现代都市风志怪再临 幻境自由探索策略玩法",
+				"icon": "https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/24b15eaa47174274a7896fa27ffab384~tplv-oqhgwus6yr-image.image",
+				"image": "[{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/7507403cd66f4ecabd6733d1feab99e7~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/6eb9811fb9234ad2828de487b63552ab~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/f4ed9c50145947ff89e9a497950007fd~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/eee3c5d9443646498ede980c1547df7b~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2},{\"rotation\":0,\"url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/2e9bc902a87f46cd9832aaf0df03e450~tplv-oqhgwus6yr-image.image\",\"game_ratio_type\":2}]",
+				"developer": "怪力乱神工作室",
+				"lang": "[\"中文\"]",
+				"top_media": "{\"poster_url\":\"https://p3-polis.byteimg.com/tos-cn-i-oqhgwus6yr/11986c855d9e46f1b0c54651652b6ef7~tplv-oqhgwus6yr-image.image\",\"rotation\":0,\"vid\":\"\",\"video_url\":\"\",\"duration\":0,\"game_ratio_type\":2}",
+				"media_score_url": "https://www.3839.com/a/130678.htm",
+				"game_description": "都市传说 志怪再临一座奇妙的现代都市，在古时曾被称为“囚之地”；诡异的各种案件，伴随奇异天象不断发生，两者间似乎有着某种必然关联；鬼怪出没的传闻在巷间不胫而走，“妖怪”目击事件口口相传；平凡的生活中隐藏着上古遗留下的秘密，并非过去未来，就在此时此刻。影的正义 光的邪恶神秘一族藏身于现代都市之中，不老的秘密藏于黑暗；操控都市中的一切，敌人的身份在传说中却是那样的光明，正邪定义彻底颠覆；背负“逆天”恶名，传承千年的组织隐于市井，只为等待一个机会；为了弥补犯下的过失，不断重复转生的循环，千年的兄弟再次相聚。古今交织 森罗不语百部志怪中的轶事杂谈，暗藏着改变世界的恩义与背叛；神话时代终结的原因，传说中神妖鬼灵的去向，被人遗忘的超自然力量，汇集于此；无法说出的真相，不曾记录的恩怨，“他们”曾被背叛遗忘；历史与传说交织的怪谈异闻正在上演，现代都市志怪等待你的书写……"
+			},
+			"collected_time": 1649069281
+		}
+	],
+	"user_reserved_game": [],
+	"user_collectd_game_map": {
+		"14": true
+	}
+}	{"x-request-id": "c95dllurobbaba7k42rg"}
+[2022-04-04 19:50:58.862]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDkzMjU1NzUsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5MDY1Mzc1fQ.8tj2WA6EMHlSMyjUchRy1D9BwlV6qMlnIViDHPz0x8s	{"x-request-id": "c95dn8mrobbaba7k42s0"}
+[2022-04-04 19:50:58.863]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c95dn8mrobbaba7k42s0"}
+[2022-04-04 19:50:59.161]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c95dn8urobbaba7k42sg"}
+[2022-04-04 19:50:59.162]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c95dn8urobbaba7k42sg"}

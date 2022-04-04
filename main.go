@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/oasis/game_boat/biz/handlers"
+	handlerAction "github.com/oasis/game_boat/biz/handlers/action"
 	handlerGetGame "github.com/oasis/game_boat/biz/handlers/get/game"
 	handlerGetUser "github.com/oasis/game_boat/biz/handlers/get/user"
 	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/update/user"
@@ -59,13 +60,15 @@ func register(r *gin.Engine) {
 	{ //获取数据相关接口
 		rGet := r.Group("/get")
 		{
-			user := rGet.Group("/user")                                  //用户
-			user.GET("/followers", handlerGetUser.GetUserFollowerList)   //粉丝列表
-			user.GET("/follows", handlerGetUser.GetUserFollowList)       //关注列表
-			user.GET("/relation_count", handlerGetUser.GetRelationCount) //关系数量
+			user := rGet.Group("/user")                                   //用户
+			user.POST("/followers", handlerGetUser.GetUserFollowerList)   //粉丝列表
+			user.POST("/follows", handlerGetUser.GetUserFollowList)       //关注列表
+			user.POST("/relation_count", handlerGetUser.GetRelationCount) //关系数量
+			user.GET("/game", handlerGetUser.GetUserGame)                 //游戏
+			user.GET("/game_count", handlerGetUser.GetUserGameCount)      //收藏预约游戏数量
+
 			//user.GET("/info")                                                //信息
 			//user.GET("/setting", middle_ware.JWTAuth(services.AppGuardName)) //设置
-			//user.GET("/game")                                                //相关游戏
 			//user.GET("/comment")                                             //评论
 		}
 		//{
@@ -79,9 +82,9 @@ func register(r *gin.Engine) {
 		//	reply.GET("/detail")          //单条详情
 		//}
 		{
-			game := rGet.Group("/game")                      //游戏
-			game.GET("/tag_list", handlerGetGame.GetTagList) //标签列表
-			game.GET("/in_tag", handlerGetGame.GetGameInTag) //标签下游戏列表
+			game := rGet.Group("/game")                       //游戏
+			game.GET("/tag_list", handlerGetGame.GetTagList)  //标签列表
+			game.POST("/in_tag", handlerGetGame.GetGameInTag) //标签下游戏列表
 			//game.GET("/info")                                //信息
 			//game.GET("/evaluation")                          //评价
 			//game.GET("/")
@@ -110,13 +113,13 @@ func register(r *gin.Engine) {
 		//	rDelete.POST("/comment") //评论 or 回复
 		//	rDelete.POST("/article") //文章
 		//}
-		//{
-		//	rAction := r.Group("/action") //交互行为
-		//	rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
-		//	rAction.POST("/comment") //点赞、取消赞评论or回复
-		//	rAction.POST("/article") //点赞、取消赞文章
-		//	rAction.POST("/game")    //关注、取消关注游戏
-		//}
+		{
+			rAction := r.Group("/action") //交互行为
+			rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
+			rAction.POST("/game", handlerAction.GameAction) //关注、取消关注游戏
+			//rAction.POST("/comment") //点赞、取消赞评论or回复
+			//rAction.POST("/article") //点赞、取消赞文章
+		}
 		{
 			rUpdate := r.Group("/update") //更新
 			rUpdate.Use(middle_ware.JWTAuth(services.AppGuardName))

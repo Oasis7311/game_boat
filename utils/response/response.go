@@ -1,10 +1,8 @@
 package response
 
 import (
-	"fmt"
 	"net/http"
 	"os"
-	"runtime"
 
 	"github.com/oasis/game_boat/global"
 
@@ -20,10 +18,6 @@ type Response struct {
 
 // Success 响应成功 ErrorCode 为 0 表示成功
 func Success(c *gin.Context, data interface{}) {
-	pc, _, _, ok := runtime.Caller(1)
-	if ok {
-		fmt.Sprintf("[%v} success\n", pc)
-	}
 
 	c.JSON(http.StatusOK, Response{
 		0,

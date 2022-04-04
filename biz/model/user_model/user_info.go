@@ -39,4 +39,6 @@ type UserBaseInfo struct {
 	Name         string `json:"name,omitempty"`
 	AvatarUrl    string `json:"avatar_url,omitempty"`
 	WallImageUrl string `json:"wall_image_url,omitempty"`
+	LikeCount    int    `json:"like_count"`
+	Email        string `json:"email"`
 }

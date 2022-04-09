@@ -6,6 +6,7 @@ import (
 	"github.com/oasis/game_boat/biz/handlers"
 	handlerAction "github.com/oasis/game_boat/biz/handlers/action"
 	"github.com/oasis/game_boat/biz/handlers/get"
+	handlerContent "github.com/oasis/game_boat/biz/handlers/get/content"
 	handlerGetGame "github.com/oasis/game_boat/biz/handlers/get/game"
 	handlerGetUser "github.com/oasis/game_boat/biz/handlers/get/user"
 	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/update/user"
@@ -96,12 +97,12 @@ func register(r *gin.Engine) {
 			//game.GET("/")
 		}
 		{
-			article := rGet.Group("/article") //文章
-			article.GET("/detail")            //详情
+			article := rGet.Group("/content")                       //文章
+			article.GET("/detail", handlerContent.GetContentDetail) //详情
 		}
 		{
 			rGet.POST("/community", get.ListCommunity) //社区页
-			rGet.POST("/main_page", get.ListMainPage) //首页
+			rGet.POST("/main_page", get.ListMainPage)  //首页
 		}
 	}
 

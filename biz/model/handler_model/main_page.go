@@ -14,4 +14,3 @@ type GetMainPageResponse struct {
 	GameList  []*game_model.GameInfo `json:"game_list"`
 	Timestamp int64                  `json:"timestamp"`
 }
-

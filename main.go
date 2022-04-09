@@ -5,12 +5,12 @@ import (
 
 	"github.com/oasis/game_boat/biz/handlers"
 	handlerAction "github.com/oasis/game_boat/biz/handlers/action"
-	"github.com/oasis/game_boat/biz/handlers/get"
-	handlerContent "github.com/oasis/game_boat/biz/handlers/get/content"
-	handlerGetGame "github.com/oasis/game_boat/biz/handlers/get/game"
-	handlerGetUser "github.com/oasis/game_boat/biz/handlers/get/user"
+	"github.com/oasis/game_boat/biz/handlers/gethandler"
+	handlerContent "github.com/oasis/game_boat/biz/handlers/gethandler/content"
+	handlerGetGame "github.com/oasis/game_boat/biz/handlers/gethandler/game"
+	handlerGetUser "github.com/oasis/game_boat/biz/handlers/gethandler/user"
+	"github.com/oasis/game_boat/biz/handlers/posthandler"
 	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/update/user"
-	upUser "github.com/oasis/game_boat/biz/handlers/update/user"
 	"github.com/oasis/game_boat/global"
 	"github.com/oasis/game_boat/initializer"
 	"github.com/oasis/game_boat/middle_ware"
@@ -101,8 +101,8 @@ func register(r *gin.Engine) {
 			article.GET("/detail", handlerContent.GetContentDetail) //详情
 		}
 		{
-			rGet.POST("/community", get.ListCommunity) //社区页
-			rGet.POST("/main_page", get.ListMainPage)  //首页
+			rGet.POST("/community", gethandler.ListCommunity) //社区页
+			rGet.POST("/main_page", gethandler.ListMainPage)  //首页
 		}
 	}
 
@@ -110,9 +110,9 @@ func register(r *gin.Engine) {
 		{
 			rPost := r.Group("/post") //发布
 			rPost.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rPost.POST("/comment") //评论
-			rPost.POST("/reply")   //回复
-			rPost.POST("/content") //文章
+			rPost.POST("/comment")                          //评论
+			rPost.POST("/reply")                            //回复
+			rPost.POST("/content", posthandler.PostContent) //文章
 		}
 		{
 			rDelete := r.Group("/delete") //删除
@@ -133,7 +133,7 @@ func register(r *gin.Engine) {
 			{
 				rUpdateUser := rUpdate.Group("/user")                         //用户
 				rUpdateUser.POST("/relation", handlerUpdateUser.PeopleRelate) //更新用户关系
-				rUpdateUser.POST("/info", upUser.UpdateUserInfo)              //信息
+				rUpdateUser.POST("/info", handlerUpdateUser.UpdateUserInfo)   //信息
 				//rUpdateUser.POST("/setting")                                  //设置
 			}
 		}

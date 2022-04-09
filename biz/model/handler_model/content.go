@@ -5,9 +5,17 @@ import (
 )
 
 type GetContentRequest struct {
-	ContentId int64 `json:"content_id" query:"content_id`
+	ContentId int64 `json:"content_id"`
 }
 
 type GetContentResponse struct {
-	Content *content_model.ContentResponse `json:"content"`
+	Content *content_model.ContentDetail `json:"content"`
+}
+
+type PostContentRequest struct {
+	Content *content_model.ContentDetail `json:"content"`
+}
+
+type PostContentResponse struct {
+	Content *content_model.ContentDetail `json:"content"`
 }

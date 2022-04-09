@@ -19,7 +19,7 @@ func (c Content) TableName() string {
 	return const_def.ContentTableName
 }
 
-type ContentResponse struct {
+type ContentDetail struct {
 	ContentId     string                `json:"content_id"`
 	AuthorInfo    *user_model.UserInfo  `json:"author_info"`
 	Title         string                `json:"title,omitempty"`

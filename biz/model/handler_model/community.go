@@ -11,6 +11,6 @@ type GetCommunityRequest struct {
 }
 
 type GetCommunityResponse struct {
-	ContentList []*content_model.ContentResponse `json:"content_list"`
-	Timestamp   int64                            `json:"timestamp"`
+	ContentList []*content_model.ContentDetail `json:"content_list"`
+	Timestamp   int64                          `json:"timestamp"`
 }

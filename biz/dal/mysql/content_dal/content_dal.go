@@ -33,3 +33,9 @@ func GetAllContentId() ([]int64, error) {
 
 	return ids, errors.Wrap(err, "GetAllContentId Fail")
 }
+
+// CreateContent 创建文章
+func CreateContent(content *content_model.Content) error {
+	err := global.App.DB.Debug().Create(content).Error
+	return errors.Wrap(err, "CreateContent fail")
+}

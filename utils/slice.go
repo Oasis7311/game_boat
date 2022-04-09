@@ -11,7 +11,7 @@ import (
 func FakeShuffleNumSlice(oldSlice []interface{}, seed int64) (newSlice []interface{}) {
 	rand.Seed(seed)
 	randBase := make([]interface{}, 0)
-	count := 600
+	count := 3000
 	for count > 0 {
 		randBase = append(randBase, rand.Int())
 		count--

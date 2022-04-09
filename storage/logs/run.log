@@ -1,1414 +1,1072 @@
-[2022-03-09 10:55:08.901]	local.info	graduation_design/main.go:20	log init success!
-[2022-03-09 10:55:09.224]	local.info	graduation_design/main.go:24	db init success!
-[2022-03-09 10:55:09.300]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 127.0.0.1:6379: connect: connection refused"}
+read config: config_product.yaml
+config = {
+	"app": {
+		"env": "local",
+		"port": "8080",
+		"app_name": "gin-app",
+		"app_url": "http://localhost"
+	},
+	"log": {
+		"level": "info",
+		"root_dir": "./storage/logs",
+		"filename": "run.log",
+		"format": "console",
+		"show_line": true,
+		"max_backups": 10,
+		"max_size": 100,
+		"max_age": 28,
+		"compress": true
+	},
+	"database": {
+		"driver": "mysql",
+		"host": "127.0.0.1",
+		"port": 3306,
+		"database": "polis",
+		"username": "root",
+		"password": "root",
+		"charset": "utf8mb4",
+		"max_idle_conns": 10,
+		"max_open_conns": 100,
+		"log_mode": "info",
+		"enable_file_log_writer": true,
+		"log_filename": "sql.log"
+	},
+	"jwt": {
+		"secret": "3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s",
+		"jwt_ttl": 259200,
+		"jwt_blacklist_grace_period": 10,
+		"refresh_grace_period": 43200
+	},
+	"redis": {
+		"host": "127.0.0.1",
+		"port": 6379,
+		"db": 0,
+		"password": ""
+	}
+}
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
 
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
 
-[31m2022/03/09 10:55:48 [Recovery] 2022/03/09 - 10:55:48 panic recovered:
-POST /register HTTP/1.1
-Host: :8080
-Accept: */*
-Accept-Encoding: gzip, deflate, br
-Accept-Language: zh-CN
-Connection: keep-alive
-Content-Length: 51
-Content-Type: application/json
-Origin: NaN
-User-Agent: ApiPOST Runtime +https://www.apipost.cn
-X-Request-Id: c8k1ed4bcv47phqsiod0
-
-
-Undefined validation function 'optional' on field 'Name'
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:289 (0x132a564)
-	(*Validate).parseFieldTagsRecursive: panic(strings.TrimSpace(fmt.Sprintf(undefinedValidation, current.tag, fieldName)))
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:150 (0x1329278)
-	(*Validate).extractStructCache: ctag, _ = v.parseFieldTagsRecursive(tag, fld.Name, "", false)
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator.go:37 (0x132f9c4)
-	(*validate).validateStruct: cs = v.v.extractStructCache(current, typ.Name())
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:308 (0x13356a9)
-	(*Validate).StructCtx: vd.validateStruct(ctx, top, val, val.Type(), vd.ns[0:0], vd.actualNs[0:0], nil)
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:281 (0x1541108)
-	(*Validate).Struct: return v.StructCtx(context.Background(), s)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:68 (0x15410cb)
-	(*defaultValidator).validateStruct: return v.validate.Struct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:47 (0x1541004)
-	(*defaultValidator).ValidateStruct: return v.validateStruct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:45 (0x1540fa9)
-	(*defaultValidator).ValidateStruct: return v.ValidateStruct(value.Elem().Interface())
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/binding.go:117 (0x1545421)
-	validate: return Validator.ValidateStruct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:55 (0x15453f0)
-	decodeJSON: return validate(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:37 (0x1545228)
-	jsonBinding.Bind: return decodeJSON(req.Body, obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:706 (0x1718fa8)
-	(*Context).ShouldBindWith: return b.Bind(c.Request, obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:671 (0x1718f85)
-	(*Context).ShouldBindJSON: return c.ShouldBindWith(obj, binding.JSON)
-/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:57 (0x1718fa9)
-	(*registerHandler).getRequestBody: return c.ShouldBindJSON(r.req)
-/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:24 (0x1718a24)
-	Register: if err := handler.getRequestBody(ctx); err != nil {
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
-	CustomRecoveryWithWriter.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
-	CustomRecoveryWithWriter.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564033)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1563ff2)
-	LoggerWithConfig.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1559f0f)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x1559ef5)
-	(*Engine).handleHTTPRequest: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x15599aa)
-	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
-/usr/local/go/src/net/http/server.go:2867 (0x12bbce2)
-	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
-/usr/local/go/src/net/http/server.go:1932 (0x12b710c)
-	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
-/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
-	goexit: BYTE	$0x90	// NOP
-[0m
-
-
-[31m2022/03/09 10:57:44 [Recovery] 2022/03/09 - 10:57:44 panic recovered:
-POST /register HTTP/1.1
-Host: :8080
-Accept: */*
-Accept-Encoding: gzip, deflate, br
-Accept-Language: zh-CN
-Connection: keep-alive
-Content-Length: 190
-Content-Type: application/json
-Origin: NaN
-User-Agent: ApiPOST Runtime +https://www.apipost.cn
-X-Request-Id: c8k1fa4bcv47phqsiodg
-
-
-Undefined validation function 'optional' on field 'Name'
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:289 (0x132a564)
-	(*Validate).parseFieldTagsRecursive: panic(strings.TrimSpace(fmt.Sprintf(undefinedValidation, current.tag, fieldName)))
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:150 (0x1329278)
-	(*Validate).extractStructCache: ctag, _ = v.parseFieldTagsRecursive(tag, fld.Name, "", false)
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator.go:37 (0x132f9c4)
-	(*validate).validateStruct: cs = v.v.extractStructCache(current, typ.Name())
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:308 (0x13356a9)
-	(*Validate).StructCtx: vd.validateStruct(ctx, top, val, val.Type(), vd.ns[0:0], vd.actualNs[0:0], nil)
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:281 (0x1541108)
-	(*Validate).Struct: return v.StructCtx(context.Background(), s)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:68 (0x15410cb)
-	(*defaultValidator).validateStruct: return v.validate.Struct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:47 (0x1541004)
-	(*defaultValidator).ValidateStruct: return v.validateStruct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:45 (0x1540fa9)
-	(*defaultValidator).ValidateStruct: return v.ValidateStruct(value.Elem().Interface())
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/binding.go:117 (0x1545421)
-	validate: return Validator.ValidateStruct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:55 (0x15453f0)
-	decodeJSON: return validate(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:37 (0x1545228)
-	jsonBinding.Bind: return decodeJSON(req.Body, obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:706 (0x1718fa8)
-	(*Context).ShouldBindWith: return b.Bind(c.Request, obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:671 (0x1718f85)
-	(*Context).ShouldBindJSON: return c.ShouldBindWith(obj, binding.JSON)
-/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:57 (0x1718fa9)
-	(*registerHandler).getRequestBody: return c.ShouldBindJSON(r.req)
-/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:24 (0x1718a24)
-	Register: if err := handler.getRequestBody(ctx); err != nil {
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
-	CustomRecoveryWithWriter.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
-	CustomRecoveryWithWriter.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564033)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1563ff2)
-	LoggerWithConfig.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1559f0f)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x1559ef5)
-	(*Engine).handleHTTPRequest: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x15599aa)
-	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
-/usr/local/go/src/net/http/server.go:2867 (0x12bbce2)
-	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
-/usr/local/go/src/net/http/server.go:1932 (0x12b710c)
-	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
-/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
-	goexit: BYTE	$0x90	// NOP
-[0m
-
-
-[31m2022/03/09 10:58:05 [Recovery] 2022/03/09 - 10:58:05 panic recovered:
-POST /register HTTP/1.1
-Host: localhost:8080
-Accept: */*
-Accept-Encoding: gzip, deflate, br
-Accept-Language: zh-CN
-Connection: keep-alive
-Content-Length: 91
-Content-Type: application/json
-Origin: http://localhost:8080
-User-Agent: ApiPOST Runtime +https://www.apipost.cn
-X-Request-Id: c8k1ffcbcv47phqsioe0
-
-
-Undefined validation function 'optional' on field 'Name'
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:289 (0x132a564)
-	(*Validate).parseFieldTagsRecursive: panic(strings.TrimSpace(fmt.Sprintf(undefinedValidation, current.tag, fieldName)))
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/cache.go:150 (0x1329278)
-	(*Validate).extractStructCache: ctag, _ = v.parseFieldTagsRecursive(tag, fld.Name, "", false)
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator.go:37 (0x132f9c4)
-	(*validate).validateStruct: cs = v.v.extractStructCache(current, typ.Name())
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:308 (0x13356a9)
-	(*Validate).StructCtx: vd.validateStruct(ctx, top, val, val.Type(), vd.ns[0:0], vd.actualNs[0:0], nil)
-/Users/bytedance/go/pkg/mod/github.com/go-playground/validator/v10@v10.4.1/validator_instance.go:281 (0x1541108)
-	(*Validate).Struct: return v.StructCtx(context.Background(), s)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:68 (0x15410cb)
-	(*defaultValidator).validateStruct: return v.validate.Struct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:47 (0x1541004)
-	(*defaultValidator).ValidateStruct: return v.validateStruct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/default_validator.go:45 (0x1540fa9)
-	(*defaultValidator).ValidateStruct: return v.ValidateStruct(value.Elem().Interface())
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/binding.go:117 (0x1545421)
-	validate: return Validator.ValidateStruct(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:55 (0x15453f0)
-	decodeJSON: return validate(obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/binding/json.go:37 (0x1545228)
-	jsonBinding.Bind: return decodeJSON(req.Body, obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:706 (0x1718fa8)
-	(*Context).ShouldBindWith: return b.Bind(c.Request, obj)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:671 (0x1718f85)
-	(*Context).ShouldBindJSON: return c.ShouldBindWith(obj, binding.JSON)
-/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:57 (0x1718fa9)
-	(*registerHandler).getRequestBody: return c.ShouldBindJSON(r.req)
-/Users/bytedance/go/src/oasis/graduation_design/biz/handlers/register_handler.go:24 (0x1718a24)
-	Register: if err := handler.getRequestBody(ctx); err != nil {
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
-	CustomRecoveryWithWriter.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564f59)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1564f40)
-	CustomRecoveryWithWriter.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1564033)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1563ff2)
-	LoggerWithConfig.func1: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1559f0f)
-	(*Context).Next: c.handlers[c.index](c)
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x1559ef5)
-	(*Engine).handleHTTPRequest: c.Next()
-/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x15599aa)
-	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
-/usr/local/go/src/net/http/server.go:2867 (0x12bbce2)
-	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
-/usr/local/go/src/net/http/server.go:1932 (0x12b710c)
-	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
-/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
-	goexit: BYTE	$0x90	// NOP
-[0m
-[2022-03-09 10:59:35.613]	local.info	graduation_design/main.go:20	log init success!
-[2022-03-09 10:59:35.918]	local.info	graduation_design/main.go:24	db init success!
-[2022-03-09 10:59:35.992]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 127.0.0.1:6379: connect: connection refused"}
-[2022-03-09 10:59:53.066]	local.info	handlers/register_handler.go:30	[Register] ReqBody = {"name":"jiejie","email":"hahahahaaaha@qq.com","password":"giegie"}	{"X-Request-Id": "c8k1gacbcv48abvn808g"}
-[2022-03-09 10:59:53.556]	local.info	handlers/register_handler.go:46	[Register] userInfo = {"id":9,"name":"jiejie","login_info_id":9,"created_at":"2022-03-09T10:59:53.42+08:00","updated_at":"2022-03-09T10:59:53.42+08:00","deleted_at":null}	{"X-Request-Id": "c8k1gacbcv48abvn808g"}
-[2022-03-09 11:01:43.444]	local.info	graduation_design/main.go:20	log init success!
-[2022-03-09 11:01:43.734]	local.info	graduation_design/main.go:24	db init success!
-[2022-03-09 11:01:43.807]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 127.0.0.1:6379: connect: connection refused"}
-[2022-03-09 11:01:59.847]	local.info	handlers/register_handler.go:30	[Register] ReqBody = {"email":"hahahahaaaha@aqq.com","password":"giegie"}	{"X-Request-Id": "c8k1h9sbcv48ijrb2o3g"}
-[2022-03-09 11:02:00.340]	local.info	handlers/register_handler.go:53	[Register] userInfo = {"id":10,"name":"polis-01FXPA0KX7B2AP9462T669Z29E","avatar_url":"https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg","login_info_id":10,"created_at":"2022-03-09T11:02:00.197+08:00","updated_at":"2022-03-09T11:02:00.197+08:00","deleted_at":null}	{"X-Request-Id": "c8k1h9sbcv48ijrb2o3g"}
-[2022-03-10 11:01:36.866]	local.info	graduation_design/main.go:21	log init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:01:37.189]	local.info	graduation_design/main.go:25	db init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:01:57.266]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-oasis/graduation_design/initializer.InitializeRedis
-	/Users/bytedance/go/src/oasis/graduation_design/initializer/redis.go:21
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:35
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:01:57.266]	local.info	graduation_design/main.go:36	redis init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:36
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:28:57.319]	local.info	graduation_design/main.go:21	log init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:28:57.608]	local.info	graduation_design/main.go:25	db init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:29:17.693]	local.error	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-oasis/graduation_design/initializer.InitializeRedis
-	/Users/bytedance/go/src/oasis/graduation_design/initializer/redis.go:21
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:35
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 11:29:17.693]	local.info	graduation_design/main.go:36	redis init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:36
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 15:40:50.492]	[34mINFO[0m	graduation_design/main.go:21	log init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 15:40:50.784]	[34mINFO[0m	graduation_design/main.go:25	db init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 15:41:10.870]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-oasis/graduation_design/initializer.InitializeRedis
-	/Users/bytedance/go/src/oasis/graduation_design/initializer/redis.go:21
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:35
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-03-10 15:41:10.870]	[34mINFO[0m	graduation_design/main.go:36	redis init success!
-main.main
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:36
-runtime.main
-	/usr/local/go/src/runtime/proc.go:225
-[2022-04-03 16:48:27.298]	[34mINFO[0m	graduation_design/main.go:21	log init success!
-main.init.0
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:21
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-03 16:48:30.367]	[34mINFO[0m	graduation_design/main.go:25	db init success!
-main.init.0
-	/Users/bytedance/go/src/oasis/graduation_design/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-03 22:49:44.287]	[34mINFO[0m	game_boat/main.go:22	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:22
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-03 22:49:47.959]	[34mINFO[0m	game_boat/main.go:26	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:26
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-03 23:50:39.405]	[34mINFO[0m	game_boat/main.go:22	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:22
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 15:53:44.260]	[34mINFO[0m	game_boat/main.go:23	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:23
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 15:53:44.556]	[34mINFO[0m	game_boat/main.go:27	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:06:46.624]	[34mINFO[0m	game_boat/main.go:23	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:23
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:06:46.901]	[34mINFO[0m	game_boat/main.go:27	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:20:27.346]	[34mINFO[0m	game_boat/main.go:23	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:23
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:20:27.652]	[34mINFO[0m	game_boat/main.go:27	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:20:47.737]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:30
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:20:47.738]	[34mINFO[0m	game_boat/main.go:31	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:31
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 16:20:56.740]	[34mINFO[0m	handlers/register.go:30	[Register] ReqBody = {"email":"hahahaaasssahaaha@qq.com","password":"giegie"}	{"x-request-id": "c95akq4bcv4b462o0i7g"}
-github.com/oasis/game_boat/biz/handlers.Register
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/register.go:30
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 16:20:57.246]	[34mINFO[0m	handlers/register.go:49	[Register] userInfo = {"id":21,"name":"polis-c95akq4bcv4b462o0i80","avatar_url":"https://lf3-static.bytednsdoc.com/obj/eden-cn/lluhfyeh7uhbfpzbps/avatar_default.jpeg","wall_image_url":"https://assets.tapimg.com/web-app/static/img/default_bg.05387bbb.png","like_count":0,"email":"hahahaaasssahaaha@qq.com","login_info_id":21,"created_at":"2022-04-04T16:20:57.097+08:00","updated_at":"2022-04-04T16:20:57.097+08:00","deleted_at":null}	{"x-request-id": "c95akq4bcv4b462o0i7g"}
-github.com/oasis/game_boat/biz/handlers.Register
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/register.go:49
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 18:12:22.653]	[34mINFO[0m	game_boat/main.go:24	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:24
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 18:12:22.933]	[34mINFO[0m	game_boat/main.go:28	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:28
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 19:19:53.038]	[34mINFO[0m	game_boat/main.go:24	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:24
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 19:19:53.322]	[34mINFO[0m	game_boat/main.go:28	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:28
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 21:06:31.563]	[34mINFO[0m	game_boat/main.go:24	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:24
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 21:06:31.859]	[34mINFO[0m	game_boat/main.go:28	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:28
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 21:49:12.800]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 21:49:13.101]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:18:45.715]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:18:46.082]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:19:06.168]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:19:06.168]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:20:10.813]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:20:11.094]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:20:31.178]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:20:31.178]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:22:53.913]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:22:54.196]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:23:14.278]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:23:14.278]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:24:27.367]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:24:27.693]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:24:47.779]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:24:47.779]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:25:58.792]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:25:59.083]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:26:19.168]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:26:19.169]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:27:26.710]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:27:26.993]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:27:47.077]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:27:47.078]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:31:36.406]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:31:39.298]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:31:59.375]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:31:59.375]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:32:08.302]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 5	{"x-request-id": "c95g2q4bcv47eqguendg"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:32:08.589]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 5 5 5	{"x-request-id": "c95g2q4bcv47eqguendg"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:38:41.993]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:38:42.275]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:39:02.357]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:39:02.357]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:41:56.413]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:41:56.683]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:42:16.760]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:42:16.760]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:42:19.755]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 2	{"x-request-id": "c95g7isbcv48qh0plctg"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:42:20.028]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 2 2 2	{"x-request-id": "c95g7isbcv48qh0plctg"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:45:36.499]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:45:36.801]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:45:56.889]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:45:56.890]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:48:34.824]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:48:35.137]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:48:55.215]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:48:55.215]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:49:35.169]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:49:35.497]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:49:55.587]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:49:55.587]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:50:01.602]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 2	{"x-request-id": "c95gb6cbcv49o33sab8g"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:50:01.891]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 2 2 2	{"x-request-id": "c95gb6cbcv49o33sab8g"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:50:08.838]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 2	{"x-request-id": "c95gb84bcv49o33sab90"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:50:09.147]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 2 2 2	{"x-request-id": "c95gb84bcv49o33sab90"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:53:57.589]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:53:57.896]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:54:17.974]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:54:17.974]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:54:59.240]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:54:59.532]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:55:19.627]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:55:19.627]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:55:43.061]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:55:43.376]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:56:03.459]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:56:03.459]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:57:30.057]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:57:30.344]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:57:50.429]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:57:50.429]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:57:53.412]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 2	{"x-request-id": "c95gescbcv4amtvk9jog"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:57:53.720]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 2 2 2	{"x-request-id": "c95gescbcv4amtvk9jog"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:58:16.626]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:58:16.940]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:58:37.024]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:58:37.024]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 22:58:39.526]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 2	{"x-request-id": "c95gf7sbcv4aq3ssl2l0"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 22:58:39.827]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 2 2 2	{"x-request-id": "c95gf7sbcv4aq3ssl2l0"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 23:01:04.035]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:01:04.315]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:01:24.401]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:01:24.401]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:01:40.419]	[34mINFO[0m	game_boat/main.go:25	log init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:25
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:01:40.715]	[34mINFO[0m	game_boat/main.go:29	db init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:29
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:02:00.799]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
-github.com/oasis/game_boat/initializer.InitializeRedis
-	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:32
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:02:00.799]	[34mINFO[0m	game_boat/main.go:33	redis init success!
-main.init.0
-	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
-runtime.doInit
-	/usr/local/go/src/runtime/proc.go:6309
-runtime.main
-	/usr/local/go/src/runtime/proc.go:208
-[2022-04-04 23:02:04.000]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 2	{"x-request-id": "c95ggr4bcv4b7g2sq130"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:28
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
-[2022-04-04 23:02:04.297]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 2 2 2	{"x-request-id": "c95ggr4bcv4b7g2sq130"}
-github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList
-	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/game/three_list.go:43
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.LoggerWithConfig.func1
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
-github.com/gin-gonic/gin.(*Context).Next
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
-github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
-github.com/gin-gonic/gin.(*Engine).ServeHTTP
-	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
-net/http.serverHandler.ServeHTTP
-	/usr/local/go/src/net/http/server.go:2867
-net/http.(*conn).serve
-	/usr/local/go/src/net/http/server.go:1932
+[GIN-debug] GET    /ping                     --> github.com/oasis/game_boat/biz/handlers.Ping (6 handlers)
+[GIN-debug] POST   /get/user/followers       --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowerList (6 handlers)
+[GIN-debug] POST   /get/user/follows         --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowList (6 handlers)
+[GIN-debug] POST   /get/user/relation_count  --> github.com/oasis/game_boat/biz/handlers/get/user.GetRelationCount (6 handlers)
+[GIN-debug] GET    /get/user/game            --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserGame (6 handlers)
+[GIN-debug] GET    /get/user/game_count      --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserGameCount (6 handlers)
+[GIN-debug] GET    /get/game/tag_list        --> github.com/oasis/game_boat/biz/handlers/get/game.GetTagList (6 handlers)
+[GIN-debug] POST   /get/game/in_tag          --> github.com/oasis/game_boat/biz/handlers/get/game.GetGameInTag (6 handlers)
+[GIN-debug] GET    /get/game/three_list      --> github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList (6 handlers)
+[GIN-debug] GET    /get/article/detail       --> github.com/oasis/game_boat/middle_ware.CheckRequestId.func1 (5 handlers)
+[GIN-debug] POST   /get/community            --> github.com/oasis/game_boat/biz/handlers/get.ListCommunity (6 handlers)
+[GIN-debug] POST   /get/main_page            --> github.com/oasis/game_boat/biz/handlers/get.ListMainPage (6 handlers)
+[GIN-debug] POST   /action/game              --> github.com/oasis/game_boat/biz/handlers/action.GameAction (7 handlers)
+[GIN-debug] POST   /update/user/relation     --> github.com/oasis/game_boat/biz/handlers/update/user.PeopleRelate (7 handlers)
+[GIN-debug] POST   /update/user/info         --> github.com/oasis/game_boat/biz/handlers/update/user.UpdateUserInfo (7 handlers)
+[GIN-debug] POST   /register                 --> github.com/oasis/game_boat/biz/handlers.Register (6 handlers)
+[GIN-debug] POST   /login                    --> github.com/oasis/game_boat/biz/handlers.Login (6 handlers)
+[GIN-debug] POST   /logout                   --> github.com/oasis/game_boat/biz/handlers.Logout (8 handlers)
+[GIN-debug] GET    /token_check              --> github.com/oasis/game_boat/biz/handlers.CheckToken (7 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2022/04/09 - 16:24:10 | 404 |       9.651µs |   60.13.138.170 | HEAD     "/"
+[GIN] 2022/04/09 - 16:29:26 | 200 |     2.11689ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:29:27 | 200 |   80.231059ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:29:28 | 200 |    2.112451ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:29:28 | 200 |    1.651942ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:29:28 | 204 |      49.497µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:29:28 | 204 |      24.204µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:29:28 | 200 |    2.043418ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:29:28 | 200 |   83.317034ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:29:28 | 204 |       9.596µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:29:28 | 204 |       6.645µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:29:28 | 200 |     1.03302ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:29:28 | 200 |    1.003487ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:34:35 | 200 |    1.203139ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:34:35 | 200 |   106.29346ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:34:36 | 204 |      22.224µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:34:36 | 204 |      27.657µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:34:36 | 200 |    1.257326ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:34:36 | 200 |   84.753062ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:34:36 | 204 |       9.373µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:34:36 | 204 |       6.895µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:34:36 | 200 |    1.071405ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:34:36 | 200 |     975.762µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:34:37 | 200 |     949.935µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:34:37 | 200 |     788.839µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:35:02 | 204 |      57.257µs |  220.243.131.85 | OPTIONS  "/get/game/in_tag?id=16"
+[GIN] 2022/04/09 - 16:35:02 | 200 |    2.218517ms |  220.243.131.85 | POST     "/get/game/in_tag?id=16"
+[GIN] 2022/04/09 - 16:35:32 | 204 |       9.111µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:35:32 | 204 |        6.84µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:35:32 | 200 |      923.72µs |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:35:32 | 204 |       9.348µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:35:32 | 200 |  389.280273ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:35:32 | 204 |       8.099µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:35:32 | 200 |    1.029528ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:35:32 | 200 |     953.446µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:37:23 | 200 |    3.287846ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:37:23 | 200 |     902.182µs |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:37:24 | 200 |      958.67µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:37:24 | 200 |     848.624µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:37:25 | 204 |        8.55µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:37:25 | 204 |       3.611µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:37:25 | 200 |    1.382287ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:37:25 | 200 |  120.163085ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:37:25 | 204 |        8.35µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:37:25 | 204 |       8.332µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:37:25 | 200 |    1.178073ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:37:25 | 200 |    1.354768ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:16 | 200 |     2.21644ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:40:16 | 200 |    1.034225ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:40:17 | 200 |     966.301µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:40:17 | 200 |      864.93µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:18 | 204 |       8.709µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:40:18 | 204 |       3.589µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:40:18 | 200 |    2.068323ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:40:18 | 200 |  140.147133ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:40:18 | 204 |       9.356µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:18 | 204 |       5.076µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:40:18 | 200 |    1.042406ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:18 | 200 |     734.743µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:40:55 | 404 |       6.221µs |  220.243.131.85 | GET      "/get/main_page?page=1&page_size=10&timestamp=1649493657352"
+[GIN] 2022/04/09 - 16:40:55 | 200 |    1.224684ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:40:55 | 200 |   77.056881ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:40:56 | 200 |    1.030786ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:40:56 | 200 |      837.27µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:57 | 204 |       9.263µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:40:57 | 204 |       3.701µs |  220.243.131.85 | OPTIONS  "/get/main_page?page=1&page_size=10&timestamp=1649493656680"
+[GIN] 2022/04/09 - 16:40:57 | 404 |       7.882µs |  220.243.131.85 | GET      "/get/main_page?page=1&page_size=10&timestamp=1649493656680"
+[GIN] 2022/04/09 - 16:40:57 | 204 |       5.399µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:40:57 | 200 |    1.255652ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:40:57 | 200 |  171.035046ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:40:57 | 204 |      30.894µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:40:57 | 204 |       5.332µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:57 | 200 |    1.103269ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:40:57 | 200 |      772.87µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 200
+[GIN] 2022/04/09 - 16:41:25 | 200 |      101.87µs |  220.243.131.85 | POST     "/get/main_page?page=1&page_size=10&timestamp=1649493686824"
+[GIN] 2022/04/09 - 16:41:25 | 200 |    2.334705ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:41:25 | 200 |    1.007478ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:41:26 | 204 |       9.303µs |  220.243.131.85 | OPTIONS  "/get/main_page?page=1&page_size=10&timestamp=1649493686305"
+[GIN] 2022/04/09 - 16:41:26 | 204 |       4.702µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:41:26 | 204 |       4.743µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 400 with 200
+[GIN] 2022/04/09 - 16:41:26 | 200 |     183.963µs |  220.243.131.85 | POST     "/get/main_page?page=1&page_size=10&timestamp=1649493686305"
+[GIN] 2022/04/09 - 16:41:26 | 200 |     3.51558ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:41:27 | 200 |  209.094649ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:41:27 | 204 |       9.195µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:41:27 | 204 |        4.05µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:41:27 | 200 |    1.082265ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:41:27 | 200 |      972.85µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:41:27 | 200 |    1.028929ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:41:27 | 200 |     745.378µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:42:14 | 200 |    2.254785ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:42:14 | 200 |     3.44958ms |  220.243.131.85 | POST     "/get/main_page?id=16"
+[GIN] 2022/04/09 - 16:42:14 | 200 |     953.962µs |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:42:15 | 200 |     917.772µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:42:15 | 200 |    1.300519ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:42:16 | 204 |      25.207µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:42:16 | 204 |       7.461µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:42:16 | 204 |       5.235µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:42:16 | 200 |    2.836875ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:42:16 | 200 |    2.149336ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:42:16 | 200 |   75.445665ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:42:16 | 204 |       8.796µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:42:16 | 204 |      22.355µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:42:16 | 200 |    1.058406ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:42:16 | 200 |     697.298µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:42:33 | 200 |    2.903361ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:42:33 | 200 |    2.713618ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:42:33 | 200 |  109.611229ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:42:34 | 204 |       8.754µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:42:34 | 204 |        5.32µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:42:34 | 204 |       4.416µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:42:34 | 200 |    2.270624ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:42:34 | 200 |    1.139813ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:42:34 | 200 |  107.349324ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:42:34 | 204 |       9.094µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:42:34 | 204 |       7.063µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:42:35 | 200 |      977.82µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:42:35 | 200 |     809.958µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:42:35 | 200 |     967.022µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:42:35 | 200 |     767.553µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:16 | 200 |    2.429343ms |  220.243.131.85 | POST     "/get/main_page?id=16"
+[GIN] 2022/04/09 - 16:44:16 | 200 |    1.104373ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:44:16 | 200 |   270.68231ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:44:17 | 204 |        8.86µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:44:17 | 204 |        5.86µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:44:17 | 204 |       5.261µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:44:17 | 200 |    2.762439ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:44:17 | 200 |    2.665937ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:44:17 | 200 |  162.082513ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:44:18 | 204 |       8.908µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:18 | 204 |       9.278µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:44:18 | 200 |    2.478903ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:18 | 200 |    1.001134ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:44:21 | 200 |    1.120537ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:21 | 200 |     749.634µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:44:37 | 204 |        8.45µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:44:37 | 204 |       4.523µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:44:37 | 204 |       4.637µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:44:37 | 200 |     2.37919ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:44:37 | 200 |     953.335µs |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:44:37 | 200 |   164.22139ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:44:37 | 200 |    2.156535ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:44:37 | 200 |    1.026746ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:44:37 | 200 |   72.053702ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:44:38 | 204 |       8.605µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:38 | 204 |        4.01µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:44:38 | 200 |     1.14502ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:38 | 200 |     965.558µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:44:38 | 200 |    1.097926ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:44:39 | 200 |     997.873µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:23 | 200 |    2.196944ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:23 | 200 |    1.153493ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:23 | 200 |   102.01967ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:23 | 204 |       7.627µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:23 | 204 |       7.593µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:23 | 204 |        4.93µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:24 | 200 |    3.546344ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:24 | 200 |    3.361315ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:24 | 200 |   150.71144ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:24 | 204 |       8.655µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:24 | 204 |       7.494µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:24 | 200 |    1.023484ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:24 | 200 |     850.595µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:30 | 200 |    1.051038ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:30 | 200 |     915.501µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:42 | 204 |       8.809µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:42 | 204 |        4.56µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:42 | 204 |       3.883µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:42 | 200 |    1.103053ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:42 | 200 |    2.298024ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:42 | 200 |   95.288215ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:43 | 200 |    1.387088ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:43 | 200 |    3.028825ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:43 | 200 |  102.732338ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:43 | 204 |         9.9µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:43 | 204 |       5.189µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:43 | 200 |    1.057992ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:43 | 200 |     902.312µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:48 | 200 |    1.049969ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:48 | 200 |     719.126µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:56 | 200 |    2.249035ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:56 | 200 |    1.100631ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:56 | 200 |   92.392433ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:58 | 204 |       8.644µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:58 | 204 |       4.468µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:58 | 204 |       3.437µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:58 | 200 |    2.143448ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:47:58 | 200 |    3.045934ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:47:58 | 200 |  283.346622ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:47:59 | 204 |       8.604µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:59 | 204 |       7.372µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:47:59 | 200 |    1.001462ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:47:59 | 200 |     783.571µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:48:02 | 200 |    1.010154ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:48:02 | 200 |      781.37µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:48:14 | 204 |       10.25µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:48:14 | 204 |       8.946µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:48:14 | 204 |       5.808µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:48:14 | 200 |    4.003161ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:48:14 | 200 |    3.241606ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:48:14 | 200 |  269.275061ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:48:14 | 200 |    2.223287ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:48:14 | 200 |    1.196065ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:48:15 | 200 |   82.449836ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:48:15 | 204 |       8.699µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:48:15 | 204 |       5.176µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:48:15 | 200 |     988.165µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:48:15 | 200 |     902.588µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:48:23 | 200 |    1.064905ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:48:23 | 200 |     896.614µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:13 | 204 |       8.804µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:49:13 | 204 |       3.875µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:49:13 | 204 |       4.754µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:13 | 200 |    5.213807ms |  220.243.131.85 | POST     "/get/main_page?id=16"
+[GIN] 2022/04/09 - 16:49:13 | 200 |    5.702028ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:49:13 | 200 |     7.44612ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:49:13 | 200 |    5.350499ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:49:13 | 200 |   93.923037ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:13 | 200 |   93.487429ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:13 | 204 |       9.121µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:13 | 204 |       5.382µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:13 | 200 |    1.010052ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:13 | 200 |    1.247098ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:16 | 200 |     992.914µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:16 | 200 |     595.573µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:24 | 204 |       7.515µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:49:24 | 204 |       7.511µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:24 | 204 |       8.519µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:49:24 | 200 |    1.720851ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:49:24 | 200 |    2.665316ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:49:24 | 200 |  167.204014ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:24 | 204 |       8.964µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:24 | 204 |        5.56µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:24 | 200 |     989.067µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:24 | 200 |    1.005751ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:27 | 200 |    1.070776ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:49:27 | 200 |   39.763471ms |  220.243.131.85 | POST     "/get/main_page?id=16"
+[GIN] 2022/04/09 - 16:49:27 | 200 |   80.155514ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:30 | 200 |     950.199µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:30 | 200 |    1.219975ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:31 | 204 |       7.837µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:49:31 | 204 |       7.851µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:31 | 204 |       4.999µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:49:31 | 200 |     2.88151ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:49:31 | 200 |    3.035858ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:49:32 | 200 |  170.951804ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:49:32 | 204 |       8.083µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:32 | 204 |       7.726µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:49:32 | 200 |    1.081966ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:49:32 | 200 |     781.655µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:50:23 | 204 |       9.223µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:50:23 | 204 |       5.251µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:50:23 | 204 |       4.325µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:50:23 | 200 |    2.848347ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:50:23 | 200 |    2.174494ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:50:23 | 200 |  228.732917ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:50:24 | 204 |       9.633µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:50:24 | 204 |       7.201µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:50:24 | 200 |    1.049042ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:50:24 | 200 |     869.024µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 204 |       9.322µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:51:13 | 204 |       4.947µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:51:13 | 204 |       8.126µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:51:13 | 200 |    2.513624ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:51:13 | 200 |    1.218877ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:51:13 | 200 |   98.000651ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:51:13 | 204 |       7.309µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 204 |       4.598µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 200 |     1.13764ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 200 |     981.162µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 200 |    2.555011ms |  220.243.131.85 | POST     "/get/main_page?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 200 |    1.078122ms |  220.243.131.85 | GET      "/token_check?id=16"
+[GIN] 2022/04/09 - 16:51:13 | 200 |  137.917714ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:51:17 | 200 |    1.089988ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:51:17 | 200 |     694.309µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:51:24 | 204 |       9.008µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:51:24 | 204 |       6.169µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:51:24 | 204 |       4.546µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:51:24 | 200 |    5.023542ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:51:24 | 200 |    2.750186ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:51:25 | 200 |  187.439047ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:51:25 | 204 |       8.886µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:51:25 | 204 |       3.598µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:51:26 | 200 |    1.017311ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:51:26 | 200 |    1.009433ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:52:02 | 204 |       7.732µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:52:02 | 204 |       7.742µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:52:02 | 204 |       4.496µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:52:02 | 200 |    3.652446ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:52:02 | 200 |    3.221375ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:52:02 | 200 |  152.983843ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:52:02 | 204 |       8.659µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:52:02 | 204 |       4.458µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:52:02 | 200 |     946.249µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:52:02 | 200 |     807.948µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:52:29 | 204 |       8.997µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:52:29 | 204 |       5.758µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:52:29 | 204 |       4.011µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:52:29 | 200 |    1.657152ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:52:29 | 200 |    2.709399ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:52:29 | 200 |  111.805909ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:52:29 | 204 |       9.711µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:52:29 | 204 |      12.321µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:52:29 | 200 |    1.217924ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:52:29 | 200 |    1.037655ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:53:01 | 204 |        9.31µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:53:01 | 204 |       5.365µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:53:01 | 204 |       4.126µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:53:02 | 200 |    2.164057ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:53:02 | 200 |    3.713171ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:53:02 | 200 |  192.016441ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:53:02 | 204 |       8.058µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:53:02 | 204 |       7.381µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:53:02 | 200 |    1.099533ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:53:02 | 200 |     1.01835ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:53:19 | 204 |       9.191µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:53:19 | 204 |       4.205µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:53:19 | 204 |       4.892µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:53:19 | 200 |    1.642181ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:53:19 | 200 |    2.771731ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:53:19 | 200 |  104.185979ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:53:20 | 204 |       27.65µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:53:20 | 204 |       5.921µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:53:20 | 200 |     2.07508ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:53:20 | 200 |     2.47469ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:53:53 | 200 |    1.546957ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:53:53 | 200 |   41.337656ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:53:53 | 200 |   78.077969ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:53:58 | 200 |     923.268µs |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:53:58 | 200 |     770.193µs |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:55:31 | 204 |      10.272µs |  220.243.131.85 | OPTIONS  "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:55:31 | 204 |        7.75µs |  220.243.131.85 | OPTIONS  "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:55:31 | 204 |       4.443µs |  220.243.131.85 | OPTIONS  "/token_check?id=0"
+[GIN] 2022/04/09 - 16:55:31 | 200 |    2.256252ms |  220.243.131.85 | POST     "/get/main_page?id=0"
+[GIN] 2022/04/09 - 16:55:31 | 200 |    1.470997ms |  220.243.131.85 | GET      "/token_check?id=0"
+[GIN] 2022/04/09 - 16:55:31 | 200 |   99.022212ms |  220.243.131.85 | GET      "/get/game/three_list?page=1&page_size=10&option_list=all"
+[GIN] 2022/04/09 - 16:55:32 | 204 |       9.366µs |  220.243.131.85 | OPTIONS  "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 16:55:32 | 204 |       5.844µs |  220.243.131.85 | OPTIONS  "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:55:32 | 200 |    1.042797ms |  220.243.131.85 | GET      "/get/user/game_count?id=16"
+[GIN] 2022/04/09 - 16:55:32 | 200 |    1.077197ms |  220.243.131.85 | POST     "/get/user/relation_count?id=16"
+[GIN] 2022/04/09 - 17:15:42 | 200 |        5.99µs |  220.243.131.85 | GET      "/get/article/detail?content_id=1"
+[GIN] 2022/04/09 - 17:15:46 | 200 |       5.793µs |  220.243.131.85 | GET      "/get/article/detail?content_id=101"
+[GIN] 2022/04/09 - 17:16:24 | 404 |        5.76µs |  220.243.131.85 | GET      "/get/community?page=1&page_size=10"
+450 349 220 152], page = 1, pageSize = 10	{"x-request-id": "c98kdq6robbbrg6o1clg"}
+[2022-04-09 16:42:16.152]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kdq6robbbrg6o1cm0"}
+[2022-04-09 16:42:16.152]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kdq6robbbrg6o1cmg"}
+[2022-04-09 16:42:16.153]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kdq6robbbrg6o1cmg"}
+[2022-04-09 16:42:16.792]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kdq6robbbrg6o1cn0"}
+[2022-04-09 16:42:16.793]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kdq6robbbrg6o1cn0"}
+[2022-04-09 16:42:16.803]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kdq6robbbrg6o1cng"}
+[2022-04-09 16:42:16.804]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kdq6robbbrg6o1cng"}
+[2022-04-09 16:42:33.452]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649493755107
+}	{"x-request-id": "c98kduerobbbrg6o1co0"}
+[2022-04-09 16:42:33.452]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kduerobbbrg6o1cog"}
+[2022-04-09 16:42:33.453]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kduerobbbrg6o1cp0"}
+[2022-04-09 16:42:33.454]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kduerobbbrg6o1cog"}
+[2022-04-09 16:42:33.455]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [252 411 272 455 16 253 68 425 281 318], page = 1, pageSize = 10	{"x-request-id": "c98kduerobbbrg6o1co0"}
+[2022-04-09 16:42:33.455]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kduerobbbrg6o1cp0"}
+[2022-04-09 16:42:34.657]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649493754256
+}	{"x-request-id": "c98kdumrobbbrg6o1cpg"}
+[2022-04-09 16:42:34.659]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [25 267 89 221 317 274 281 104 340 448], page = 1, pageSize = 10	{"x-request-id": "c98kdumrobbbrg6o1cpg"}
+[2022-04-09 16:42:34.659]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kdumrobbbrg6o1cqg"}
+[2022-04-09 16:42:34.659]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kdumrobbbrg6o1cq0"}
+[2022-04-09 16:42:34.660]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kdumrobbbrg6o1cqg"}
+[2022-04-09 16:42:34.661]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kdumrobbbrg6o1cq0"}
+[2022-04-09 16:42:35.015]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kduurobbbrg6o1cr0"}
+[2022-04-09 16:42:35.016]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kduurobbbrg6o1cr0"}
+[2022-04-09 16:42:35.021]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kduurobbbrg6o1crg"}
+[2022-04-09 16:42:35.022]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kduurobbbrg6o1crg"}
+[2022-04-09 16:42:35.588]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kduurobbbrg6o1cs0"}
+[2022-04-09 16:42:35.589]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kduurobbbrg6o1cs0"}
+[2022-04-09 16:42:35.590]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kduurobbbrg6o1csg"}
+[2022-04-09 16:42:35.591]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kduurobbbrg6o1csg"}
+[2022-04-09 16:44:16.239]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649493857109
+}	{"x-request-id": "c98keo6robbbrg6o1ct0"}
+[2022-04-09 16:44:16.240]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98keo6robbbrg6o1ctg"}
+[2022-04-09 16:44:16.241]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [404 460 344 60 466 56 144 71 291 292], page = 1, pageSize = 10	{"x-request-id": "c98keo6robbbrg6o1ct0"}
+[2022-04-09 16:44:16.242]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98keo6robbbrg6o1ctg"}
+[2022-04-09 16:44:16.256]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98keo6robbbrg6o1cu0"}
+[2022-04-09 16:44:16.256]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98keo6robbbrg6o1cu0"}
+[2022-04-09 16:44:17.584]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98keoerobbbrg6o1cug"}
+[2022-04-09 16:44:17.585]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98keoerobbbrg6o1cv0"}
+[2022-04-09 16:44:17.585]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649493856828
+}	{"x-request-id": "c98keoerobbbrg6o1cvg"}
+[2022-04-09 16:44:17.586]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98keoerobbbrg6o1cv0"}
+[2022-04-09 16:44:17.588]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [163 420 350 152 92 246 102 300 332 459], page = 1, pageSize = 10	{"x-request-id": "c98keoerobbbrg6o1cvg"}
+[2022-04-09 16:44:17.588]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98keoerobbbrg6o1cug"}
+[2022-04-09 16:44:18.334]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98keomrobbbrg6o1d00"}
+[2022-04-09 16:44:18.336]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98keomrobbbrg6o1d00"}
+[2022-04-09 16:44:18.571]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98keomrobbbrg6o1d0g"}
+[2022-04-09 16:44:18.571]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98keomrobbbrg6o1d0g"}
+[2022-04-09 16:44:21.987]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98keperobbbrg6o1d10"}
+[2022-04-09 16:44:21.988]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98keperobbbrg6o1d10"}
+[2022-04-09 16:44:21.994]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98keperobbbrg6o1d1g"}
+[2022-04-09 16:44:21.995]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98keperobbbrg6o1d1g"}
+[2022-04-09 16:44:37.151]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98keterobbbrg6o1d20"}
+[2022-04-09 16:44:37.152]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649493876357
+}	{"x-request-id": "c98keterobbbrg6o1d2g"}
+[2022-04-09 16:44:37.153]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98keterobbbrg6o1d20"}
+[2022-04-09 16:44:37.155]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [9 35 456 255 106 115 103 463 382 425], page = 1, pageSize = 10	{"x-request-id": "c98keterobbbrg6o1d2g"}
+[2022-04-09 16:44:37.156]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98keterobbbrg6o1d30"}
+[2022-04-09 16:44:37.156]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98keterobbbrg6o1d30"}
+[2022-04-09 16:44:37.386]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649493877406
+}	{"x-request-id": "c98keterobbbrg6o1d3g"}
+[2022-04-09 16:44:37.388]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [228 45 158 133 207 381 65 76 276 115], page = 1, pageSize = 10	{"x-request-id": "c98keterobbbrg6o1d3g"}
+[2022-04-09 16:44:37.422]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98keterobbbrg6o1d40"}
+[2022-04-09 16:44:37.424]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98keterobbbrg6o1d40"}
+[2022-04-09 16:44:37.437]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98keterobbbrg6o1d4g"}
+[2022-04-09 16:44:37.437]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98keterobbbrg6o1d4g"}
+[2022-04-09 16:44:38.558]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98ketmrobbbrg6o1d50"}
+[2022-04-09 16:44:38.559]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98ketmrobbbrg6o1d5g"}
+[2022-04-09 16:44:38.559]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98ketmrobbbrg6o1d50"}
+[2022-04-09 16:44:38.560]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98ketmrobbbrg6o1d5g"}
+[2022-04-09 16:44:38.907]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98ketmrobbbrg6o1d60"}
+[2022-04-09 16:44:38.908]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98ketmrobbbrg6o1d60"}
+[2022-04-09 16:44:39.131]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98keturobbbrg6o1d6g"}
+[2022-04-09 16:44:39.132]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98keturobbbrg6o1d6g"}
+[2022-04-09 16:47:23.409]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494044024
+}	{"x-request-id": "c98kg6urobbbrg6o1d70"}
+[2022-04-09 16:47:23.411]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [58 261 263 430 63 196 294 224 376 243], page = 1, pageSize = 10	{"x-request-id": "c98kg6urobbbrg6o1d70"}
+[2022-04-09 16:47:23.415]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kg6urobbbrg6o1d7g"}
+[2022-04-09 16:47:23.416]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kg6urobbbrg6o1d7g"}
+[2022-04-09 16:47:23.491]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kg6urobbbrg6o1d80"}
+[2022-04-09 16:47:23.491]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kg6urobbbrg6o1d80"}
+[2022-04-09 16:47:24.026]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494043290
+}	{"x-request-id": "c98kg76robbbrg6o1d8g"}
+[2022-04-09 16:47:24.026]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kg76robbbrg6o1d90"}
+[2022-04-09 16:47:24.028]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kg76robbbrg6o1d9g"}
+[2022-04-09 16:47:24.028]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kg76robbbrg6o1d90"}
+[2022-04-09 16:47:24.028]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kg76robbbrg6o1d9g"}
+[2022-04-09 16:47:24.029]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [116 230 99 284 365 291 126 3 457 304], page = 1, pageSize = 10	{"x-request-id": "c98kg76robbbrg6o1d8g"}
+[2022-04-09 16:47:24.959]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kg76robbbrg6o1da0"}
+[2022-04-09 16:47:24.960]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kg76robbbrg6o1da0"}
+[2022-04-09 16:47:24.975]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kg76robbbrg6o1dag"}
+[2022-04-09 16:47:24.975]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kg76robbbrg6o1dag"}
+[2022-04-09 16:47:30.190]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kg8mrobbbrg6o1db0"}
+[2022-04-09 16:47:30.191]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kg8mrobbbrg6o1db0"}
+[2022-04-09 16:47:30.345]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kg8mrobbbrg6o1dbg"}
+[2022-04-09 16:47:30.346]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kg8mrobbbrg6o1dbg"}
+[2022-04-09 16:47:42.732]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kgbmrobbbrg6o1dc0"}
+[2022-04-09 16:47:42.732]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kgbmrobbbrg6o1dc0"}
+[2022-04-09 16:47:42.733]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494062055
+}	{"x-request-id": "c98kgbmrobbbrg6o1dcg"}
+[2022-04-09 16:47:42.734]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kgbmrobbbrg6o1dd0"}
+[2022-04-09 16:47:42.735]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [267 209 134 269 221 395 206 338 415 384], page = 1, pageSize = 10	{"x-request-id": "c98kgbmrobbbrg6o1dcg"}
+[2022-04-09 16:47:42.736]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kgbmrobbbrg6o1dd0"}
+[2022-04-09 16:47:43.071]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kgburobbbrg6o1ddg"}
+[2022-04-09 16:47:43.072]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kgburobbbrg6o1de0"}
+[2022-04-09 16:47:43.072]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kgburobbbrg6o1ddg"}
+[2022-04-09 16:47:43.073]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494063209
+}	{"x-request-id": "c98kgburobbbrg6o1deg"}
+[2022-04-09 16:47:43.075]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kgburobbbrg6o1de0"}
+[2022-04-09 16:47:43.076]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [89 415 340 259 448 194 265 80 176 279], page = 1, pageSize = 10	{"x-request-id": "c98kgburobbbrg6o1deg"}
+[2022-04-09 16:47:43.980]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kgburobbbrg6o1df0"}
+[2022-04-09 16:47:43.981]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kgburobbbrg6o1df0"}
+[2022-04-09 16:47:43.996]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kgburobbbrg6o1dfg"}
+[2022-04-09 16:47:43.996]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kgburobbbrg6o1dfg"}
+[2022-04-09 16:47:48.192]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kgd6robbbrg6o1dg0"}
+[2022-04-09 16:47:48.193]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kgd6robbbrg6o1dg0"}
+[2022-04-09 16:47:48.196]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kgd6robbbrg6o1dgg"}
+[2022-04-09 16:47:48.196]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kgd6robbbrg6o1dgg"}
+[2022-04-09 16:47:56.768]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494077457
+}	{"x-request-id": "c98kgf6robbbrg6o1dh0"}
+[2022-04-09 16:47:56.770]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [176 279 281 479 454 139 225 387 350 472], page = 1, pageSize = 10	{"x-request-id": "c98kgf6robbbrg6o1dh0"}
+[2022-04-09 16:47:56.807]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kgf6robbbrg6o1dhg"}
+[2022-04-09 16:47:56.807]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kgf6robbbrg6o1dhg"}
+[2022-04-09 16:47:56.814]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kgf6robbbrg6o1di0"}
+[2022-04-09 16:47:56.815]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kgf6robbbrg6o1di0"}
+[2022-04-09 16:47:58.455]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kgfmrobbbrg6o1dig"}
+[2022-04-09 16:47:58.455]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kgfmrobbbrg6o1dj0"}
+[2022-04-09 16:47:58.456]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kgfmrobbbrg6o1dj0"}
+[2022-04-09 16:47:58.456]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494077727
+}	{"x-request-id": "c98kgfmrobbbrg6o1djg"}
+[2022-04-09 16:47:58.458]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kgfmrobbbrg6o1dig"}
+[2022-04-09 16:47:58.459]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [195 337 164 361 260 468 392 262 233 449], page = 1, pageSize = 10	{"x-request-id": "c98kgfmrobbbrg6o1djg"}
+[2022-04-09 16:47:59.372]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kgfurobbbrg6o1dk0"}
+[2022-04-09 16:47:59.373]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kgfurobbbrg6o1dk0"}
+[2022-04-09 16:47:59.383]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kgfurobbbrg6o1dkg"}
+[2022-04-09 16:47:59.383]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kgfurobbbrg6o1dkg"}
+[2022-04-09 16:48:02.404]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kggmrobbbrg6o1dl0"}
+[2022-04-09 16:48:02.405]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kggmrobbbrg6o1dl0"}
+[2022-04-09 16:48:02.409]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kggmrobbbrg6o1dlg"}
+[2022-04-09 16:48:02.410]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kggmrobbbrg6o1dlg"}
+[2022-04-09 16:48:14.192]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494093587
+}	{"x-request-id": "c98kgjmrobbbrg6o1dm0"}
+[2022-04-09 16:48:14.196]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [253 210 288 356 197 5 452 189 168 292], page = 1, pageSize = 10	{"x-request-id": "c98kgjmrobbbrg6o1dm0"}
+[2022-04-09 16:48:14.201]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kgjmrobbbrg6o1dmg"}
+[2022-04-09 16:48:14.203]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kgjmrobbbrg6o1dn0"}
+[2022-04-09 16:48:14.203]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kgjmrobbbrg6o1dn0"}
+[2022-04-09 16:48:14.205]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kgjmrobbbrg6o1dmg"}
+[2022-04-09 16:48:14.916]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494094765
+}	{"x-request-id": "c98kgjmrobbbrg6o1dng"}
+[2022-04-09 16:48:14.918]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [112 54 89 110 262 423 139 123 173 431], page = 1, pageSize = 10	{"x-request-id": "c98kgjmrobbbrg6o1dng"}
+[2022-04-09 16:48:14.918]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kgjmrobbbrg6o1do0"}
+[2022-04-09 16:48:14.919]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kgjmrobbbrg6o1do0"}
+[2022-04-09 16:48:14.970]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kgjmrobbbrg6o1dog"}
+[2022-04-09 16:48:14.971]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kgjmrobbbrg6o1dog"}
+[2022-04-09 16:48:15.211]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kgjurobbbrg6o1dp0"}
+[2022-04-09 16:48:15.212]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kgjurobbbrg6o1dp0"}
+[2022-04-09 16:48:15.228]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kgjurobbbrg6o1dpg"}
+[2022-04-09 16:48:15.228]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kgjurobbbrg6o1dpg"}
+[2022-04-09 16:48:23.383]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kglurobbbrg6o1dq0"}
+[2022-04-09 16:48:23.384]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kglurobbbrg6o1dqg"}
+[2022-04-09 16:48:23.384]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kglurobbbrg6o1dq0"}
+[2022-04-09 16:48:23.385]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kglurobbbrg6o1dqg"}
+[2022-04-09 16:49:13.092]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494153977
+}	{"x-request-id": "c98kh2erobbbrg6o1dr0"}
+[2022-04-09 16:49:13.094]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494152724
+}	{"x-request-id": "c98kh2erobbbrg6o1drg"}
+[2022-04-09 16:49:13.094]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kh2erobbbrg6o1ds0"}
+[2022-04-09 16:49:13.094]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kh2erobbbrg6o1dsg"}
+[2022-04-09 16:49:13.096]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kh2erobbbrg6o1ds0"}
+[2022-04-09 16:49:13.096]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kh2erobbbrg6o1dt0"}
+[2022-04-09 16:49:13.096]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kh2erobbbrg6o1dtg"}
+[2022-04-09 16:49:13.097]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [107 7 389 31 127 158 74 143 246 201], page = 1, pageSize = 10	{"x-request-id": "c98kh2erobbbrg6o1dr0"}
+[2022-04-09 16:49:13.099]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kh2erobbbrg6o1dtg"}
+[2022-04-09 16:49:13.100]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [17 120 427 479 157 253 443 172 37 151], page = 1, pageSize = 10	{"x-request-id": "c98kh2erobbbrg6o1drg"}
+[2022-04-09 16:49:13.101]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kh2erobbbrg6o1dsg"}
+[2022-04-09 16:49:13.102]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kh2erobbbrg6o1dt0"}
+[2022-04-09 16:49:13.592]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kh2erobbbrg6o1du0"}
+[2022-04-09 16:49:13.592]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kh2erobbbrg6o1dug"}
+[2022-04-09 16:49:13.593]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kh2erobbbrg6o1dug"}
+[2022-04-09 16:49:13.593]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kh2erobbbrg6o1du0"}
+[2022-04-09 16:49:16.435]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kh36robbbrg6o1dv0"}
+[2022-04-09 16:49:16.436]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kh36robbbrg6o1dv0"}
+[2022-04-09 16:49:16.436]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kh36robbbrg6o1dvg"}
+[2022-04-09 16:49:16.437]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kh36robbbrg6o1dvg"}
+[2022-04-09 16:49:24.501]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kh56robbbrg6o1e00"}
+[2022-04-09 16:49:24.501]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kh56robbbrg6o1e0g"}
+[2022-04-09 16:49:24.502]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kh56robbbrg6o1e0g"}
+[2022-04-09 16:49:24.502]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494164017
+}	{"x-request-id": "c98kh56robbbrg6o1e10"}
+[2022-04-09 16:49:24.504]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kh56robbbrg6o1e00"}
+[2022-04-09 16:49:24.505]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [57 189 424 470 2 158 265 440 275 153], page = 1, pageSize = 10	{"x-request-id": "c98kh56robbbrg6o1e10"}
+[2022-04-09 16:49:24.734]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kh56robbbrg6o1e1g"}
+[2022-04-09 16:49:24.734]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kh56robbbrg6o1e20"}
+[2022-04-09 16:49:24.735]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kh56robbbrg6o1e1g"}
+[2022-04-09 16:49:24.735]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kh56robbbrg6o1e20"}
+[2022-04-09 16:49:27.370]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kh5urobbbrg6o1e2g"}
+[2022-04-09 16:49:27.371]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494168781
+}	{"x-request-id": "c98kh5urobbbrg6o1e30"}
+[2022-04-09 16:49:27.375]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kh5urobbbrg6o1e2g"}
+[2022-04-09 16:49:27.382]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kh5urobbbrg6o1e3g"}
+[2022-04-09 16:49:27.382]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kh5urobbbrg6o1e3g"}
+[2022-04-09 16:49:27.411]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [72 216 257 6 295 457 315 154 455 355], page = 1, pageSize = 10	{"x-request-id": "c98kh5urobbbrg6o1e30"}
+[2022-04-09 16:49:30.636]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kh6mrobbbrg6o1e40"}
+[2022-04-09 16:49:30.636]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kh6mrobbbrg6o1e4g"}
+[2022-04-09 16:49:30.637]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kh6mrobbbrg6o1e4g"}
+[2022-04-09 16:49:30.637]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kh6mrobbbrg6o1e40"}
+[2022-04-09 16:49:31.891]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494171540
+}	{"x-request-id": "c98kh6urobbbrg6o1e50"}
+[2022-04-09 16:49:31.891]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kh6urobbbrg6o1e60"}
+[2022-04-09 16:49:31.891]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kh6urobbbrg6o1e5g"}
+[2022-04-09 16:49:31.892]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kh6urobbbrg6o1e60"}
+[2022-04-09 16:49:31.894]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [314 430 237 105 207 350 168 18 297 211], page = 1, pageSize = 10	{"x-request-id": "c98kh6urobbbrg6o1e50"}
+[2022-04-09 16:49:31.894]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kh6urobbbrg6o1e5g"}
+[2022-04-09 16:49:32.142]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kh76robbbrg6o1e6g"}
+[2022-04-09 16:49:32.142]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kh76robbbrg6o1e70"}
+[2022-04-09 16:49:32.143]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kh76robbbrg6o1e6g"}
+[2022-04-09 16:49:32.143]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kh76robbbrg6o1e70"}
+[2022-04-09 16:50:23.743]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494223307
+}	{"x-request-id": "c98khjurobbbrg6o1e7g"}
+[2022-04-09 16:50:23.743]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98khjurobbbrg6o1e80"}
+[2022-04-09 16:50:23.744]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98khjurobbbrg6o1e8g"}
+[2022-04-09 16:50:23.744]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98khjurobbbrg6o1e8g"}
+[2022-04-09 16:50:23.746]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [323 32 388 318 176 414 180 250 170 246], page = 1, pageSize = 10	{"x-request-id": "c98khjurobbbrg6o1e7g"}
+[2022-04-09 16:50:23.746]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98khjurobbbrg6o1e80"}
+[2022-04-09 16:50:24.651]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98khk6robbbrg6o1e90"}
+[2022-04-09 16:50:24.652]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98khk6robbbrg6o1e90"}
+[2022-04-09 16:50:24.659]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98khk6robbbrg6o1e9g"}
+[2022-04-09 16:50:24.659]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98khk6robbbrg6o1e9g"}
+[2022-04-09 16:51:13.165]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494272755
+}	{"x-request-id": "c98ki0erobbbrg6o1ea0"}
+[2022-04-09 16:51:13.166]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98ki0erobbbrg6o1eag"}
+[2022-04-09 16:51:13.167]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [384 210 110 323 390 78 229 257 139 64], page = 1, pageSize = 10	{"x-request-id": "c98ki0erobbbrg6o1ea0"}
+[2022-04-09 16:51:13.168]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98ki0erobbbrg6o1eag"}
+[2022-04-09 16:51:13.198]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98ki0erobbbrg6o1eb0"}
+[2022-04-09 16:51:13.198]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98ki0erobbbrg6o1eb0"}
+[2022-04-09 16:51:13.492]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98ki0erobbbrg6o1ebg"}
+[2022-04-09 16:51:13.493]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98ki0erobbbrg6o1ec0"}
+[2022-04-09 16:51:13.493]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98ki0erobbbrg6o1ebg"}
+[2022-04-09 16:51:13.493]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98ki0erobbbrg6o1ec0"}
+[2022-04-09 16:51:13.693]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494273741
+}	{"x-request-id": "c98ki0erobbbrg6o1ecg"}
+[2022-04-09 16:51:13.694]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98ki0erobbbrg6o1ed0"}
+[2022-04-09 16:51:13.695]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [5 248 448 9 405 321 115 273 136 130], page = 1, pageSize = 10	{"x-request-id": "c98ki0erobbbrg6o1ecg"}
+[2022-04-09 16:51:13.696]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98ki0erobbbrg6o1ed0"}
+[2022-04-09 16:51:13.714]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98ki0erobbbrg6o1edg"}
+[2022-04-09 16:51:13.715]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98ki0erobbbrg6o1edg"}
+[2022-04-09 16:51:17.279]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98ki1erobbbrg6o1ee0"}
+[2022-04-09 16:51:17.280]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98ki1erobbbrg6o1ee0"}
+[2022-04-09 16:51:17.280]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98ki1erobbbrg6o1eeg"}
+[2022-04-09 16:51:17.280]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98ki1erobbbrg6o1eeg"}
+[2022-04-09 16:51:24.973]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494284588
+}	{"x-request-id": "c98ki36robbbrg6o1ef0"}
+[2022-04-09 16:51:24.976]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98ki36robbbrg6o1efg"}
+[2022-04-09 16:51:24.976]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98ki36robbbrg6o1efg"}
+[2022-04-09 16:51:24.978]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [96 255 136 168 66 418 337 14 153 252], page = 1, pageSize = 10	{"x-request-id": "c98ki36robbbrg6o1ef0"}
+[2022-04-09 16:51:25.232]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98ki3erobbbrg6o1eg0"}
+[2022-04-09 16:51:25.234]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98ki3erobbbrg6o1eg0"}
+[2022-04-09 16:51:26.030]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98ki3mrobbbrg6o1egg"}
+[2022-04-09 16:51:26.031]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98ki3mrobbbrg6o1eh0"}
+[2022-04-09 16:51:26.031]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98ki3mrobbbrg6o1egg"}
+[2022-04-09 16:51:26.031]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98ki3mrobbbrg6o1eh0"}
+[2022-04-09 16:52:02.575]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kicmrobbbrg6o1ehg"}
+[2022-04-09 16:52:02.575]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kicmrobbbrg6o1ei0"}
+[2022-04-09 16:52:02.576]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kicmrobbbrg6o1ei0"}
+[2022-04-09 16:52:02.576]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494322219
+}	{"x-request-id": "c98kicmrobbbrg6o1eig"}
+[2022-04-09 16:52:02.578]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kicmrobbbrg6o1ehg"}
+[2022-04-09 16:52:02.579]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [456 284 191 67 181 106 429 289 211 276], page = 1, pageSize = 10	{"x-request-id": "c98kicmrobbbrg6o1eig"}
+[2022-04-09 16:52:02.807]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kicmrobbbrg6o1ej0"}
+[2022-04-09 16:52:02.808]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kicmrobbbrg6o1ej0"}
+[2022-04-09 16:52:02.820]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kicmrobbbrg6o1ejg"}
+[2022-04-09 16:52:02.821]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kicmrobbbrg6o1ejg"}
+[2022-04-09 16:52:29.384]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kijerobbbrg6o1ek0"}
+[2022-04-09 16:52:29.384]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kijerobbbrg6o1ekg"}
+[2022-04-09 16:52:29.385]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kijerobbbrg6o1ek0"}
+[2022-04-09 16:52:29.385]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494349006
+}	{"x-request-id": "c98kijerobbbrg6o1el0"}
+[2022-04-09 16:52:29.387]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kijerobbbrg6o1ekg"}
+[2022-04-09 16:52:29.388]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [376 56 330 35 213 473 58 437 26 362], page = 1, pageSize = 10	{"x-request-id": "c98kijerobbbrg6o1el0"}
+[2022-04-09 16:52:29.677]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kijerobbbrg6o1elg"}
+[2022-04-09 16:52:29.677]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kijerobbbrg6o1em0"}
+[2022-04-09 16:52:29.678]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kijerobbbrg6o1elg"}
+[2022-04-09 16:52:29.678]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kijerobbbrg6o1em0"}
+[2022-04-09 16:53:02.016]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494381654
+}	{"x-request-id": "c98kirmrobbbrg6o1emg"}
+[2022-04-09 16:53:02.016]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kirmrobbbrg6o1en0"}
+[2022-04-09 16:53:02.017]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kirmrobbbrg6o1eng"}
+[2022-04-09 16:53:02.018]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kirmrobbbrg6o1eng"}
+[2022-04-09 16:53:02.018]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kirmrobbbrg6o1en0"}
+[2022-04-09 16:53:02.019]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [290 335 66 52 62 481 115 172 385 68], page = 1, pageSize = 10	{"x-request-id": "c98kirmrobbbrg6o1emg"}
+[2022-04-09 16:53:02.331]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kirmrobbbrg6o1eo0"}
+[2022-04-09 16:53:02.331]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kirmrobbbrg6o1eog"}
+[2022-04-09 16:53:02.332]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kirmrobbbrg6o1eo0"}
+[2022-04-09 16:53:02.332]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kirmrobbbrg6o1eog"}
+[2022-04-09 16:53:19.776]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kivurobbbrg6o1ep0"}
+[2022-04-09 16:53:19.776]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kivurobbbrg6o1epg"}
+[2022-04-09 16:53:19.776]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kivurobbbrg6o1ep0"}
+[2022-04-09 16:53:19.777]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494399357
+}	{"x-request-id": "c98kivurobbbrg6o1eq0"}
+[2022-04-09 16:53:19.780]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [390 56 97 87 88 59 281 404 266 475], page = 1, pageSize = 10	{"x-request-id": "c98kivurobbbrg6o1eq0"}
+[2022-04-09 16:53:19.780]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kivurobbbrg6o1epg"}
+[2022-04-09 16:53:20.139]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kj06robbbrg6o1eqg"}
+[2022-04-09 16:53:20.139]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kj06robbbrg6o1er0"}
+[2022-04-09 16:53:20.141]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kj06robbbrg6o1er0"}
+[2022-04-09 16:53:20.141]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kj06robbbrg6o1eqg"}
+[2022-04-09 16:53:53.247]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494435031
+}	{"x-request-id": "c98kj8erobbbrg6o1erg"}
+[2022-04-09 16:53:53.249]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kj8erobbbrg6o1es0"}
+[2022-04-09 16:53:53.249]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzQ0NDIsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDE0MjQyfQ.Q9tqDgZyKZqXAq_A8imZRYZ_zgA_HlHBlDVrkeU92Gs	{"x-request-id": "c98kj8erobbbrg6o1esg"}
+[2022-04-09 16:53:53.250]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kj8erobbbrg6o1esg"}
+[2022-04-09 16:53:53.251]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kj8erobbbrg6o1es0"}
+[2022-04-09 16:53:53.288]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [278 277 67 57 248 387 52 79 149 70], page = 1, pageSize = 10	{"x-request-id": "c98kj8erobbbrg6o1erg"}
+[2022-04-09 16:53:58.445]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kj9mrobbbrg6o1et0"}
+[2022-04-09 16:53:58.446]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kj9mrobbbrg6o1et0"}
+[2022-04-09 16:53:58.447]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kj9mrobbbrg6o1etg"}
+[2022-04-09 16:53:58.448]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kj9mrobbbrg6o1etg"}
+[2022-04-09 16:55:31.438]	[34mINFO[0m	get/main_page.go:27	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649494531070
+}	{"x-request-id": "c98kk0urobbbrg6o1eu0"}
+[2022-04-09 16:55:31.441]	[34mINFO[0m	get/main_page.go:65	[ListMainPage] success, gameIdList = [178 261 281 29 487 42 405 485 221 32], page = 1, pageSize = 10	{"x-request-id": "c98kk0urobbbrg6o1eu0"}
+[2022-04-09 16:55:31.441]	[34mINFO[0m	game/three_list.go:28	[GetGameThreeList], key = all, page = 1, pageSize = 10	{"x-request-id": "c98kk0urobbbrg6o1eug"}
+[2022-04-09 16:55:31.443]	[34mINFO[0m	middle_ware/auth.go:33	tokenStr = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk2NzIxMjgsImp0aSI6IjE2IiwiaXNzIjoiYXBwIiwibmJmIjoxNjQ5NDExOTI4fQ.8QMdho3AG1Y7vfStp9XWx_hLaGRlo1OoMzc1b3kBWnA	{"x-request-id": "c98kk0urobbbrg6o1ev0"}
+[2022-04-09 16:55:31.443]	[34mINFO[0m	game/three_list.go:43	[GetGameThreeList] key = all resp.len = 10 10 10	{"x-request-id": "c98kk0urobbbrg6o1eug"}
+[2022-04-09 16:55:31.443]	[34mINFO[0m	handlers/token_check.go:20	[CheckToken] id = 16	{"x-request-id": "c98kk0urobbbrg6o1ev0"}
+[2022-04-09 16:55:32.611]	[34mINFO[0m	user/game.go:83	[GetUserGameCount] userId = 16	{"x-request-id": "c98kk16robbbrg6o1evg"}
+[2022-04-09 16:55:32.612]	[34mINFO[0m	user/relation_info.go:191	[GetRelationCount] req = {
+	"a_user_id": 16
+}	{"x-request-id": "c98kk16robbbrg6o1f00"}
+[2022-04-09 16:55:32.612]	[34mINFO[0m	user/game.go:94	[GetUserGameCount] userId = 16 resp = {
+	"collected_count": 4,
+	"reserved_count": 0
+}	{"x-request-id": "c98kk16robbbrg6o1evg"}
+[2022-04-09 16:55:32.613]	[34mINFO[0m	user/relation_info.go:207	[GetRelationCount] resp = {
+	"follow_count": 1,
+	"follower_count": 1
+}	{"x-request-id": "c98kk16robbbrg6o1f00"}

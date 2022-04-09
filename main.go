@@ -5,6 +5,7 @@ import (
 
 	"github.com/oasis/game_boat/biz/handlers"
 	handlerAction "github.com/oasis/game_boat/biz/handlers/action"
+	"github.com/oasis/game_boat/biz/handlers/get"
 	handlerGetGame "github.com/oasis/game_boat/biz/handlers/get/game"
 	handlerGetUser "github.com/oasis/game_boat/biz/handlers/get/user"
 	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/update/user"
@@ -94,14 +95,14 @@ func register(r *gin.Engine) {
 			//game.GET("/evaluation")                          //评价
 			//game.GET("/")
 		}
-		//{
-		//	article := rGet.Group("/article") //文章
-		//	article.GET("/detail")            //详情
-		//}
-		//{
-		//	rGet.GET("/community") //社区页
-		//	rGet.GET("/main_page") //首页
-		//}
+		{
+			article := rGet.Group("/article") //文章
+			article.GET("/detail")            //详情
+		}
+		{
+			rGet.POST("/community", get.ListCommunity) //社区页
+			rGet.POST("/main_page", get.ListMainPage) //首页
+		}
 	}
 
 	{ //数据写入相关接口

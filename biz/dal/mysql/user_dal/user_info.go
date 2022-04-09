@@ -4,6 +4,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cast"
 
+	"github.com/oasis/game_boat/biz/model/content_model"
 	"github.com/oasis/game_boat/biz/model/user_model"
 	"github.com/oasis/game_boat/global"
 	"github.com/oasis/game_boat/utils"
@@ -79,4 +80,24 @@ func UpdateUserInfo(userInfo *user_model.UserInfo) error {
 // UpdateUserLoginInfo 更新用户登陆信息
 func UpdateUserLoginInfo(userLoginInfo *user_model.UserLoginInfo) error {
 	return errors.Wrap(global.App.DB.Debug().Where("id = ?", userLoginInfo.ID.ID).Updates(userLoginInfo).Error, "更新用户登陆信息失败")
+}
+
+// GetUserInfoByContent 根据内容获取用户信息
+func GetUserInfoByContent(contents map[int64]*content_model.Content) (map[int64]*user_model.UserInfo, error) {
+	authorIds := make([]uint, 0)
+	for _, content := range contents {
+		authorIds = append(authorIds, content.AuthorId)
+	}
+
+	authorInfoMap, err := GetUserInfoMap(authorIds)
+	if err != nil {
+		return nil, errors.Wrap(err, "GetUserInfoByContent -> GetUserInfoMap Fail")
+	}
+
+	res := make(map[int64]*user_model.UserInfo)
+	for _, content := range contents {
+		res[content.ContentId] = authorInfoMap[content.AuthorId]
+	}
+
+	return res, nil
 }

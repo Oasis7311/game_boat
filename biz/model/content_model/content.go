@@ -27,12 +27,14 @@ type ContentResponse struct {
 	CoverImageUrl string                `json:"cover_image_url,omitempty"`
 	ImageList     []*common_model.Image `json:"image_list,omitempty"`
 	Summary       string                `json:"summary,omitempty"`
+	Text          string                `json:"text,omitempty"`
 	PublishTime   int64                 `json:"publish_time,omitempty"`
 	LikeCount     uint                  `json:"like_count,omitempty"`
 }
 
 type ContentBuffer struct {
 	ContentImage []*common_model.Image `json:"content_image"`
-	Summary      string `json:"summary"`
-	PublishTime  int64 `json:"publish_time"`
+	Summary      string                `json:"summary"`
+	PublishTime  int64                 `json:"publish_time"`
+	Text         string                `json:"text"`
 }

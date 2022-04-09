@@ -80,7 +80,7 @@ func (c *GetContentDetailHandler) getContentDetail() error {
 			SubTitle:      content.SubTitle,
 			CoverImageUrl: content.CoverImageUrl,
 			ImageList:     c.contentBufferMap[contentId].ContentImage,
-			Summary:       c.contentBufferMap[contentId].Summary,
+			Text:          c.contentBufferMap[contentId].Text,
 			PublishTime:   c.contentBufferMap[contentId].PublishTime,
 			LikeCount:     0, //todo LikeCount填充
 		}

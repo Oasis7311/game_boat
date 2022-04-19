@@ -58,7 +58,7 @@ func GetUserInfoMap(id []uint) (map[uint]*user_model.UserInfo, error) {
 	userList := make([]*user_model.UserInfo, 0)
 	err := global.App.DB.Debug().Where("id in (?)", id).Find(&userList).Error
 	if err != nil {
-		return nil, errors.Wrap(err, "获取用户信息失败")
+		return map[uint]*user_model.UserInfo{}, errors.Wrap(err, "获取用户信息失败")
 	}
 
 	res := make(map[uint]*user_model.UserInfo)

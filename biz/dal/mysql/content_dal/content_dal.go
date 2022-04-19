@@ -39,3 +39,10 @@ func CreateContent(content *content_model.Content) error {
 	err := global.App.DB.Debug().Create(content).Error
 	return errors.Wrap(err, "CreateContent fail")
 }
+
+// GetContentListByUserId 获取用户发表的内容
+func GetContentListByUserId(userId uint) ([]*content_model.Content, error) {
+	res := make([]*content_model.Content, 0)
+	err := global.App.DB.Debug().Where("author_id = ? ", userId).Order("content_id desc ").Find(&res).Error
+	return res, errors.Wrap(err, "GetContentListByUserId Fail")
+}

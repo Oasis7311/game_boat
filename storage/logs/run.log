@@ -1,74 +1,691 @@
-read config: config_product.yaml
-config = {
-	"app": {
-		"env": "local",
-		"port": "8080",
-		"app_name": "gin-app",
-		"app_url": "http://localhost"
-	},
-	"log": {
-		"level": "info",
-		"root_dir": "./storage/logs",
-		"filename": "run.log",
-		"format": "console",
-		"show_line": true,
-		"max_backups": 10,
-		"max_size": 100,
-		"max_age": 28,
-		"compress": true
-	},
-	"database": {
-		"driver": "mysql",
-		"host": "127.0.0.1",
-		"port": 3306,
-		"database": "polis",
-		"username": "root",
-		"password": "root",
-		"charset": "utf8mb4",
-		"max_idle_conns": 10,
-		"max_open_conns": 100,
-		"log_mode": "info",
-		"enable_file_log_writer": true,
-		"log_filename": "sql.log"
-	},
-	"jwt": {
-		"secret": "3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s",
-		"jwt_ttl": 259200,
-		"jwt_blacklist_grace_period": 10,
-		"refresh_grace_period": 43200
-	},
-	"redis": {
-		"host": "127.0.0.1",
-		"port": 6379,
-		"db": 0,
-		"password": ""
-	}
-}
-[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+[2022-04-09 17:10:36.597]	[34mINFO[0m	game_boat/main.go:26	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:26
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:10:36.838]	[34mINFO[0m	game_boat/main.go:30	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:30
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:10:56.920]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:10:56.920]	[34mINFO[0m	game_boat/main.go:34	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:11:51.381]	[34mINFO[0m	get/community.go:39	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649492339
+}	{"x-request-id": "c98krlsbcv4d0tmb65k0"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:39
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:11:51.476]	[34mINFO[0m	get/community.go:49	[ListMainPage] GetAllContentId success, lend = 678	{"x-request-id": "c98krlsbcv4d0tmb65k0"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:49
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
 
-[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
- - using env:	export GIN_MODE=release
- - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /ping                     --> github.com/oasis/game_boat/biz/handlers.Ping (6 handlers)
-[GIN-debug] POST   /get/user/followers       --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowerList (6 handlers)
-[GIN-debug] POST   /get/user/follows         --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserFollowList (6 handlers)
-[GIN-debug] POST   /get/user/relation_count  --> github.com/oasis/game_boat/biz/handlers/get/user.GetRelationCount (6 handlers)
-[GIN-debug] GET    /get/user/game            --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserGame (6 handlers)
-[GIN-debug] GET    /get/user/game_count      --> github.com/oasis/game_boat/biz/handlers/get/user.GetUserGameCount (6 handlers)
-[GIN-debug] GET    /get/game/tag_list        --> github.com/oasis/game_boat/biz/handlers/get/game.GetTagList (6 handlers)
-[GIN-debug] POST   /get/game/in_tag          --> github.com/oasis/game_boat/biz/handlers/get/game.GetGameInTag (6 handlers)
-[GIN-debug] GET    /get/game/three_list      --> github.com/oasis/game_boat/biz/handlers/get/game.GetGameThreeList (6 handlers)
-[GIN-debug] GET    /get/content/detail       --> github.com/oasis/game_boat/biz/handlers/get/content.GetContentDetail (6 handlers)
-[GIN-debug] POST   /get/community            --> github.com/oasis/game_boat/biz/handlers/get.ListCommunity (6 handlers)
-[GIN-debug] POST   /get/main_page            --> github.com/oasis/game_boat/biz/handlers/get.ListMainPage (6 handlers)
-[GIN-debug] POST   /action/game              --> github.com/oasis/game_boat/biz/handlers/action.GameAction (7 handlers)
-[GIN-debug] POST   /update/user/relation     --> github.com/oasis/game_boat/biz/handlers/update/user.PeopleRelate (7 handlers)
-[GIN-debug] POST   /update/user/info         --> github.com/oasis/game_boat/biz/handlers/update/user.UpdateUserInfo (7 handlers)
-[GIN-debug] POST   /register                 --> github.com/oasis/game_boat/biz/handlers.Register (6 handlers)
-[GIN-debug] POST   /login                    --> github.com/oasis/game_boat/biz/handlers.Login (6 handlers)
-[GIN-debug] POST   /logout                   --> github.com/oasis/game_boat/biz/handlers.Logout (8 handlers)
-[GIN-debug] GET    /token_check              --> github.com/oasis/game_boat/biz/handlers.CheckToken (7 handlers)
-[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
-Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
-[GIN-debug] Listening and serving HTTP on :8080
+[31m2022/04/09 17:11:51 [Recovery] 2022/04/09 - 17:11:51 panic recovered:
+POST /get/community HTTP/1.1
+Host: localhost:8080
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN
+Connection: keep-alive
+Content-Length: 69
+Content-Type: application/json
+Origin: http://localhost:8080
+User-Agent: ApiPOST Runtime +https://www.apipost.cn
+X-Request-Id: c98krlsbcv4d0tmb65k0
+
+
+reflect: reflect.Value.Set using unaddressable value
+/usr/local/go/src/reflect/value.go:260 (0x10a2ad7)
+	flag.mustBeAssignableSlow: panic("reflect: " + methodNameSkip() + " using unaddressable value")
+/usr/local/go/src/reflect/value.go:247 (0x10a92fa)
+	flag.mustBeAssignable: f.mustBeAssignableSlow()
+/usr/local/go/src/reflect/value.go:1558 (0x10a92e1)
+	Value.Set: v.mustBeAssignable()
+/Users/bytedance/go/pkg/mod/gorm.io/gorm@v1.23.4/scan.go:236 (0x15e5fd0)
+	Scan: db.Statement.ReflectValue.Set(reflect.MakeSlice(reflectValue.Type(), 0, 20))
+/Users/bytedance/go/pkg/mod/gorm.io/gorm@v1.23.4/callbacks/query.go:26 (0x17f3844)
+	Query: gorm.Scan(rows, db, 0)
+/Users/bytedance/go/pkg/mod/gorm.io/gorm@v1.23.4/callbacks.go:130 (0x15d41d4)
+	(*processor).Execute: f(db)
+/Users/bytedance/go/pkg/mod/gorm.io/gorm@v1.23.4/finisher_api.go:125 (0x15da48a)
+	(*DB).First: return tx.callbacks.Query().Execute(tx)
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14 (0x17abd7c)
+	GetContentRaw: err := global.App.DB.Debug().Where("content_id in (?)", contentIds).First(contents).Error
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:65 (0x17ad22a)
+	ListCommunity: s.contentMap, err = content_dal.GetContentRaw(needContentIds)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1578899)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1578880)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1578899)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1578880)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1577973)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1577932)
+	LoggerWithConfig.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x156d84f)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x156d835)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x156d2ea)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/go/src/net/http/server.go:2867 (0x12bc162)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/go/src/net/http/server.go:1932 (0x12b758c)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
+	goexit: BYTE	$0x90	// NOP
+[0m
+[2022-04-09 17:13:37.741]	[34mINFO[0m	game_boat/main.go:26	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:26
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:13:38.009]	[34mINFO[0m	game_boat/main.go:30	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:30
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:13:58.091]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:13:58.091]	[34mINFO[0m	game_boat/main.go:34	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:14:02.967]	[34mINFO[0m	get/community.go:39	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649492339
+}	{"x-request-id": "c98ksmkbcv4dcada4oa0"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:39
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:14:03.059]	[34mINFO[0m	get/community.go:49	[ListMainPage] GetAllContentId success, lend = 678	{"x-request-id": "c98ksmkbcv4dcada4oa0"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:49
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:14:03.147]	[34mINFO[0m	get/community.go:71	[ListMainPage] get raw content success	{"x-request-id": "c98ksmkbcv4dcada4oa0"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:71
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+
+
+[31m2022/04/09 17:14:03 [Recovery] 2022/04/09 - 17:14:03 panic recovered:
+POST /get/community HTTP/1.1
+Host: localhost:8080
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN
+Connection: keep-alive
+Content-Length: 69
+Content-Type: application/json
+Origin: http://localhost:8080
+User-Agent: ApiPOST Runtime +https://www.apipost.cn
+X-Request-Id: c98ksmkbcv4dcada4oa0
+
+
+assignment to entry in nil map
+/usr/local/go/src/runtime/map_fast64.go:94 (0x1014179)
+	mapassign_fast64: panic(plainError("assignment to entry in nil map"))
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:118 (0x17ae0e4)
+	(*CommunityHandler).getContentBuffer: c.contentBufferMap[id] = buffer
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:95 (0x17adbf1)
+	(*CommunityHandler).getContentDetail: c.getContentBuffer()
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:73 (0x17ad535)
+	ListCommunity: err = s.getContentDetail()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1578899)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1578880)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1578899)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1578880)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1577973)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1577932)
+	LoggerWithConfig.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x156d84f)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x156d835)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x156d2ea)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/go/src/net/http/server.go:2867 (0x12bc162)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/go/src/net/http/server.go:1932 (0x12b758c)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
+	goexit: BYTE	$0x90	// NOP
+[0m
+[2022-04-09 17:15:52.713]	[34mINFO[0m	game_boat/main.go:26	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:26
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:15:52.989]	[34mINFO[0m	game_boat/main.go:30	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:30
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:16:13.069]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:33
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:16:13.069]	[34mINFO[0m	game_boat/main.go:34	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:16:17.703]	[34mINFO[0m	get/community.go:44	[ListMainPage] req = {
+	"page": 1,
+	"page_size": 10,
+	"timestamp": 1649492339
+}	{"x-request-id": "c98ktocbcv4dkoucc22g"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:44
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:16:17.794]	[34mINFO[0m	get/community.go:54	[ListMainPage] GetAllContentId success, lend = 678	{"x-request-id": "c98ktocbcv4dkoucc22g"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:54
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:16:17.886]	[34mINFO[0m	get/community.go:76	[ListMainPage] get raw content success	{"x-request-id": "c98ktocbcv4dkoucc22g"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:76
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:16:17.982]	[34mINFO[0m	get/community.go:91	[ListMainPage] success, contentIdList = [7057464588144483080 7064056297611827975 7054870967621245703 7062913157479684900 7058500969700858631 7054498134256425735 7047032206959155998 7054498134256311047 7049621500290489101 7056034754965183268], page = 1, pageSize = 10	{"x-request-id": "c98ktocbcv4dkoucc22g"}
+github.com/oasis/game_boat/biz/handlers/get.ListCommunity
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/community.go:91
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 17:35:42.418]	[34mINFO[0m	game_boat/main.go:27	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:35:42.761]	[34mINFO[0m	game_boat/main.go:31	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:31
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:36:02.852]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:36:02.852]	[34mINFO[0m	game_boat/main.go:35	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:35
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:36:48.446]	[34mINFO[0m	game_boat/main.go:27	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:36:48.826]	[34mINFO[0m	game_boat/main.go:31	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:31
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:37:08.909]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:37:08.909]	[34mINFO[0m	game_boat/main.go:35	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:35
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:39:59.557]	[34mINFO[0m	game_boat/main.go:27	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:39:59.922]	[34mINFO[0m	game_boat/main.go:31	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:31
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:40:20.005]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:40:20.005]	[34mINFO[0m	game_boat/main.go:35	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:35
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:40:22.880]	[34mINFO[0m	content/detail.go:40	{
+	"content_id": 7057464588144483080
+} req = %!v(MISSING)	{"x-request-id": "c98l91kbcv40js5isn4g"}
+github.com/oasis/game_boat/biz/handlers/get/content.GetContentDetail
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/content/detail.go:40
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+
+
+[31m2022/04/09 17:40:23 [Recovery] 2022/04/09 - 17:40:23 panic recovered:
+GET /get/content/detail?content_id=7057464588144483080 HTTP/1.1
+Host: localhost:8080
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN
+Connection: keep-alive
+Content-Length: 69
+Content-Type: application/json
+User-Agent: ApiPOST Runtime +https://www.apipost.cn
+X-Request-Id: c98l91kbcv40js5isn4g
+
+
+assignment to entry in nil map
+/usr/local/go/src/runtime/map_fast64.go:94 (0x1014179)
+	mapassign_fast64: panic(plainError("assignment to entry in nil map"))
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/content/detail.go:91 (0x17afc24)
+	(*GetContentDetailHandler).getContentBuffer: c.contentBufferMap[id] = buffer
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/content/detail.go:68 (0x17af731)
+	(*GetContentDetailHandler).getContentDetail: c.getContentBuffer()
+/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/content/detail.go:52 (0x17af315)
+	GetContentDetail: err = c.getContentDetail()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1578899)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1578880)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1578899)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99 (0x1578880)
+	CustomRecoveryWithWriter.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x1577973)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241 (0x1577932)
+	LoggerWithConfig.func1: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168 (0x156d84f)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555 (0x156d835)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511 (0x156d2ea)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/go/src/net/http/server.go:2867 (0x12bc162)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/go/src/net/http/server.go:1932 (0x12b758c)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/go/src/runtime/asm_amd64.s:1371 (0x106d940)
+	goexit: BYTE	$0x90	// NOP
+[0m
+[2022-04-09 17:40:53.716]	[34mINFO[0m	game_boat/main.go:27	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:40:54.097]	[34mINFO[0m	game_boat/main.go:31	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:31
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:41:14.180]	[31mERROR[0m	initializer/redis.go:21	Redis connect ping failed, err:	{"err": "dial tcp 101.43.252.159:6379: i/o timeout"}
+github.com/oasis/game_boat/initializer.InitializeRedis
+	/Users/bytedance/go/src/github.com/oasis/game_boat/initializer/redis.go:21
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:41:14.180]	[34mINFO[0m	game_boat/main.go:35	redis init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:35
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 17:41:16.881]	[34mINFO[0m	content/detail.go:45	{
+	"content_id": 7057464588144483080
+} req = %!v(MISSING)	{"x-request-id": "c98l9f4bcv40nf06gkv0"}
+github.com/oasis/game_boat/biz/handlers/get/content.GetContentDetail
+	/Users/bytedance/go/src/github.com/oasis/game_boat/biz/handlers/get/content/detail.go:45
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/recovery.go:99
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/logger.go:241
+github.com/gin-gonic/gin.(*Context).Next
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/context.go:168
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:555
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/Users/bytedance/go/pkg/mod/github.com/gin-gonic/gin@v1.7.7/gin.go:511
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2867
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:1932
+[2022-04-09 19:20:00.788]	[34mINFO[0m	game_boat/main.go:27	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:27
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-09 19:20:01.724]	[34mINFO[0m	game_boat/main.go:31	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:31
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-19 22:11:23.158]	[34mINFO[0m	game_boat/main.go:30	log init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:30
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-19 22:11:23.421]	[34mINFO[0m	game_boat/main.go:34	db init success!
+main.init.0
+	/Users/bytedance/go/src/github.com/oasis/game_boat/main.go:34
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6309
+runtime.main
+	/usr/local/go/src/runtime/proc.go:208
+[2022-04-19 22:13:57.040]	[34mINFO[0m	game_boat/main.go:30	log init success!
+[2022-04-19 22:13:57.066]	[34mINFO[0m	game_boat/main.go:34	db init success!
+[2022-04-19 22:13:57.066]	[34mINFO[0m	game_boat/main.go:38	redis init success!

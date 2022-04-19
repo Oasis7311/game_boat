@@ -5,12 +5,15 @@ import (
 
 	"github.com/oasis/game_boat/biz/handlers"
 	handlerAction "github.com/oasis/game_boat/biz/handlers/action"
+	"github.com/oasis/game_boat/biz/handlers/deletehandler"
 	"github.com/oasis/game_boat/biz/handlers/gethandler"
+	"github.com/oasis/game_boat/biz/handlers/gethandler/comment"
 	handlerContent "github.com/oasis/game_boat/biz/handlers/gethandler/content"
 	handlerGetGame "github.com/oasis/game_boat/biz/handlers/gethandler/game"
 	handlerGetUser "github.com/oasis/game_boat/biz/handlers/gethandler/user"
 	"github.com/oasis/game_boat/biz/handlers/posthandler"
-	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/update/user"
+	"github.com/oasis/game_boat/biz/handlers/updatehandler"
+	handlerUpdateUser "github.com/oasis/game_boat/biz/handlers/updatehandler/user"
 	"github.com/oasis/game_boat/global"
 	"github.com/oasis/game_boat/initializer"
 	"github.com/oasis/game_boat/middle_ware"
@@ -72,16 +75,11 @@ func register(r *gin.Engine) {
 			user.POST("/relation_count", handlerGetUser.GetRelationCount) //关系数量
 			user.GET("/game", handlerGetUser.GetUserGame)                 //游戏
 			user.GET("/game_count", handlerGetUser.GetUserGameCount)      //收藏预约游戏数量
-
+			user.POST("/moment", handlerGetUser.GetUserMoment)            //获取动态列表
 			//user.GET("/info")                                                //信息
 			//user.GET("/setting", middle_ware.JWTAuth(services.AppGuardName)) //设置
-			//user.GET("/comment")                                             //评论
 		}
-		//{
-		//	comment := rGet.Group("/comment") //评论
-		//	comment.GET("/list")              //列表
-		//	comment.GET("/detail")            //单条详情
-		//}
+		rGet.POST("/comment/list", comment.GetCommentList)
 		//{
 		//	reply := rGet.Group("/reply") //回复
 		//	reply.GET("/list")            //列表
@@ -94,7 +92,6 @@ func register(r *gin.Engine) {
 			game.GET("/three_list", handlerGetGame.GetGameThreeList)
 			//game.GET("/info")                                //信息
 			//game.GET("/evaluation")                          //评价
-			//game.GET("/")
 		}
 		{
 			article := rGet.Group("/content")                       //文章
@@ -110,15 +107,14 @@ func register(r *gin.Engine) {
 		{
 			rPost := r.Group("/post") //发布
 			rPost.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rPost.POST("/comment")                          //评论
-			rPost.POST("/reply")                            //回复
 			rPost.POST("/content", posthandler.PostContent) //文章
+			rPost.POST("/comment", posthandler.PostComment) //评论
 		}
 		{
 			rDelete := r.Group("/delete") //删除
 			rDelete.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rDelete.POST("/comment") //评论 or 回复
-			rDelete.POST("/article") //文章
+			rDelete.POST("/comment", deletehandler.DeleteComment) //评论 or 回复
+			//rDelete.POST("/article") //文章
 		}
 		{
 			rAction := r.Group("/action") //交互行为
@@ -136,6 +132,7 @@ func register(r *gin.Engine) {
 				rUpdateUser.POST("/info", handlerUpdateUser.UpdateUserInfo)   //信息
 				//rUpdateUser.POST("/setting")                                  //设置
 			}
+			rUpdate.POST("comment", updatehandler.CommentUpdate) //更新评论内容
 		}
 	}
 

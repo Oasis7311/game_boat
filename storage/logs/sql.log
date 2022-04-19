@@ -1,3 +1,69 @@
 
-2022/04/09 17:42:39 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
-[1.250ms] [rows:487] SELECT `id` FROM `game_info`
+2022/04/09 17:10:56 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[40.638ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:11:51 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:27
+[94.640ms] [rows:678] SELECT `content_id` FROM `content`
+
+2022/04/09 17:13:58 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[50.413ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:14:03 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:27
+[91.383ms] [rows:678] SELECT `content_id` FROM `content`
+
+2022/04/09 17:14:03 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14
+[84.391ms] [rows:10] SELECT * FROM `content` WHERE content_id in (7057464588144483080,7064056297611827975,7054870967621245703,7062913157479684900,7058500969700858631,7054498134256425735,7047032206959155998,7054498134256311047,7049621500290489101,7056034754965183268)
+
+2022/04/09 17:14:03 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/user_dal/user_info.go:59
+[83.145ms] [rows:1] SELECT * FROM `user_info` WHERE id in (24,24,24,24,24,24,24,24,24,24) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/09 17:16:13 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[50.985ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:16:17 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:27
+[90.759ms] [rows:678] SELECT `content_id` FROM `content`
+
+2022/04/09 17:16:17 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14
+[88.519ms] [rows:10] SELECT * FROM `content` WHERE content_id in (7057464588144483080,7064056297611827975,7054870967621245703,7062913157479684900,7058500969700858631,7054498134256425735,7047032206959155998,7054498134256311047,7049621500290489101,7056034754965183268)
+
+2022/04/09 17:16:17 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/user_dal/user_info.go:59
+[94.972ms] [rows:1] SELECT * FROM `user_info` WHERE id in (24,24,24,24,24,24,24,24,24,24) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/09 17:36:03 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[170.937ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:36:23 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14 SLOW SQL >= 200ms
+[330.376ms] [rows:0] SELECT * FROM `content` WHERE content_id in (0)
+
+2022/04/09 17:36:23 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/user_dal/user_info.go:59
+[115.398ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/09 17:37:09 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[182.548ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:37:13 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14
+[176.553ms] [rows:0] SELECT * FROM `content` WHERE content_id in (0)
+
+2022/04/09 17:37:13 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/user_dal/user_info.go:59
+[129.056ms] [rows:0] SELECT * FROM `user_info` WHERE id in (NULL) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/09 17:40:20 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[66.174ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:40:23 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14
+[124.663ms] [rows:1] SELECT * FROM `content` WHERE content_id in (7057464588144483080)
+
+2022/04/09 17:40:23 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/user_dal/user_info.go:59
+[121.842ms] [rows:1] SELECT * FROM `user_info` WHERE id in (24) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/09 17:41:14 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[58.552ms] [rows:487] SELECT `id` FROM `game_info`
+
+2022/04/09 17:41:16 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/content_dal/content_dal.go:14
+[116.969ms] [rows:1] SELECT * FROM `content` WHERE content_id in (7057464588144483080)
+
+2022/04/09 17:41:17 /Users/bytedance/go/src/github.com/oasis/game_boat/biz/dal/mysql/user_dal/user_info.go:59
+[127.279ms] [rows:1] SELECT * FROM `user_info` WHERE id in (24) AND `user_info`.`deleted_at` IS NULL
+
+2022/04/19 22:13:57 /root/xiaqihong/go/src/github.com/oasis/game_boat/biz/dal/mysql/game_dal/game.go:32
+[1.706ms] [rows:487] SELECT `id` FROM `game_info`

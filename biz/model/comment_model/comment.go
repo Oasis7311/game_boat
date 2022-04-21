@@ -7,7 +7,7 @@ import (
 
 type Comment struct {
 	common_model.ID
-	GroupId      *uint   `json:"group_id,omitempty"`
+	GroupId      *string `json:"group_id,omitempty"`
 	RootId       *uint   `json:"root_id,omitempty"`
 	CommentLevel *uint   `json:"comment_level,omitempty"`
 	Msg          *string `json:"msg,omitempty"`

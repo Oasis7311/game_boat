@@ -68,6 +68,7 @@ func register(r *gin.Engine) {
 
 	{ //获取数据相关接口
 		rGet := r.Group("/get")
+		rGet.POST("/comment/list", comment.GetCommentList)
 		{
 			user := rGet.Group("/user")                                   //用户
 			user.POST("/followers", handlerGetUser.GetUserFollowerList)   //粉丝列表
@@ -76,26 +77,17 @@ func register(r *gin.Engine) {
 			user.GET("/game", handlerGetUser.GetUserGame)                 //游戏
 			user.GET("/game_count", handlerGetUser.GetUserGameCount)      //收藏预约游戏数量
 			user.POST("/moment", handlerGetUser.GetUserMoment)            //获取动态列表
-			//user.GET("/info")                                                //信息
-			//user.GET("/setting", middle_ware.JWTAuth(services.AppGuardName)) //设置
 		}
-		rGet.POST("/comment/list", comment.GetCommentList)
-		//{
-		//	reply := rGet.Group("/reply") //回复
-		//	reply.GET("/list")            //列表
-		//	reply.GET("/detail")          //单条详情
-		//}
 		{
 			game := rGet.Group("/game")                       //游戏
 			game.GET("/tag_list", handlerGetGame.GetTagList)  //标签列表
 			game.POST("/in_tag", handlerGetGame.GetGameInTag) //标签下游戏列表
 			game.GET("/three_list", handlerGetGame.GetGameThreeList)
-			//game.GET("/info")                                //信息
-			//game.GET("/evaluation")                          //评价
 		}
 		{
-			article := rGet.Group("/content")                       //文章
-			article.GET("/detail", handlerContent.GetContentDetail) //详情
+			article := rGet.Group("/content")                        //文章
+			article.GET("/detail", handlerContent.GetContentDetail)  //详情
+			article.POST("/follow", handlerContent.GetFollowContent) //关注列表
 		}
 		{
 			rGet.POST("/community", gethandler.ListCommunity) //社区页
@@ -114,14 +106,12 @@ func register(r *gin.Engine) {
 			rDelete := r.Group("/delete") //删除
 			rDelete.Use(middle_ware.JWTAuth(services.AppGuardName))
 			rDelete.POST("/comment", deletehandler.DeleteComment) //评论 or 回复
-			//rDelete.POST("/article") //文章
 		}
 		{
 			rAction := r.Group("/action") //交互行为
 			rAction.Use(middle_ware.JWTAuth(services.AppGuardName))
-			rAction.POST("/game", handlerAction.GameAction) //关注、取消关注游戏
-			//rAction.POST("/comment") //点赞、取消赞评论or回复
-			//rAction.POST("/article") //点赞、取消赞文章
+			rAction.POST("/game", handlerAction.GameAction)       //关注、取消关注游戏
+			rAction.POST("/content", handlerAction.ContentAction) //点赞、取消赞文章
 		}
 		{
 			rUpdate := r.Group("/update") //更新
@@ -130,7 +120,6 @@ func register(r *gin.Engine) {
 				rUpdateUser := rUpdate.Group("/user")                         //用户
 				rUpdateUser.POST("/relation", handlerUpdateUser.PeopleRelate) //更新用户关系
 				rUpdateUser.POST("/info", handlerUpdateUser.UpdateUserInfo)   //信息
-				//rUpdateUser.POST("/setting")                                  //设置
 			}
 			rUpdate.POST("comment", updatehandler.CommentUpdate) //更新评论内容
 		}
@@ -141,5 +130,6 @@ func register(r *gin.Engine) {
 		r.POST("/login", handlers.Login)
 		r.POST("/logout", middle_ware.JWTAuth(services.AppGuardName), middle_ware.UserIdAuth(), handlers.Logout)
 		r.GET("/token_check", middle_ware.JWTAuth(services.AppGuardName), handlers.CheckToken)
+		r.POST("/search", handlers.Search)
 	}
 }

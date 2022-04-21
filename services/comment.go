@@ -21,7 +21,7 @@ func NewCommentService(ctx *gin.Context) *CommentService {
 
 func (s *CommentService) PostComment(req *handler_model.PostCommentRequest) (commentDetail *comment_model.CommentDetail, err error) {
 	comment := &comment_model.Comment{
-		GroupId:      utils.PtrUint(req.GroupId),
+		GroupId:      utils.PtrStr(req.GroupId),
 		CommentLevel: utils.PtrUint(req.CommentLevel),
 		Msg:          utils.PtrStr(req.Msg),
 		UserId:       utils.PtrUint(req.UserId),
@@ -57,7 +57,7 @@ func (s *CommentService) ListComment(req *handler_model.ListCommentRequest) (com
 		s.getSort(req.ByComment.SortField, req.ByComment.Desc, dto)
 	}
 	if req.ByGroup != nil {
-		dto.GroupId = utils.PtrUint(req.ByGroup.GroupId)
+		dto.GroupId = utils.PtrStr(req.ByGroup.GroupId)
 		s.getSort(req.ByGroup.SortField, req.ByGroup.Desc, dto)
 	}
 	if req.ByUser != nil {

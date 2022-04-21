@@ -5,7 +5,7 @@ import (
 )
 
 type PostCommentRequest struct {
-	GroupId      uint   `json:"group_id"`
+	GroupId      string `json:"group_id"`
 	Msg          string `json:"msg,omitempty"`
 	UserId       uint   `json:"user_id,omitempty"`
 	CommentLevel uint   `json:"comment_level,omitempty"`
@@ -30,7 +30,7 @@ type ListCommentByUser struct {
 }
 
 type ListCommentByGroup struct {
-	GroupId uint `json:"group_id,omitempty"`
+	GroupId string `json:"group_id,omitempty"`
 	ListCommentSort
 }
 

@@ -2,7 +2,7 @@ package comment_model
 
 type ListCommentDto struct {
 	UserId    *uint
-	GroupId   *uint
+	GroupId   *string
 	RootId    *uint
 	SortField string
 	Desc      bool

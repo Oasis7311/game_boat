@@ -1,30 +1,49 @@
 package comment_dal
 
 import (
+	"time"
+
 	"github.com/pkg/errors"
+	"github.com/spf13/cast"
 	"gorm.io/gorm/clause"
 
 	"github.com/oasis/game_boat/biz/model/comment_model"
 	"github.com/oasis/game_boat/global"
+	"github.com/oasis/game_boat/utils"
 )
 
 func CreateComment(comment *comment_model.Comment) error {
+	comment.CreateTime = utils.PtrUint(cast.ToUint(time.Now().Unix()))
+	comment.ModifyTime = comment.CreateTime
+	comment.Status = utils.PtrInt(0)
 	err := global.App.DB.Debug().Create(comment).Error
 	return errors.Wrap(err, "create comment fail")
 }
 
 func DeleteComment(commentId uint) error {
-	err := global.App.DB.Debug().Where("id = ?", commentId).Update("status", 1).Error
+	err := global.App.DB.Debug().Where("id = ?", commentId).
+		Updates(map[string]interface{}{
+			"status":      1,
+			"modify_time": time.Now().Unix(),
+		}).Error
 	return errors.Wrap(err, "delete comment fail")
 }
 
 func UpdateCommentStatus(commentId uint, status int) error {
-	err := global.App.DB.Debug().Model(&comment_model.Comment{}).Where("id = ?", commentId).Update("status", status).Error
+	err := global.App.DB.Debug().Model(&comment_model.Comment{}).Where("id = ?", commentId).
+		Updates(map[string]interface{}{
+			"status":      status,
+			"modify_time": time.Now().Unix(),
+		}).Error
 	return errors.Wrap(err, "update comment status fail")
 }
 
 func UpdateCommentMsg(commentId uint, msg string) error {
-	err := global.App.DB.Debug().Model(&comment_model.Comment{}).Where("id = ?", commentId).Update("msg", msg).Error
+	err := global.App.DB.Debug().Model(&comment_model.Comment{}).Where("id = ?", commentId).
+		Updates(map[string]interface{}{
+			"msg":         msg,
+			"modify_time": time.Now().Unix(),
+		}).Error
 	return errors.Wrap(err, "update comment msg fail")
 }
 
@@ -58,24 +77,27 @@ func ListComment(dto *comment_model.ListCommentDto) ([]*comment_model.Comment, [
 	comments := make([]*comment_model.Comment, 0)
 	conn := global.App.DB.Debug()
 	if dto.RootId != nil {
-		conn.Where("root_id = ?", *dto.RootId)
+		conn = conn.Where("root_id = ?", *dto.RootId)
 	}
 	if dto.GroupId != nil {
-		conn.Where("group_id = ?", *dto.GroupId)
+		conn = conn.Where("group_id = ?", *dto.GroupId)
 	}
 	if dto.UserId != nil {
-		conn.Where("user_id = ?", *dto.UserId)
+		conn = conn.Where("user_id = ?", *dto.UserId)
 	}
-	conn.Where("status = ?", dto.Status).Offset(dto.Offset).Limit(dto.Limit)
+	conn = conn.Where("status = ?", dto.Status).Offset(dto.Offset).Limit(dto.Limit)
 
 	err := conn.Find(&comments).Error
 	if err != nil {
 		return nil, nil, nil, 0, errors.Wrap(err, "find comments fail")
 	}
+
 	userId, replyToUserId := make([]uint, 0), make([]uint, 0)
-	if len(comments) != 0 {
-		conn.Select("user_id").Find(&userId)
-		conn.Select("reply_to_user_id").Find(&replyToUserId)
+	for _, comment := range comments {
+		userId = append(userId, *comment.UserId)
+		if *comment.ReplyUserId != 0 {
+			replyToUserId = append(replyToUserId, *comment.ReplyUserId)
+		}
 	}
 
 	count := int64(0)

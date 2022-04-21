@@ -19,3 +19,11 @@ type PostContentRequest struct {
 type PostContentResponse struct {
 	Content *content_model.ContentDetail `json:"content"`
 }
+
+type GetFollowUserContentRequest struct {
+	UserId []uint `json:"user_id"`
+}
+
+type GetFollowUserContentResponse struct {
+	Content []*content_model.ContentDetail `json:"content"`
+}

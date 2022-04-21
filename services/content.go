@@ -6,6 +6,7 @@ import (
 
 	"github.com/spf13/cast"
 
+	"github.com/oasis/game_boat/biz/dal/mysql/action_dal"
 	"github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/content_model"
 	"github.com/oasis/game_boat/biz/model/user_model"
@@ -45,7 +46,7 @@ func (c *ContentDetailHandler) GetContentDetail() error {
 			Text:          c.ContentBufferMap[contentId].Text,
 			Summary:       c.ContentBufferMap[contentId].Summary,
 			PublishTime:   c.ContentBufferMap[contentId].PublishTime,
-			LikeCount:     0, //todo LikeCount填充
+			LikeCount:     cast.ToUint(c.getLikeCount(contentId)),
 		}
 	}
 
@@ -95,4 +96,12 @@ func (c *ContentDetailHandler) FillUpBuffer() {
 			Text:         detail.Text,
 		}
 	}
+}
+
+func (c *ContentDetailHandler) getLikeCount(contentId int64) int64 {
+	count, err := action_dal.GetLikeCount(contentId)
+	if err != nil {
+		return 0
+	}
+	return count
 }

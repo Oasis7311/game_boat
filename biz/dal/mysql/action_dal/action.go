@@ -17,6 +17,6 @@ func LikeContent(UserId uint, ContentId int64) error {
 
 func GetLikeCount(ContentId int64) (int64, error) {
 	count := new(int64)
-	res := global.App.DB.Debug().Where("content_id = ?", ContentId).Count(count)
+	res := global.App.DB.Debug().Model(&action_model.Action{}).Where("group_id = ?", ContentId).Count(count)
 	return *count, errors.Wrap(res.Error, "get count fail")
 }

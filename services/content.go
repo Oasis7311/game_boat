@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cast"
 
 	"github.com/oasis/game_boat/biz/dal/mysql/action_dal"
+	"github.com/oasis/game_boat/biz/dal/mysql/comment_dal"
 	"github.com/oasis/game_boat/biz/dal/mysql/user_dal"
 	"github.com/oasis/game_boat/biz/model/content_model"
 	"github.com/oasis/game_boat/biz/model/user_model"
@@ -34,7 +35,6 @@ func (c *ContentDetailHandler) GetContentDetail() error {
 	}
 
 	c.GetContentBuffer()
-
 	for contentId, content := range c.ContentMap {
 		c.ContentDetailMap[contentId] = &content_model.ContentDetail{
 			ContentId:     cast.ToString(contentId),
@@ -47,6 +47,7 @@ func (c *ContentDetailHandler) GetContentDetail() error {
 			Summary:       c.ContentBufferMap[contentId].Summary,
 			PublishTime:   c.ContentBufferMap[contentId].PublishTime,
 			LikeCount:     cast.ToUint(c.getLikeCount(contentId)),
+			CommentCount:  cast.ToUint(c.getCommentCount(contentId)),
 		}
 	}
 
@@ -104,4 +105,8 @@ func (c *ContentDetailHandler) getLikeCount(contentId int64) int64 {
 		return 0
 	}
 	return count
+}
+
+func (c *ContentDetailHandler) getCommentCount(contentId int64) int64 {
+	return comment_dal.GetCommentCount(contentId)
 }

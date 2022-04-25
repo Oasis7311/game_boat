@@ -45,7 +45,7 @@ func GetAllGamesIdList() ([]uint, error) {
 func SearchGameByName(gameName string) ([]*game_model.GameInfo, error) {
 	gameList := make([]*game_model.GameInfo, 0)
 
-	err := global.App.DB.Debug().Where("name like ? ", "%"+gameName+"%").Error
+	err := global.App.DB.Debug().Model(&game_model.GameInfo{}).Where("name like ? ", "%"+gameName+"%").Find(&gameList).Error
 
 	if err != nil {
 		return nil, errors.Wrap(err, "find games by name fail")

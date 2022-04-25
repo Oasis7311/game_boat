@@ -77,6 +77,7 @@ func register(r *gin.Engine) {
 			user.GET("/game", handlerGetUser.GetUserGame)                 //游戏
 			user.GET("/game_count", handlerGetUser.GetUserGameCount)      //收藏预约游戏数量
 			user.POST("/moment", handlerGetUser.GetUserMoment)            //获取动态列表
+			user.GET("/:email", handlerGetUser.GetUser)
 		}
 		{
 			game := rGet.Group("/game")                       //游戏

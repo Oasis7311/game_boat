@@ -101,3 +101,10 @@ func GetUserInfoByContent(contents map[int64]*content_model.Content) (map[int64]
 
 	return res, nil
 }
+
+func GetUserInfoByEmail(email string) (*user_model.UserInfo, error) {
+	res := new(user_model.UserInfo)
+	err := global.App.DB.Debug().Where("email = ? ", email).First(res).Error
+	return res, errors.Wrap(err, "find user by email fail")
+
+}

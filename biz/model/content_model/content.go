@@ -29,7 +29,8 @@ type ContentDetail struct {
 	Summary       string                `json:"summary,omitempty"`
 	Text          string                `json:"text,omitempty"`
 	PublishTime   int64                 `json:"publish_time,omitempty"`
-	LikeCount     uint                  `json:"like_count,omitempty"`
+	LikeCount     uint                  `json:"like_count"`
+	CommentCount  uint                  `json:"comment_count"`
 }
 
 type ContentBuffer struct {

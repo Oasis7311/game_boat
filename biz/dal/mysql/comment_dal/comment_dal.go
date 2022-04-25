@@ -105,3 +105,9 @@ func ListComment(dto *comment_model.ListCommentDto) ([]*comment_model.Comment, [
 
 	return comments, userId, replyToUserId, count, errors.Wrap(err, "find comments fail")
 }
+
+func GetCommentCount(groupId int64) int64 {
+	count := new(int64)
+	global.App.DB.Debug().Model(&comment_model.Comment{}).Where("group_id = ?", groupId).Count(count)
+	return *count
+}

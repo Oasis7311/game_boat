@@ -45,7 +45,7 @@ func GetFollowContent(ctx *gin.Context) {
 		}
 	}
 
-	s := services.ContentDetailHandler{}
+	s := services.GetContentDetailHandler()
 	s.ContentMap, err = content_dal.GetContentRaw(newIds)
 	if err != nil {
 		logs.Error(fmt.Sprintf("%v %+v", method, err))

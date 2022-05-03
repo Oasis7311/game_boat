@@ -51,7 +51,7 @@ func JWTAuth(GuardName string) gin.HandlerFunc {
 			return
 		}
 
-		// 校验token是否有限
+		// 校验token是否有效
 		if !token.Valid {
 			logs.Info(fmt.Sprintf("[JWTAuth] Token无效，id = %v", claims.Id))
 			response.TokenFail(c)

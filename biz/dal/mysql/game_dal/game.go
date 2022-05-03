@@ -35,11 +35,28 @@ func GetAllGamesIdList() ([]uint, error) {
 		return nil, errors.Wrap(err, "GetAllGamesIdList fail")
 	}
 
-	ids := make([]uint, 0)
+	ids := make(map[uint]struct{}, 0)
 	for _, info := range gameList {
-		ids = append(ids, info.ID.ID)
+		ids[info.ID.ID] = struct{}{}
 	}
-	return ids, nil
+	res := make([]uint, 0)
+	for id := range ids {
+		res = append(res, id)
+	}
+	return res, nil
+}
+
+func GetGamesByTag(tagIds []uint) (map[uint][]*game_model.GameInfo, error) {
+	res := make([]*game_model.GameInfo, 0)
+	err := global.App.DB.Debug().Where("tag_id in (?)", tagIds).Find(&res).Error
+	if err != nil {
+		return nil, errors.Wrap(err, "根据标签获取游戏信息失败")
+	}
+	mat := make(map[uint][]*game_model.GameInfo)
+	for _, re := range res {
+		mat[re.TagId] = append(mat[re.TagId], re)
+	}
+	return mat, nil
 }
 
 func SearchGameByName(gameName string) ([]*game_model.GameInfo, error) {
